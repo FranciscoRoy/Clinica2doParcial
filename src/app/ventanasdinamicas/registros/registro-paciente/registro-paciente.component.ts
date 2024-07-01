@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Paciente } from '../../../clases/usuario';
 import { ApiService } from '../../../servicios/api.service';
+import { VentanaActivaService } from '../../../servicios/ventanaactiva.service';
 
 @Component({
   selector: 'app-registro-paciente',
@@ -13,7 +14,11 @@ import { ApiService } from '../../../servicios/api.service';
 export class RegistroPacienteComponent {
   registroFormPaciente: FormGroup;
 
-  constructor(private fb: FormBuilder, private apiService: ApiService) {
+  constructor(
+    private fb: FormBuilder,
+    private apiService: ApiService,
+    private ventanaActivaService: VentanaActivaService
+  ) {
 
     this.registroFormPaciente = this.fb.group({
       nombre: ['', Validators.required],
@@ -41,6 +46,7 @@ export class RegistroPacienteComponent {
 
   registrarPaciente(nuevoPaciente: Paciente){
     this.apiService.insertarPaciente(nuevoPaciente).subscribe(t=>{});
-  }    
-      
+    this.ventanaActivaService.cambiarVentana('ingreso');
+  }
+   
 }

@@ -5,10 +5,17 @@
     <button (click)="inicio()">Inicio</button>
 
     <div *ngSwitchCase="0">
-        <button  (click)="ingresar()">Ingresar</button>
-        <button (click)="registrarse()">Registrarse</button>
+        <button (click)="ingresar()">Ingresar</button>
+        <button (click)="registrarse(selectedTipoUsuario)">Registrarse</button>
         <button>Contactarnos</button>
-        <button (click)="setPaciente()">Set Paciente</button>
+        
+        <select [(ngModel)]="selectedTipoUsuario">
+            <option value="" disabled selected>Seleccione tipo de usuario</option>
+            <option value="Paciente">Paciente</option>
+            <option value="Profesional">Profesional</option>
+            <option value="Gerente">Gerente</option>
+        </select>
+        
     </div>
 
     <div *ngSwitchCase="1">

@@ -1,51 +1,20 @@
-/*
-import { Component } from '@angular/core';
-import { VentanaActivaService } from '../../servicios/ventanaactiva.service';
-
-@Component({
-  selector: 'app-barrademenu',
-  standalone: true,
-  imports: [],
-  templateUrl: './barrademenu.component.html',
-  styleUrls: ['./barrademenu.component.css']
-})
-export class BarraDeMenuComponent {
-  constructor(private ventanaActivaService: VentanaActivaService) {}
-
-
-  inicio() {
-    this.ventanaActivaService.cambiarVentana('inicio');}
-
-  ingresar() {
-    this.ventanaActivaService.cambiarVentana('ingreso');}
-
-  registrarse() {
-    this.ventanaActivaService.cambiarVentana('registro');}
-
-  misDatos() {
-    this.ventanaActivaService.cambiarVentana('datospersonales');}
-
-  salir() {
-    this.ventanaActivaService.cambiarVentana('salir');}
-}
-*/
-
 import { Component, OnInit } from '@angular/core';
 import { VentanaActivaService } from '../../servicios/ventanaactiva.service';
 import { UsuarioActivoService } from '../../servicios/usuario-activo.service';
 import { Paciente, Profesional, Gerente, UsuariosinIngresar, Usuario } from '../../clases/usuario';
 import { NgSwitch, NgSwitchCase, NgSwitchDefault } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-barrademenu',
   standalone: true,
-  imports: [NgSwitch, NgSwitchCase, NgSwitchDefault],
+  imports: [NgSwitch, NgSwitchCase, NgSwitchDefault, FormsModule ],
   templateUrl: './barrademenu.component.html',
   styleUrls: ['./barrademenu.component.css']
 })
 export class BarraDeMenuComponent implements OnInit {
-
   usuarioActivo: Usuario = new UsuariosinIngresar();
+  selectedTipoUsuario: string = '';
 
   constructor(
     private ventanaActivaService: VentanaActivaService,
@@ -64,8 +33,22 @@ export class BarraDeMenuComponent implements OnInit {
   ingresar() {
     this.ventanaActivaService.cambiarVentana('ingreso');}
 
-  registrarse() {
-    this.ventanaActivaService.cambiarVentana('registro');}
+  registrarse(tipoUsuario: string) {
+    switch (tipoUsuario) {
+        case 'Paciente':
+            this.ventanaActivaService.cambiarVentana('registroPaciente');
+            break;
+        case 'Profesional':
+            this.ventanaActivaService.cambiarVentana('registroProfesional');
+            break;
+        case 'Gerente':
+            this.ventanaActivaService.cambiarVentana('registroGerente');
+            break;
+        default:
+            this.ventanaActivaService.cambiarVentana('registroPaciente');
+            break;
+    }
+  }
 
   misDatos() {
     this.ventanaActivaService.cambiarVentana('datospersonales');}
