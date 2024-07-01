@@ -11,12 +11,6 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
-  /*
-  insertarPersona() {
-    return this.http.post(this.apiUrl + 'prueba','');
-  }
-  */
-
   insertarPaciente(nuevoPaciente: Paciente) {
     return this.http.post(this.apiUrl + 'registroPaciente', nuevoPaciente);
   }

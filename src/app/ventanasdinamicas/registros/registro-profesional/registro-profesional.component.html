@@ -1,1 +1,28 @@
-<p>registro-profesional works!</p>
+<p>REGISTRO DE PROFESIONALES</p>
+<form (ngSubmit)="onSubmit()" [formGroup]="registroFormProfesional">
+    <label for="nombre">Nombre:</label>
+    <input id="nombre" formControlName="nombre" type="text">
+    
+    <label for="apellido">Apellido:</label>
+    <input id="apellido" formControlName="apellido" type="text">
+    
+    <label for="email">Email:</label>
+    <input id="email" formControlName="email" type="email">
+    
+    <label for="especialidad">Especialidad:</label>
+    <input id="especialidad" formControlName="especialidad" type="text">
+
+    <label for="diasAtencion">Dias de Atencion:</label>
+    <input id="diasAtencion" formControlName="diasAtencion" type="text">
+
+    <label for="pass">Password:</label>
+    <input id="pass" formControlName="pass" type="pass">
+    
+    <label for="secreto">Palabra Secreta:</label>
+    <input id="secreto" formControlName="secreto" type="text">
+    
+    <label for="segundaPalabraSecreta">Otra Palabra:</label>
+    <input id="segundaPalabraSecreta" formControlName="segundaPalabraSecreta" type="text">
+
+    <button type="submit">Registrarse</button>
+  </form>

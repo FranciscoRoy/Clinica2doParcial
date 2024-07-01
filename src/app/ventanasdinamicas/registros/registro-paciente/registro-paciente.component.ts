@@ -11,6 +11,7 @@ import { VentanaActivaService } from '../../../servicios/ventanaactiva.service';
   templateUrl: './registro-paciente.component.html',
   styleUrl: './registro-paciente.component.css'
 })
+
 export class RegistroPacienteComponent {
   registroFormPaciente: FormGroup;
 
@@ -48,5 +49,5 @@ export class RegistroPacienteComponent {
     this.apiService.insertarPaciente(nuevoPaciente).subscribe(t=>{});
     this.ventanaActivaService.cambiarVentana('ingreso');
   }
-   
+
 }
