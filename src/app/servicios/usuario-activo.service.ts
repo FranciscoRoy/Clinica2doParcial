@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { Usuario, UsuariosinIngresar, Paciente, Profesional, Gerente } from '../clases/usuario'; // Importar las clases de usuario
+import { Usuario, UsuariosinIngresar } from '../clases/usuario'; // Importar las clases de usuario
 
 @Injectable({
   providedIn: 'root' // Proveer el servicio a nivel de aplicación

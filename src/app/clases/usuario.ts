@@ -2,8 +2,8 @@ export interface Usuario {
     nombre: string;
     apellido: string;
     email: string;
-    password: string;
-    palabraSecreta: string;
+    pass: string;
+    secreto: string;
     acceso: number;
 
     getAcceso(): number;
@@ -14,8 +14,8 @@ export interface Usuario {
     nombre = '';
     apellido = '';
     email = '';
-    password = '';
-    palabraSecreta = '';
+    pass = '';
+    secreto = '';
     acceso = 0;
 
     getAcceso(): number {return this.acceso;}
@@ -27,19 +27,19 @@ export interface Usuario {
     nombre: string;
     apellido: string;
     email: string;
-    password: string;
-    palabraSecreta: string;
+    pass: string;
+    secreto: string;
     acceso = 1;
 
     getAcceso(): number {return this.acceso;}
     getTipoUsuario(): string {return 'Paciente'}
   
-    constructor(nombre: string, apellido: string, email: string, password: string, palabraSecreta: string) {
+    constructor(nombre: string, apellido: string, email: string, pass: string, secreto: string) {
       this.nombre = nombre;
       this.apellido = apellido;
       this.email = email;
-      this.password = password;
-      this.palabraSecreta = palabraSecreta;
+      this.pass = pass;
+      this.secreto = secreto;
     }
   }
   
@@ -53,8 +53,8 @@ export interface Usuario {
     nombre: string;
     apellido: string;
     email: string;
-    password: string;
-    palabraSecreta: string;
+    pass: string;
+    secreto: string;
     acceso = 2;
     especialidad: string;
     diasAtencion: string[];
@@ -67,8 +67,8 @@ export interface Usuario {
       nombre: string,
       apellido: string,
       email: string,
-      password: string,
-      palabraSecreta: string,
+      pass: string,
+      secreto: string,
       especialidad: string,
       diasAtencion: string[],
       segundaPalabraSecreta: string
@@ -76,8 +76,8 @@ export interface Usuario {
       this.nombre = nombre;
       this.apellido = apellido;
       this.email = email;
-      this.password = password;
-      this.palabraSecreta = palabraSecreta;
+      this.pass = pass;
+      this.secreto = secreto;
       this.especialidad = especialidad;
       this.diasAtencion = diasAtencion;
       this.segundaPalabraSecreta = segundaPalabraSecreta;
@@ -88,19 +88,19 @@ export interface Usuario {
     nombre: string;
     apellido: string;
     email: string;
-    password: string;
-    palabraSecreta: string;
+    pass: string;
+    secreto: string;
     acceso = 3;
 
     getAcceso(): number {return this.acceso;}
     getTipoUsuario(): string {return 'Gerente'}
   
-    constructor(nombre: string, apellido: string, email: string, password: string, palabraSecreta: string) {
+    constructor(nombre: string, apellido: string, email: string, pass: string, secreto: string) {
       this.nombre = nombre;
       this.apellido = apellido;
       this.email = email;
-      this.password = password;
-      this.palabraSecreta = palabraSecreta;
+      this.pass = pass;
+      this.secreto = secreto;
     }
   }
 

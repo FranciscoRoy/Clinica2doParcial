@@ -1,5 +1,5 @@
-<p>registro works!</p>
-<form (ngSubmit)="onSubmit()" [formGroup]="registroForm">
+<p>REGISTRO DE PACIENTES</p>
+<form (ngSubmit)="onSubmit()" [formGroup]="registroFormPaciente">
     <label for="nombre">Nombre:</label>
     <input id="nombre" formControlName="nombre" type="text">
     
@@ -9,11 +9,11 @@
     <label for="email">Email:</label>
     <input id="email" formControlName="email" type="email">
     
-    <label for="password">Password:</label>
-    <input id="password" formControlName="password" type="password">
+    <label for="pass">Password:</label>
+    <input id="pass" formControlName="pass" type="pass">
     
-    <label for="palabraSecreta">Palabra Secreta:</label>
-    <input id="palabraSecreta" formControlName="palabraSecreta" type="text">
+    <label for="secreto">Palabra Secreta:</label>
+    <input id="secreto" formControlName="secreto" type="text">
     
     <button type="submit">Registrarse</button>
   </form>
