@@ -16,7 +16,7 @@ export class InicioComponent {
   constructor(private ventanaActivaService: VentanaActivaService,){}
 
 irIngreso(){
-  this.ventanaActivaService.cambiarVentana('ingreso');}
+  this.ventanaActivaService.cambiarVentana('ingreso',this.selectedTipoUsuario);}
 
 irRegistro(){
   this.ventanaActivaService.cambiarVentana('registro',this.selectedTipoUsuario);

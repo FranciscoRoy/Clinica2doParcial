@@ -20,7 +20,7 @@ import { RegistroComponent } from "../../ventanasdinamicas/registro/registro.com
 export class VentanacentralComponent implements OnInit  {
   usuarioActual: Usuario = new UsuariosinIngresar;
   ventanaActivaActual: string = 'inicio';
-  usuarioARegistrar: string = 'Invitado';
+  usuarioSolicitante: string = 'Invitado';
 
   constructor(
     private ventanaActivaService: VentanaActivaService,
@@ -30,7 +30,7 @@ export class VentanacentralComponent implements OnInit  {
   ngOnInit(): void {
     this.usuarioActivoService.usuarioActual$.subscribe(usuario => {this.usuarioActual = usuario;});
     this.ventanaActivaService.getVentanaActiva().subscribe(ventanaActiva => {this.ventanaActivaActual = ventanaActiva;})
-    this.ventanaActivaService.getTipoUsuarioSolicitado().subscribe(usuarioTipo => {this.usuarioARegistrar = usuarioTipo;})
+    this.ventanaActivaService.getTipoUsuarioSolicitado().subscribe(usuarioTipo => {this.usuarioSolicitante = usuarioTipo;})
   }
 
 }

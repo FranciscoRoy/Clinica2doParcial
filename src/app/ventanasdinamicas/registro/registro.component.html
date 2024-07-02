@@ -25,7 +25,7 @@
 </form>
 
 <div *ngIf="tipoUsuario === 'Profesional'">
-    <form [formGroup]="formularioProfesional">
+    <form (ngSubmit)="onSubmit()" [formGroup]="formularioProfesional">
 
       <label for="especialidad">Especialidad:</label>
       <input id="especialidad" formControlName="especialidad" type="text">
