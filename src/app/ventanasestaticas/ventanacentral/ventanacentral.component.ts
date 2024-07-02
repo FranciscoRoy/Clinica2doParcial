@@ -10,18 +10,20 @@ import { RegistroPacienteComponent } from "../../ventanasdinamicas/registros/reg
 import { RegistroGerenteComponent } from "../../ventanasdinamicas/registros/registro-gerente/registro-gerente.component";
 import { RegistroProfesionalComponent } from "../../ventanasdinamicas/registros/registro-profesional/registro-profesional.component";
 import { AyudaComponent } from "../../ventanasdinamicas/ayuda/ayuda.component";
+import { RegistroComponent } from "../../ventanasdinamicas/registro/registro.component";
 
 @Component({
     selector: 'app-ventanacentral',
     standalone: true,
     templateUrl: './ventanacentral.component.html',
     styleUrl: './ventanacentral.component.css',
-    imports: [ErrorComponent, IngresoComponent, InicioComponent, DatospersonalesComponent, RegistroPacienteComponent, RegistroGerenteComponent, RegistroProfesionalComponent, AyudaComponent]
+    imports: [ErrorComponent, IngresoComponent, InicioComponent, DatospersonalesComponent, RegistroPacienteComponent, RegistroGerenteComponent, RegistroProfesionalComponent, AyudaComponent, RegistroComponent]
 })
 
 export class VentanacentralComponent implements OnInit  {
   usuarioActual: Usuario = new UsuariosinIngresar;
   ventanaActivaActual: string = 'inicio';
+  usuarioARegistrar: string = 'Invitado';
 
   constructor(
     private ventanaActivaService: VentanaActivaService,
@@ -31,6 +33,7 @@ export class VentanacentralComponent implements OnInit  {
   ngOnInit(): void {
     this.usuarioActivoService.usuarioActual$.subscribe(usuario => {this.usuarioActual = usuario;});
     this.ventanaActivaService.getVentanaActiva().subscribe(ventanaActiva => {this.ventanaActivaActual = ventanaActiva;})
+    this.ventanaActivaService.getTipoUsuarioSolicitado().subscribe(usuarioTipo => {this.usuarioARegistrar = usuarioTipo;})
   }
 
 }

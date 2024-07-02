@@ -1,0 +1,28 @@
+<p>REGISTRO ESTA FUNCIONANDO COMO {{tipoUsuario}}</p>
+
+<p>REGISTRO GENERAL</p>
+<form (ngSubmit)="onSubmit()" [formGroup]="formularioGeneral">
+  
+    <label for="nombre">Nombre:</label>
+    <input id="nombre" formControlName="nombre" type="text">
+    
+    <label for="apellido">Apellido:</label>
+    <input id="apellido" formControlName="apellido" type="text">
+    
+    <label for="dni">DNI:</label>
+    <input id="dni" formControlName="dni" type="number">
+
+    <label for="email">Email:</label>
+    <input id="email" formControlName="email" type="email">
+    
+    <label for="password">Password:</label>
+    <input id="password" formControlName="password" type="password">
+    
+    <label for="foto">Foto:</label>
+    <input id="foto" formControlName="foto" type="text">
+    
+    <button type="submit">Registrarse</button>
+</form>
+
+<p>REGISTRO ESPECIFICO</p>
+<p>???</p>

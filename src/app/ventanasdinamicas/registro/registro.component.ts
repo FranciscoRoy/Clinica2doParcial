@@ -1,27 +1,29 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
-import { Paciente, Profesional } from '../../../clases/usuario';
-import { ApiService } from '../../../servicios/api.service';
-import { VentanaActivaService } from '../../../servicios/ventanaactiva.service';
+import { Paciente, Profesional } from '../../clases/usuario';
+import { ApiService } from '../../servicios/api.service';
+import { VentanaActivaService } from '../../servicios/ventanaactiva.service';
 
 @Component({
-  selector: 'app-registro-paciente',
+  selector: 'app-registro',
   standalone: true,
   imports: [ReactiveFormsModule],
-  templateUrl: './registro-paciente.component.html',
-  styleUrl: './registro-paciente.component.css'
+  templateUrl: './registro.component.html',
+  styleUrl: './registro.component.css'
 })
 
-export class RegistroPacienteComponent {
-  registroFormPaciente: FormGroup;
+export class RegistroComponent {
+  @Input() tipoUsuario: string;
+  formularioGeneral: FormGroup;
   
   constructor(
     private fb: FormBuilder,
     private apiService: ApiService,
     private ventanaActivaService: VentanaActivaService
   ) {
+    this.tipoUsuario = 'Invitado';
 
-    this.registroFormPaciente = this.fb.group({
+    this.formularioGeneral = this.fb.group({
       nombre: ['', Validators.required],
       apellido: ['', Validators.required],
       dni: ['', Validators.required],
@@ -33,14 +35,14 @@ export class RegistroPacienteComponent {
   }
 
   onSubmit() {
-    if (this.registroFormPaciente.valid) {
+    if (this.formularioGeneral.valid) {
       const nuevoPaciente = new Paciente(
-        this.registroFormPaciente.value.nombre,
-        this.registroFormPaciente.value.apellido,
-        this.registroFormPaciente.value.dni,
-        this.registroFormPaciente.value.email,
-        this.registroFormPaciente.value.password,
-        this.registroFormPaciente.value.foto);
+        this.formularioGeneral.value.nombre,
+        this.formularioGeneral.value.apellido,
+        this.formularioGeneral.value.dni,
+        this.formularioGeneral.value.email,
+        this.formularioGeneral.value.password,
+        this.formularioGeneral.value.foto);
       this.registrarPaciente(nuevoPaciente);
     } else {
       console.log('El formulario no es válido');
@@ -58,3 +60,4 @@ export class RegistroPacienteComponent {
   }
 
 }
+

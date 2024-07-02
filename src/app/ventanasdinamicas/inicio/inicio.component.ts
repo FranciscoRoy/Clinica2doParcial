@@ -19,7 +19,8 @@ irIngreso(){
   this.ventanaActivaService.cambiarVentana('ingreso');}
 
 irRegistro(){
-  this.ventanaActivaService.cambiarVentana('registroPaciente');}
+  this.ventanaActivaService.cambiarVentana('registro',this.selectedTipoUsuario);
+}
 
 irAyuda(){
   this.ventanaActivaService.cambiarVentana('ayuda');}

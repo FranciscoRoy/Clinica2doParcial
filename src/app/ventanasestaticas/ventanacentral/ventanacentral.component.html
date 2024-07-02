@@ -5,9 +5,13 @@
 @switch(this.ventanaActivaActual){
     @case ('inicio') {<app-inicio></app-inicio>}
     @case ('ingreso') {<app-ingreso></app-ingreso>}
+
     @case ('registroPaciente') {<app-registro-paciente></app-registro-paciente>}
     @case ('registroProfesional') {<app-registro-profesional></app-registro-profesional>}
     @case ('registroGerente') {<app-registro-gerente></app-registro-gerente>}
+
+    @case ('registro') {<app-registro [tipoUsuario]=usuarioARegistrar></app-registro>}
+
     @case ('datospersonales') {<app-datospersonales></app-datospersonales>}
     @case ('ayuda') {<app-ayuda></app-ayuda>}
     @default {<app-error></app-error>}
