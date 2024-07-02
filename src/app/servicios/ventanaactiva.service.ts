@@ -7,7 +7,7 @@ import { BehaviorSubject} from 'rxjs';
 
 export class VentanaActivaService{
   private ventanaActivaSubject = new BehaviorSubject<string>('inicio');
-  private tipoUsuarioSolicitadoSubject = new BehaviorSubject<string>('VENTANA-ACTIVA-SERVICE');
+  private tipoUsuarioSolicitadoSubject = new BehaviorSubject<string>('Invitado');
 
 cambiarVentana(ventana: string,tipoUsuarioEntrada?: string){
   if (tipoUsuarioEntrada) {this.tipoUsuarioSolicitadoSubject.next(tipoUsuarioEntrada);}

@@ -6,9 +6,6 @@ import { Usuario, UsuariosinIngresar} from '../../clases/usuario';
 import { VentanaActivaService } from '../../servicios/ventanaactiva.service';
 import { InicioComponent } from "../../ventanasdinamicas/inicio/inicio.component";
 import { DatospersonalesComponent } from "../../ventanasdinamicas/datospersonales/datospersonales.component";
-import { RegistroPacienteComponent } from "../../ventanasdinamicas/registros/registro-paciente/registro-paciente.component";
-import { RegistroGerenteComponent } from "../../ventanasdinamicas/registros/registro-gerente/registro-gerente.component";
-import { RegistroProfesionalComponent } from "../../ventanasdinamicas/registros/registro-profesional/registro-profesional.component";
 import { AyudaComponent } from "../../ventanasdinamicas/ayuda/ayuda.component";
 import { RegistroComponent } from "../../ventanasdinamicas/registro/registro.component";
 
@@ -17,7 +14,7 @@ import { RegistroComponent } from "../../ventanasdinamicas/registro/registro.com
     standalone: true,
     templateUrl: './ventanacentral.component.html',
     styleUrl: './ventanacentral.component.css',
-    imports: [ErrorComponent, IngresoComponent, InicioComponent, DatospersonalesComponent, RegistroPacienteComponent, RegistroGerenteComponent, RegistroProfesionalComponent, AyudaComponent, RegistroComponent]
+    imports: [ErrorComponent, IngresoComponent, InicioComponent, DatospersonalesComponent, AyudaComponent, RegistroComponent]
 })
 
 export class VentanacentralComponent implements OnInit  {

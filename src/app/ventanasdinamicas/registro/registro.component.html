@@ -21,8 +21,21 @@
     <label for="foto">Foto:</label>
     <input id="foto" formControlName="foto" type="text">
     
-    <button type="submit">Registrarse</button>
+    <button type="submit" *ngIf="tipoUsuario !== 'Profesional'">Registrarse</button>
 </form>
 
-<p>REGISTRO ESPECIFICO</p>
-<p>???</p>
+<div *ngIf="tipoUsuario === 'Profesional'">
+    <form [formGroup]="formularioProfesional">
+
+      <label for="especialidad">Especialidad:</label>
+      <input id="especialidad" formControlName="especialidad" type="text">
+      
+      <label for="diasAtencion">Días de Atención:</label>
+      <input id="diasAtencion" formControlName="diasAtencion" type="text">
+
+      <label for="fotoEsp">Foto de Especialidad:</label>
+      <input id="fotoEsp" formControlName="fotoEsp" type="text">
+      
+      <button type="submit">Registrarse</button>
+    </form>
+</div>

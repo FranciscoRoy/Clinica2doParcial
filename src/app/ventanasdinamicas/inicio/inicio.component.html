@@ -5,7 +5,12 @@
     <option value="Profesional">Profesional</option>
     <option value="Gerente">Gerente</option>
 </select>
-<button (click)="irIngreso()">Ingresar</button>
-<button (click)="irRegistro()">Registrarse</button>
 <button (click)="irAyuda()">Ayuda</button>
+
+<div *ngIf="selectedTipoUsuario">
+    <button (click)="irIngreso()">Ingresar</button>
+    <button (click)="irRegistro()">Registrarse</button>
+</div>
+
+
 

@@ -10,25 +10,24 @@ import { Observable } from 'rxjs';
 export class ApiService {
   private apiUrl = 'https://roy_dm-apiclinica.mdbgo.io/';
 
-  constructor(private http: HttpClient) { }
-/*
-  insertarPaciente(nuevoPaciente: Paciente) {
-    return this.http.post(this.apiUrl + 'registroPaciente', nuevoPaciente);
-  }
-*/
-insertarPaciente(nuevoPaciente: Paciente): Observable<any> {
+  constructor(private http: HttpClient) {}
+
+insertarPaciente(nuevoPaciente: Paciente): Observable<any>{
   const headers = new HttpHeaders({'Content-Type': 'application/json'});
   return this.http.post(this.apiUrl + 'registroPaciente', nuevoPaciente, {headers});
 }
 
-insertarProfesional(nuevoProfesional: Profesional){
-  return this.http.post(this.apiUrl + 'registroProfesional', nuevoProfesional);
+insertarProfesional(nuevoProfesional: Profesional): Observable<any>{
+  const headers = new HttpHeaders({'Content-Type': 'application/json'});
+  return this.http.post(this.apiUrl + 'registroProfesional', nuevoProfesional, {headers});
 }
 
-insertarGerente(nuevoGerente: Gerente){
-  return this.http.post(this.apiUrl + 'registroGerente', nuevoGerente);
+insertarGerente(nuevoGerente: Gerente): Observable<any>{
+  const headers = new HttpHeaders({'Content-Type': 'application/json'});
+  return this.http.post(this.apiUrl + 'registroGerente', nuevoGerente, {headers});
 }
 
+//headers parecen no solucionar el problema de CORS
 
 }
 
