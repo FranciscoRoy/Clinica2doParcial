@@ -31,7 +31,7 @@ export class RegistroGerenteComponent {
   }
 
   onSubmit() {
-    if (this.registroFormGerente.valid) {
+/*    if (this.registroFormGerente.valid) {
       const nuevoGerente = new Gerente(
         this.registroFormGerente.value.nombre,
         this.registroFormGerente.value.apellido,
@@ -42,6 +42,7 @@ export class RegistroGerenteComponent {
     } else {
       console.log('El formulario no es válido');
     }
+*/
   }
 
   registrarGerente(nuevoGerente: Gerente){

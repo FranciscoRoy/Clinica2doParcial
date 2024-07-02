@@ -1,9 +1,10 @@
 export interface Usuario {
     nombre: string;
     apellido: string;
+    dni: number;
     email: string;
-    pass: string;
-    secreto: string;
+    password: string;
+    foto: string;
     acceso: number;
 
     getAcceso(): number;
@@ -13,52 +14,56 @@ export interface Usuario {
   export class UsuariosinIngresar implements Usuario {
     nombre = '';
     apellido = '';
+    dni = 0;
     email = '';
-    pass = '';
-    secreto = '';
+    password = '';
+    foto = '';
     acceso = 0;
 
     getAcceso(): number {return this.acceso;}
-    getTipoUsuario(): string {return 'usuario sin identificar'}
+    getTipoUsuario(): string {return 'Invitado'}
 
   }
 
   export class Paciente implements Usuario {
     nombre: string;
     apellido: string;
+    dni: number;
     email: string;
-    pass: string;
-    secreto: string;
+    password: string;
+    foto: string;
     acceso = 1;
 
     getAcceso(): number {return this.acceso;}
     getTipoUsuario(): string {return 'Paciente'}
   
-    constructor(nombre: string, apellido: string, email: string, pass: string, secreto: string) {
+    constructor(nombre: string, apellido: string, dni: number, email: string, password: string, foto: string) {
       this.nombre = nombre;
       this.apellido = apellido;
+      this.dni = dni;
       this.email = email;
-      this.pass = pass;
-      this.secreto = secreto;
+      this.password = password;
+      this.foto = foto;
     }
   }
-  
+
   export interface Profesional extends Usuario {
     especialidad: string;
     diasAtencion: string[];
-    segundaPalabraSecreta: string;
+    fotoEsp: string;
   }
   
   export class Profesional implements Profesional { 
     nombre: string;
     apellido: string;
+    dni: number;
     email: string;
-    pass: string;
-    secreto: string;
+    password: string;
+    foto: string;
     acceso = 2;
     especialidad: string;
     diasAtencion: string[];
-    segundaPalabraSecreta: string;
+    fotoEsp: string;
 
     getAcceso(): number {return this.acceso;}
     getTipoUsuario(): string {return 'Profesional'}
@@ -66,41 +71,45 @@ export interface Usuario {
     constructor(
       nombre: string,
       apellido: string,
+      dni: number,
       email: string,
-      pass: string,
-      secreto: string,
+      password: string,
+      foto: string,
       especialidad: string,
       diasAtencion: string[],
-      segundaPalabraSecreta: string
+      fotoEsp: string
     ) {
       this.nombre = nombre;
       this.apellido = apellido;
+      this.dni = dni;
       this.email = email;
-      this.pass = pass;
-      this.secreto = secreto;
+      this.password = password;
+      this.foto = foto;
       this.especialidad = especialidad;
       this.diasAtencion = diasAtencion;
-      this.segundaPalabraSecreta = segundaPalabraSecreta;
+      this.fotoEsp = fotoEsp;
     }
   }
   
   export class Gerente implements Usuario {
     nombre: string;
     apellido: string;
+    dni: number;
     email: string;
-    pass: string;
-    secreto: string;
+    password: string;
+    foto: string;
     acceso = 3;
 
     getAcceso(): number {return this.acceso;}
     getTipoUsuario(): string {return 'Gerente'}
   
-    constructor(nombre: string, apellido: string, email: string, pass: string, secreto: string) {
+    constructor(nombre: string, apellido: string, dni: number, email: string, password: string, foto: string) {
       this.nombre = nombre;
       this.apellido = apellido;
+      this.dni = dni;
       this.email = email;
-      this.pass = pass;
-      this.secreto = secreto;
+      this.password = password;
+      this.foto = foto;
     }
   }
 

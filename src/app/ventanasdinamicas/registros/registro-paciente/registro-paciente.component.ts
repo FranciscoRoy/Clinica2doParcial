@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
-import { Paciente } from '../../../clases/usuario';
+import { Paciente, Profesional } from '../../../clases/usuario';
 import { ApiService } from '../../../servicios/api.service';
 import { VentanaActivaService } from '../../../servicios/ventanaactiva.service';
 
@@ -24,9 +24,10 @@ export class RegistroPacienteComponent {
     this.registroFormPaciente = this.fb.group({
       nombre: ['', Validators.required],
       apellido: ['', Validators.required],
+      dni: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      pass: ['', Validators.required],
-      secreto: ['', Validators.required]
+      password: ['', Validators.required],
+      foto: ['', Validators.required]
     });
 
   }
@@ -36,9 +37,10 @@ export class RegistroPacienteComponent {
       const nuevoPaciente = new Paciente(
         this.registroFormPaciente.value.nombre,
         this.registroFormPaciente.value.apellido,
+        this.registroFormPaciente.value.dni,
         this.registroFormPaciente.value.email,
-        this.registroFormPaciente.value.pass,
-        this.registroFormPaciente.value.secreto);
+        this.registroFormPaciente.value.password,
+        this.registroFormPaciente.value.foto);
       this.registrarPaciente(nuevoPaciente);
     } else {
       console.log('El formulario no es válido');
@@ -46,7 +48,12 @@ export class RegistroPacienteComponent {
   }
 
   registrarPaciente(nuevoPaciente: Paciente){
-    this.apiService.insertarPaciente(nuevoPaciente).subscribe(t=>{});
+    this.apiService.insertarPaciente(nuevoPaciente).subscribe();
+    this.ventanaActivaService.cambiarVentana('ingreso');
+  }
+
+  registrarProfesional(nuevoProfesional: Profesional){
+    this.apiService.insertarProfesional(nuevoProfesional).subscribe();
     this.ventanaActivaService.cambiarVentana('ingreso');
   }
 

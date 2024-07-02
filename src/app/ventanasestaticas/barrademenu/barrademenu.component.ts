@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { VentanaActivaService } from '../../servicios/ventanaactiva.service';
 import { UsuarioActivoService } from '../../servicios/usuario-activo.service';
-import { Paciente, Profesional, Gerente, UsuariosinIngresar, Usuario } from '../../clases/usuario';
+import { UsuariosinIngresar, Usuario } from '../../clases/usuario';
 import { NgSwitch, NgSwitchCase, NgSwitchDefault } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-barrademenu',
   standalone: true,
-  imports: [NgSwitch, NgSwitchCase, NgSwitchDefault, FormsModule ],
+  imports: [NgSwitch, NgSwitchCase, NgSwitchDefault, FormsModule],
   templateUrl: './barrademenu.component.html',
   styleUrls: ['./barrademenu.component.css']
 })
@@ -56,6 +56,7 @@ export class BarraDeMenuComponent implements OnInit {
   salir() {
     this.usuarioActivoService.setUsuarioActivo(new UsuariosinIngresar);}
 
+  /*
   setPaciente() {
     const paciente = new Paciente('John', 'Doe', 'john.doe@example.com', 'password', 'secret');
     this.usuarioActivoService.setUsuarioActivo(paciente);
@@ -70,5 +71,5 @@ export class BarraDeMenuComponent implements OnInit {
     const gerente = new Gerente('Mark', 'Smith', 'mark.smith@example.com', 'password', 'secret');
     this.usuarioActivoService.setUsuarioActivo(gerente);
   }
-  
+  */
 }

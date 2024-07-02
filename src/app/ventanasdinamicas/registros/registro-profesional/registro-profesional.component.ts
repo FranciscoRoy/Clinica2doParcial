@@ -34,7 +34,9 @@ export class RegistroProfesionalComponent {
   }
 
   onSubmit() {
+  /*
     if (this.registroFormProfesional.valid) {
+  
       const nuevoProfesional = new Profesional(
         this.registroFormProfesional.value.nombre,
         this.registroFormProfesional.value.apellido,
@@ -48,11 +50,13 @@ export class RegistroProfesionalComponent {
     } else {
       console.log('El formulario no es válido');
     }
+  */
   }
-
+  /*
   registrarProfesional(nuevoProfesional: Profesional){
     this.apiService.insertarProfesional(nuevoProfesional).subscribe(t=>{});
     this.ventanaActivaService.cambiarVentana('ingreso');
   }
+  */
 
 }
