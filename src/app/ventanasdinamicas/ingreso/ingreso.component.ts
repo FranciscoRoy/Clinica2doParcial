@@ -41,15 +41,17 @@ ingreso(){
       console.error('Tipo de usuario no válido');
       break;
   };
-  this.usuarioActivoService.setUsuarioActivo(this.usuarioBuscado);
-  this.ventanaActivaService.cambiarVentana('inicio');
+  setTimeout(() => {
+    this.usuarioActivoService.setUsuarioActivo(this.usuarioBuscado);
+    this.ventanaActivaService.cambiarVentana('inicio');
+  }, 2500);
 }
 
 ingresarComoPaciente(){
-  this.usuarioBuscado = new Paciente('','',0,'','','');
   this.apiService.buscarPaciente(this.email,this.password).subscribe(
     (data: Paciente) => {
-      this.usuarioBuscado = data;
+      this.usuarioBuscado = new Paciente (data.nombre, data.apellido, data.dni, data.email, '*******', data.foto);
+      //console.log(this.usuarioBuscado);
     },
     (error) => {
       console.error('Error:', error);
@@ -58,10 +60,9 @@ ingresarComoPaciente(){
 }
 
 ingresarComoProfesional(){
-  this.usuarioBuscado = new Profesional('','',0,'','','','',[],'');
   this.apiService.buscarProfesional(this.email,this.password).subscribe(
     (data: Profesional) => {
-      this.usuarioBuscado = data;
+      this.usuarioBuscado = new Profesional (data.nombre, data.apellido, data.dni, data.email, '*******', data.foto, '', [], '');
     },
     (error) => {
       console.error('Error:', error);
@@ -70,10 +71,9 @@ ingresarComoProfesional(){
 }
 
 ingresarComoGerente(){
-  this.usuarioBuscado = new Gerente('','',0,'','','');
   this.apiService.buscarGerente(this.email,this.password).subscribe(
     (data: Gerente) => {
-      this.usuarioBuscado = data;
+      this.usuarioBuscado = new Gerente(data.nombre, data.apellido, data.dni, data.email, '*******', data.foto);
     },
     (error) => {
       console.error('Error:', error);

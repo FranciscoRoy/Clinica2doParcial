@@ -2,6 +2,7 @@ import { NgIf, NgSwitch, NgSwitchCase, NgSwitchDefault } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { VentanaActivaService } from '../../servicios/ventanaactiva.service';
+import { UsuarioActivoService } from '../../servicios/usuario-activo.service';
 
 @Component({
   selector: 'app-inicio',
@@ -13,23 +14,29 @@ import { VentanaActivaService } from '../../servicios/ventanaactiva.service';
 export class InicioComponent implements OnInit  {
   selectedTipoUsuario: string = '';
   tipoUsuarioActivo = 'Invitado';
-  alias: string = 'ALIAS';
+  alias: string = 'Invitado';
 
   constructor(
     private ventanaActivaService: VentanaActivaService,
+    private usuarioActivoService: UsuarioActivoService,
   ){}
 
 ngOnInit(): void {
   this.ventanaActivaService.getTipoUsuarioSolicitado().subscribe(usuarioTipo => {this.tipoUsuarioActivo = usuarioTipo;});
-  
+  this.alias = this.usuarioActivoService.getUsuarioActivo().nombre;
 }
 
 irIngreso(){
   this.ventanaActivaService.cambiarVentana('ingreso',this.selectedTipoUsuario);}
 
 irRegistro(){
-  this.ventanaActivaService.cambiarVentana('registro',this.selectedTipoUsuario);
-}
+  this.ventanaActivaService.cambiarVentana('registro',this.selectedTipoUsuario);}
+
+irDatosPersonales(){
+  this.ventanaActivaService.cambiarVentana('datosPersonales');}
+
+irTurnos(){
+  this.ventanaActivaService.cambiarVentana('turnos');}
 
 irAyuda(){
   this.ventanaActivaService.cambiarVentana('ayuda');}

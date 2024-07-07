@@ -18,7 +18,8 @@ cambiarVentana(ventana: string,tipoUsuarioEntrada?: string){
   if (tipoUsuarioEntrada) {
     this.tipoUsuarioSolicitadoSubject.next(tipoUsuarioEntrada);
   } else if (!tipoUsuarioEntrada) {
-    this.tipoUsuarioSolicitadoSubject.next(this.usuarioActivoService.getUsuarioActivo().getTipoUsuario());
+    var tipo = this.usuarioActivoService.getUsuarioActivo().getTipoUsuario();
+    this.tipoUsuarioSolicitadoSubject.next(tipo);
   }
   this.ventanaActivaSubject.next(ventana);
 }

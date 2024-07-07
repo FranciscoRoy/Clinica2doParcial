@@ -54,22 +54,7 @@ export class BarraDeMenuComponent implements OnInit {
     this.ventanaActivaService.cambiarVentana('datospersonales');}
 
   salir() {
-    this.usuarioActivoService.setUsuarioActivo(new UsuariosinIngresar);}
-
-  /*
-  setPaciente() {
-    const paciente = new Paciente('John', 'Doe', 'john.doe@example.com', 'password', 'secret');
-    this.usuarioActivoService.setUsuarioActivo(paciente);
-  }
-
-  setProfesional() {
-    const profesional = new Profesional('Jane', 'Doe', 'jane.doe@example.com', 'password', 'secret', 'Cardiología', ['Lunes', 'Miércoles'], 'anotherSecret');
-    this.usuarioActivoService.setUsuarioActivo(profesional);
-  }
-
-  setGerente() {
-    const gerente = new Gerente('Mark', 'Smith', 'mark.smith@example.com', 'password', 'secret');
-    this.usuarioActivoService.setUsuarioActivo(gerente);
-  }
-  */
+    this.usuarioActivoService.cerrarSesion();
+    this.ventanaActivaService.cambiarVentana('inicio');}
+    
 }

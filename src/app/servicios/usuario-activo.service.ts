@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { Usuario, UsuariosinIngresar } from '../clases/usuario';
+import { Gerente, Paciente, Profesional, Usuario, UsuariosinIngresar } from '../clases/usuario';
+import { VentanaActivaService } from './ventanaactiva.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,24 +13,38 @@ export class UsuarioActivoService {
 
   constructor() { }
 
-  setUsuarioActivo(nuevoUsuario: Usuario) {
-    this.usuarioActual.next(nuevoUsuario);
-    console.log(nuevoUsuario);
+  setUsuarioActivo(datosUsuario: Usuario) {
+    var ingresarUsuario: Usuario;
+    switch (true) {
+      case datosUsuario instanceof Paciente:
+        ingresarUsuario = new Paciente(datosUsuario.nombre, datosUsuario.apellido, datosUsuario.dni, datosUsuario.email, '*******', datosUsuario.foto);
+        break;
+      case datosUsuario instanceof Profesional:
+        ingresarUsuario = new Profesional(datosUsuario.nombre, datosUsuario.apellido, datosUsuario.dni, datosUsuario.email, '*******', datosUsuario.foto, '', [], '');
+        break;
+      case datosUsuario instanceof Gerente:
+        ingresarUsuario = new Gerente(datosUsuario.nombre, datosUsuario.apellido, datosUsuario.dni, datosUsuario.email, '*******', datosUsuario.foto);
+        break;
+      default:
+        ingresarUsuario = this.usuarioDefault;
+        break;
+    }
+    this.usuarioActual.next(ingresarUsuario);
+    //console.log(this.getUsuarioActivo());
   }
 
   getUsuarioActivo(): Usuario {
     return this.usuarioActual.value;
   }
 
+/*
   estaUsuarioActivo(): boolean {
     return this.usuarioActual.value !== null;
   }
+*/
 
   cerrarSesion(){
-    this.usuarioActual = new BehaviorSubject<Usuario>(this.usuarioDefault);
+    this.setUsuarioActivo(this.usuarioDefault);
   }
 
-  getAlias(){
-    console.log(this.usuarioActual.value.nombre);
-    return this.usuarioActual.value.nombre;}
 }

@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Gerente, Paciente, Profesional, Usuario } from '../clases/usuario'; 
+import { Gerente, Paciente, Profesional } from '../clases/usuario';
+import { Turno } from '../clases/turno';
 import { Observable } from 'rxjs';
-import { UsuarioActivoService } from './usuario-activo.service';
 
 @Injectable({
   providedIn: 'root'
@@ -29,18 +29,23 @@ insertarGerente(nuevoGerente: Gerente): Observable<any>{
 }
 
 buscarPaciente(emailIngresado: string, passwordIngresado: string): Observable<any>{
-  var recuperarPaciente = this.http.post(this.apiUrl + 'buscarPaciente', {email: emailIngresado, password: passwordIngresado});
+  var recuperarPaciente = this.http.post<Paciente>(this.apiUrl + 'buscarPaciente', {email: emailIngresado, password: passwordIngresado});
   return recuperarPaciente;
 }
 
 buscarProfesional(emailIngresado: string, passwordIngresado: string): Observable<any>{
-  var recuperarProfesional = this.http.post(this.apiUrl + 'buscarProfesional', {email: emailIngresado, password: passwordIngresado});
+  var recuperarProfesional = this.http.post<Profesional>(this.apiUrl + 'buscarProfesional', {email: emailIngresado, password: passwordIngresado});
   return recuperarProfesional;
 }
 
 buscarGerente(emailIngresado: string, passwordIngresado: string): Observable<any>{
-  var recuperarGerente = this.http.post(this.apiUrl + 'buscarGerente', {email: emailIngresado, password: passwordIngresado});
+  var recuperarGerente = this.http.post<Gerente>(this.apiUrl + 'buscarGerente', {email: emailIngresado, password: passwordIngresado});
   return recuperarGerente;
+}
+
+verTurnosActivos(emailIngresado: string): Observable<any>{
+  var recuperarTurnosActivos = this.http.post<Turno>(this.apiUrl + 'buscarTurnosActivos', {email: emailIngresado});
+  return recuperarTurnosActivos;
 }
 
 }

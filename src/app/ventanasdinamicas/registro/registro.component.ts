@@ -80,17 +80,17 @@ export class RegistroComponent {
 
   registrarPaciente(nuevoPaciente: Paciente){
     this.apiService.insertarPaciente(nuevoPaciente).subscribe();
-    this.ventanaActivaService.cambiarVentana('ingreso');
+    this.ventanaActivaService.cambiarVentana('espera');
   }
 
   registrarProfesional(nuevoProfesional: Profesional){
     this.apiService.insertarProfesional(nuevoProfesional).subscribe();
-    this.ventanaActivaService.cambiarVentana('ingreso');
+    this.ventanaActivaService.cambiarVentana('espera');
   }
 
   registrarGerente(nuevoGerente: Gerente){
     this.apiService.insertarGerente(nuevoGerente).subscribe();
-    this.ventanaActivaService.cambiarVentana('ingreso');
+    this.ventanaActivaService.cambiarVentana('espera');
   }
 
 }

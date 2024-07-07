@@ -1,8 +1,7 @@
-<p>Aca esta el texto</p>
-<p>BIENVENIDO {{ alias }} A LA CLINICA MEDICA</p>
-<p>Aca esta el texto</p>
+<p>BIENVENIDO A LA CLINICA MEDICA</p>
 
 <div *ngIf="tipoUsuarioActivo === 'Invitado'">
+    <p>DEBE INICIAR SESIÓN PARA CONTINUAR</p>
     <select [(ngModel)]="selectedTipoUsuario">
         <option value="" disabled selected>Seleccione tipo de usuario</option>
         <option value="Paciente">Paciente</option>
@@ -18,15 +17,22 @@
 </div>
 
 <div *ngIf="tipoUsuarioActivo === 'Paciente'">
-    <p>Bienvenido paciente</p>
+    <p>Bienvenido {{ alias }} (paciente)</p>
+    <button (click)="irDatosPersonales()">Ver mis Datos</button>
+    <button (click)="irTurnos()">Ver mis Turnos</button>
+    <!--BOTON DATOS PERSONALES, TURNOS, SALIR, AYUDA-->
 </div>
 
 <div *ngIf="tipoUsuarioActivo === 'Profesional'">
-    <p>Bienvenido profesional</p>
+    <p>Bienvenido {{ alias }} (profesional)</p>
+    <button (click)="irDatosPersonales()">Ver mis Datos</button>
+    <!--BOTON DATOS PERSONALES, GESTIONAR PACIENTES, GESTIONAR TURNOS, SALIR, AYUDA-->
 </div>
 
 <div *ngIf="tipoUsuarioActivo === 'Gerente'">
-    <p>Bienvenido gerente</p>
+    <p>Bienvenido {{ alias }} (gerente)</p>
+    <button (click)="irDatosPersonales()">Ver mis Datos</button>
+    <!--BOTON DATOS PERSONALES, GESTIONAR USUARIOS, GESTIONAR TURNOS, GESTIONAR REGISTROS, SALIR, AYUDA-->
 </div>
 
 
