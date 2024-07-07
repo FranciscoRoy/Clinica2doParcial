@@ -48,5 +48,10 @@ verTurnosActivos(emailIngresado: string): Observable<any>{
   return recuperarTurnosActivos;
 }
 
+verTurnosDisponibles(): Observable<any>{
+  var recuperarTurnosDisponibles = this.http.post<Turno[]>(this.apiUrl + 'buscarTurnosDisponibles','');
+  return recuperarTurnosDisponibles;
+}
+
 }
 
