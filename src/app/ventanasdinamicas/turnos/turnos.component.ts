@@ -4,6 +4,7 @@ import { UsuarioActivoService } from '../../servicios/usuario-activo.service';
 import { ApiService } from '../../servicios/api.service';
 import { Turno } from '../../clases/turno';
 import { NgFor } from '@angular/common';
+import { VentanaActivaService } from '../../servicios/ventanaactiva.service';
 
 @Component({
   selector: 'app-turnos',
@@ -19,10 +20,12 @@ export class TurnosComponent implements OnInit {
   constructor(
     private usuarioActivoService: UsuarioActivoService,
     private apiService: ApiService,
+    private ventanaActivaService: VentanaActivaService,
   ) {}
 
   ngOnInit(): void {
     this.usuario = this.usuarioActivoService.getUsuarioActivo();
+    this.buscarTurnosActivos();
   }
 
   buscarTurnosActivos(){
@@ -32,7 +35,6 @@ export class TurnosComponent implements OnInit {
         data.forEach(turno => {
           this.turnosUsuario.push(new Turno(turno.paciente, turno.especialidad, turno.dia, turno.horario, turno.profesional));
         });
-        console.log(this.turnosUsuario);
       },
       (error) => {
         console.error('Error:', error);
@@ -40,5 +42,12 @@ export class TurnosComponent implements OnInit {
     );
   }
 
+  solicitarTurno(){
+    this.ventanaActivaService.cambiarVentana('gestionTurnos');
+  }
+
+  eliminarTurno(){
+
+  }
 
 }

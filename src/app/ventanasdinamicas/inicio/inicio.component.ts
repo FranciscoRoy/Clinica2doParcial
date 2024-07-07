@@ -41,4 +41,8 @@ irTurnos(){
 irAyuda(){
   this.ventanaActivaService.cambiarVentana('ayuda');}
 
+salir() {
+  this.usuarioActivoService.cerrarSesion();
+  this.ventanaActivaService.cambiarVentana('inicio');}
+
 }

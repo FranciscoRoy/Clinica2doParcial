@@ -9,13 +9,14 @@ import { AyudaComponent } from "../../ventanasdinamicas/ayuda/ayuda.component";
 import { RegistroComponent } from "../../ventanasdinamicas/registro/registro.component";
 import { EsperaComponent } from "../../ventanasdinamicas/espera/espera.component";
 import { TurnosComponent } from "../../ventanasdinamicas/turnos/turnos.component";
+import { GestionturnosComponent } from "../../ventanasdinamicas/gestionturnos/gestionturnos.component";
 
 @Component({
     selector: 'app-ventanacentral',
     standalone: true,
     templateUrl: './ventanacentral.component.html',
     styleUrl: './ventanacentral.component.css',
-    imports: [ErrorComponent, IngresoComponent, InicioComponent, DatospersonalesComponent, AyudaComponent, RegistroComponent, EsperaComponent, TurnosComponent]
+    imports: [ErrorComponent, IngresoComponent, InicioComponent, DatospersonalesComponent, AyudaComponent, RegistroComponent, EsperaComponent, TurnosComponent, GestionturnosComponent]
 })
 
 export class VentanacentralComponent implements OnInit  {

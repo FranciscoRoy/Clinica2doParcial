@@ -20,7 +20,8 @@
     <p>Bienvenido {{ alias }} (paciente)</p>
     <button (click)="irDatosPersonales()">Ver mis Datos</button>
     <button (click)="irTurnos()">Ver mis Turnos</button>
-    <!--BOTON DATOS PERSONALES, TURNOS, SALIR, AYUDA-->
+    <button (click)="irAyuda()">Ayuda</button>
+    <button (click)="salir()">Cerrar Sesion</button>
 </div>
 
 <div *ngIf="tipoUsuarioActivo === 'Profesional'">
