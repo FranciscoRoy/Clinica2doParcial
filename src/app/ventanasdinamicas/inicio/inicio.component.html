@@ -1,16 +1,35 @@
-<p>BIENVENIDO A LA CLINICA MEDICA</p>
-<select [(ngModel)]="selectedTipoUsuario">
-    <option value="" disabled selected>Seleccione tipo de usuario</option>
-    <option value="Paciente">Paciente</option>
-    <option value="Profesional">Profesional</option>
-    <option value="Gerente">Gerente</option>
-</select>
-<button (click)="irAyuda()">Ayuda</button>
+<p>Aca esta el texto</p>
+<p>BIENVENIDO {{ alias }} A LA CLINICA MEDICA</p>
+<p>Aca esta el texto</p>
 
-<div *ngIf="selectedTipoUsuario">
-    <button (click)="irIngreso()">Ingresar</button>
-    <button (click)="irRegistro()">Registrarse</button>
+<div *ngIf="tipoUsuarioActivo === 'Invitado'">
+    <select [(ngModel)]="selectedTipoUsuario">
+        <option value="" disabled selected>Seleccione tipo de usuario</option>
+        <option value="Paciente">Paciente</option>
+        <option value="Profesional">Profesional</option>
+        <option value="Gerente">Gerente</option>
+    </select>
+    <button (click)="irAyuda()">Ayuda</button>
+    
+    <div *ngIf="selectedTipoUsuario">
+        <button (click)="irIngreso()">Ingresar</button>
+        <button (click)="irRegistro()">Registrarse</button>
+    </div>
 </div>
+
+<div *ngIf="tipoUsuarioActivo === 'Paciente'">
+    <p>Bienvenido paciente</p>
+</div>
+
+<div *ngIf="tipoUsuarioActivo === 'Profesional'">
+    <p>Bienvenido profesional</p>
+</div>
+
+<div *ngIf="tipoUsuarioActivo === 'Gerente'">
+    <p>Bienvenido gerente</p>
+</div>
+
+
 
 
 

@@ -9,6 +9,7 @@ export interface Usuario {
 
     getAcceso(): number;
     getTipoUsuario(): string;
+    getActivacion(): number;
   }
   
   export class UsuariosinIngresar implements Usuario {
@@ -22,7 +23,7 @@ export interface Usuario {
 
     getAcceso(): number {return this.acceso;}
     getTipoUsuario(): string {return 'Invitado'}
-
+    getActivacion(){return 0};
   }
 
   export class Paciente implements Usuario {
@@ -36,7 +37,8 @@ export interface Usuario {
 
     getAcceso(): number {return this.acceso;}
     getTipoUsuario(): string {return 'Paciente'}
-  
+    getActivacion(){return 1};
+
     constructor(nombre: string, apellido: string, dni: number, email: string, password: string, foto: string) {
       this.nombre = nombre;
       this.apellido = apellido;
@@ -48,6 +50,7 @@ export interface Usuario {
   }
 
   export interface Profesional extends Usuario {
+    activo: number;
     especialidad: string;
     diasAtencion: string[];
     fotoEsp: string;
@@ -61,12 +64,14 @@ export interface Usuario {
     password: string;
     foto: string;
     acceso = 2;
+    activo = 0;
     especialidad: string;
     diasAtencion: string[];
     fotoEsp: string;
 
     getAcceso(): number {return this.acceso;}
     getTipoUsuario(): string {return 'Profesional'}
+    getActivacion(): number {return this.activo;}
   
     constructor(
       nombre: string,
@@ -102,7 +107,8 @@ export interface Usuario {
 
     getAcceso(): number {return this.acceso;}
     getTipoUsuario(): string {return 'Gerente'}
-  
+    getActivacion(){return 1};
+
     constructor(nombre: string, apellido: string, dni: number, email: string, password: string, foto: string) {
       this.nombre = nombre;
       this.apellido = apellido;

@@ -4,9 +4,9 @@
 
 @switch(this.ventanaActivaActual){
     @case ('inicio') {<app-inicio></app-inicio>}
-    @case ('ingreso') {<app-ingreso [tipoUsuario]=usuarioSolicitante></app-ingreso>}
+    @case ('ingreso') {<app-ingreso [tipoUsuario]=tipoUsuarioSolicitante></app-ingreso>}
 
-    @case ('registro') {<app-registro [tipoUsuario]=usuarioSolicitante></app-registro>}
+    @case ('registro') {<app-registro [tipoUsuario]=tipoUsuarioSolicitante></app-registro>}
 
     @case ('datospersonales') {<app-datospersonales></app-datospersonales>}
     @case ('ayuda') {<app-ayuda></app-ayuda>}

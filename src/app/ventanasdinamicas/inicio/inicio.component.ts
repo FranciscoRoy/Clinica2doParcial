@@ -1,5 +1,5 @@
 import { NgIf, NgSwitch, NgSwitchCase, NgSwitchDefault } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { VentanaActivaService } from '../../servicios/ventanaactiva.service';
 
@@ -10,10 +10,19 @@ import { VentanaActivaService } from '../../servicios/ventanaactiva.service';
   templateUrl: './inicio.component.html',
   styleUrl: './inicio.component.css'
 })
-export class InicioComponent {
+export class InicioComponent implements OnInit  {
   selectedTipoUsuario: string = '';
+  tipoUsuarioActivo = 'Invitado';
+  alias: string = 'ALIAS';
 
-  constructor(private ventanaActivaService: VentanaActivaService,){}
+  constructor(
+    private ventanaActivaService: VentanaActivaService,
+  ){}
+
+ngOnInit(): void {
+  this.ventanaActivaService.getTipoUsuarioSolicitado().subscribe(usuarioTipo => {this.tipoUsuarioActivo = usuarioTipo;});
+  
+}
 
 irIngreso(){
   this.ventanaActivaService.cambiarVentana('ingreso',this.selectedTipoUsuario);}
