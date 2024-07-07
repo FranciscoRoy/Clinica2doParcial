@@ -1,1 +1,10 @@
-<p>turnos works!</p>
+<p>TURNOS ACTIVOS</p>
+<button (click)="buscarTurnosActivos()">Ver mis Turnos</button>
+
+<div *ngFor="let turno of turnosUsuario" class="turno">
+    <span><strong>Especialidad:</strong> {{ turno.especialidad }}</span> |
+    <span><strong>Día:</strong> {{ turno.dia }}</span> |
+    <span><strong>Horario:</strong> {{ turno.horario }}</span> |
+    <span><strong>Profesional:</strong> {{ turno.profesional }}</span>
+</div>
+

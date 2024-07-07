@@ -44,7 +44,7 @@ buscarGerente(emailIngresado: string, passwordIngresado: string): Observable<any
 }
 
 verTurnosActivos(emailIngresado: string): Observable<any>{
-  var recuperarTurnosActivos = this.http.post<Turno>(this.apiUrl + 'buscarTurnosActivos', {email: emailIngresado});
+  var recuperarTurnosActivos = this.http.post<Turno[]>(this.apiUrl + 'buscarTurnosActivos', {email: emailIngresado});
   return recuperarTurnosActivos;
 }
 
