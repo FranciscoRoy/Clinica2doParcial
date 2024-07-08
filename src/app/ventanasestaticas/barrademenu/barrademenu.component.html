@@ -1,39 +1,31 @@
-<p>Barra de Menu COMIENZO</p>
-
 <div [ngSwitch]="usuarioActivo.acceso" class="menu">
 
     <button (click)="inicio()">Inicio</button>
 
     <div *ngSwitchCase="0">
-        <button (click)="ingresar()">Ingresar</button>
-        <button (click)="registrarse(selectedTipoUsuario)">Registrarse</button>
-        <button>Contactarnos</button>
-        
-        <select [(ngModel)]="selectedTipoUsuario">
-            <option value="" disabled selected>Seleccione tipo de usuario</option>
-            <option value="Paciente">Paciente</option>
-            <option value="Profesional">Profesional</option>
-            <option value="Gerente">Gerente</option>
-        </select>
-        
+        <button (click)="espera()">Contacto</button>
     </div>
 
     <div *ngSwitchCase="1">
-        <button>Mis Turnos</button>
-        <button (click)="misDatos()">Mis Datos</button>
-        <button (click)="salir()">Salir</button>
+        <button (click)="misDatos()">MisDatos</button>
+        <button (click)="misTurnos()">Turnos</button>
     </div>
 
     <div *ngSwitchCase="2">
-        <button (click)="misDatos()">Mis Datos</button>
-        <button (click)="salir()">Salir</button>
+        <button (click)="misDatos()">MisDatos</button>
+        <button (click)="gestionarTurnos()">Turnos</button>
     </div>
 
     <div *ngSwitchCase="3">
         <button (click)="misDatos()">Mis Datos</button>
+        <button (click)="gestionarTurnosG()">Turnos</button>
+        <button (click)="gestionarUsuariosG()">Usuarios</button>
+    </div>
+
+    <button (click)="ayuda()">Ayuda</button>
+
+    <div *ngSwitchCase!="0">
         <button (click)="salir()">Salir</button>
     </div>
 
 </div>
-
-<p>Barra de Menu FIN</p>

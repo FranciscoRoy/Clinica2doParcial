@@ -45,7 +45,7 @@ export class BarraDeMenuComponent implements OnInit {
             this.ventanaActivaService.cambiarVentana('registroGerente');
             break;
         default:
-            this.ventanaActivaService.cambiarVentana('registroPaciente');
+            this.ventanaActivaService.cambiarVentana('inicio');
             break;
     }
   }
@@ -53,6 +53,24 @@ export class BarraDeMenuComponent implements OnInit {
   misDatos() {
     this.ventanaActivaService.cambiarVentana('datospersonales');}
 
+  misTurnos() {
+    this.ventanaActivaService.cambiarVentana('turnos');}
+
+  gestionarTurnos() {
+    this.ventanaActivaService.cambiarVentana('gestionTurnosProfesional');}
+
+  gestionarTurnosG() {
+    this.ventanaActivaService.cambiarVentana('gestionTurnosGerente');}
+    
+  gestionarUsuariosG() {
+    this.ventanaActivaService.cambiarVentana('gestionUsuarios');}
+
+  ayuda() {
+    this.ventanaActivaService.cambiarVentana('ayuda');}
+
+  espera() {
+    this.ventanaActivaService.cambiarVentana('espera');}
+    
   salir() {
     this.usuarioActivoService.cerrarSesion();
     this.ventanaActivaService.cambiarVentana('inicio');}
