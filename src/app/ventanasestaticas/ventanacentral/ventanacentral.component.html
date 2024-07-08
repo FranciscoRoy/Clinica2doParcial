@@ -5,15 +5,17 @@
 @switch(this.ventanaActivaActual){
     @case ('inicio') {<app-inicio></app-inicio>}
     @case ('ingreso') {<app-ingreso [tipoUsuario]=tipoUsuarioSolicitante></app-ingreso>}
-
     @case ('registro') {<app-registro [tipoUsuario]=tipoUsuarioSolicitante></app-registro>}
-
-    @case ('espera'){<app-espera [tiempoEspera]="3" [ventanaDestino]="'inicio'"></app-espera>}
+    @case ('datosPersonales') {<app-datospersonales></app-datospersonales>}
 
     @case ('turnos') {<app-turnos></app-turnos>}
     @case ('gestionTurnos') {<app-gestionturnos></app-gestionturnos>}
-    @case ('datosPersonales') {<app-datospersonales></app-datospersonales>}
+
+    @case ('gestionUsuarios') {<app-gestionusuarios></app-gestionusuarios>}
+
+    @case ('espera'){<app-espera [tiempoEspera]="3" [ventanaDestino]="'inicio'"></app-espera>}
     @case ('ayuda') {<app-ayuda></app-ayuda>}
+
     @default {<app-error></app-error>}
 }
 

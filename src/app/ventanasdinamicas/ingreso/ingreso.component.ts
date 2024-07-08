@@ -62,7 +62,7 @@ ingresarComoPaciente(){
 ingresarComoProfesional(){
   this.apiService.buscarProfesional(this.email,this.password).subscribe(
     (data: Profesional) => {
-      this.usuarioBuscado = new Profesional (data.nombre, data.apellido, data.dni, data.email, '*******', data.foto, '', [], '');
+      this.usuarioBuscado = new Profesional (data.nombre, data.apellido, data.dni, data.email, '*******', data.foto, '', '', '');
     },
     (error) => {
       console.error('Error:', error);

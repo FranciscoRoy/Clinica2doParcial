@@ -11,30 +11,29 @@ import { ApiService } from '../../servicios/api.service';
   styleUrl: './gestionturnos.component.css'
 })
 export class GestionturnosComponent implements OnInit{
-  turnos: Turno[] = [];
+  turnosDisponibles: Turno[] = [];
 
   constructor(
     private apiService: ApiService,
   ){}
 
   ngOnInit(): void {
-    //this.usuario = this.usuarioActivoService.getUsuarioActivo();
-    this.buscarTurnosDisponibles();
+    this.buscarTurnos();
   }
 
-  buscarTurnosDisponibles(){
-    this.apiService.verTurnosDisponibles().subscribe(
-      (data: Turno[]) => {
-        this.turnos = [];
-        data.forEach(turno => {
-          this.turnos.push(new Turno('',turno.especialidad, turno.dia, turno.horario, turno.profesional));
-        });
-      },
-      (error) => {
-        console.error('Error:', error);
-      }
-    );
-  }
+buscarTurnos(): void{
+  this.apiService.verTurnos().subscribe(
+    (data: Turno[]) => {
+      this.turnosDisponibles = [];
+      data.forEach(turno => {
+        this.turnosDisponibles.push(new Turno('', turno.especialidad, turno.dia, turno.horario, turno.profesional));
+      });
+    },
+    (error) => {
+      console.error('Error:', error);
+    }
+  );
+}
 
 
 }

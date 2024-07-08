@@ -52,7 +52,7 @@ export interface Usuario {
   export interface Profesional extends Usuario {
     activo: number;
     especialidad: string;
-    diasAtencion: string[];
+    diasAtencion: string;
     fotoEsp: string;
   }
   
@@ -66,7 +66,7 @@ export interface Usuario {
     acceso = 2;
     activo = 0;
     especialidad: string;
-    diasAtencion: string[];
+    diasAtencion: string;
     fotoEsp: string;
 
     getAcceso(): number {return this.acceso;}
@@ -81,7 +81,7 @@ export interface Usuario {
       password: string,
       foto: string,
       especialidad: string,
-      diasAtencion: string[],
+      diasAtencion: string,
       fotoEsp: string
     ) {
       this.nombre = nombre;

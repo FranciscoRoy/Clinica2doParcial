@@ -38,19 +38,33 @@ buscarProfesional(emailIngresado: string, passwordIngresado: string): Observable
   return recuperarProfesional;
 }
 
+buscarTodosProfesionales(): Observable<Profesional[]>{
+  var recuperarProfesionales = this.http.post<Profesional[]>(this.apiUrl + 'buscarTodosProfesionales', '1');
+  return recuperarProfesionales;
+}
+
+buscarProfesionalesPorEstado(criterio: number): Observable<Profesional[]>{
+  var recuperarProfesionales = this.http.post<Profesional[]>(this.apiUrl + 'buscarProfesionalesPorEstado', {estado: criterio});
+  return recuperarProfesionales;
+}
+
+profesionalesActivarDesactivar(emailProfesional: string, estadoProfesional: number): Observable<any>{
+  return this.http.post(this.apiUrl + 'profesionalActivarDesactivar', {email: emailProfesional, estado: estadoProfesional});
+}
+
 buscarGerente(emailIngresado: string, passwordIngresado: string): Observable<any>{
   var recuperarGerente = this.http.post<Gerente>(this.apiUrl + 'buscarGerente', {email: emailIngresado, password: passwordIngresado});
   return recuperarGerente;
 }
 
+verTurnos(): Observable<any>{
+  var recuperarTurnosDisponibles = this.http.post<Turno[]>(this.apiUrl + 'buscarTurnosDisponibles','');
+  return recuperarTurnosDisponibles;
+}
+
 verTurnosActivos(emailIngresado: string): Observable<any>{
   var recuperarTurnosActivos = this.http.post<Turno[]>(this.apiUrl + 'buscarTurnosActivos', {email: emailIngresado});
   return recuperarTurnosActivos;
-}
-
-verTurnosDisponibles(): Observable<any>{
-  var recuperarTurnosDisponibles = this.http.post<Turno[]>(this.apiUrl + 'buscarTurnosDisponibles','');
-  return recuperarTurnosDisponibles;
 }
 
 }
