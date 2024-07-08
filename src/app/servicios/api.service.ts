@@ -14,18 +14,15 @@ export class ApiService {
   constructor(private http: HttpClient) {}
 
 insertarPaciente(nuevoPaciente: Paciente): Observable<any>{
-const headers = new HttpHeaders({'Content-Type': 'application/json'});
-return this.http.post(this.apiUrl + 'registroPaciente', nuevoPaciente, {headers});
+return this.http.post(this.apiUrl + 'registroPaciente', nuevoPaciente);
 }
 
 insertarProfesional(nuevoProfesional: Profesional): Observable<any>{
-  const headers = new HttpHeaders({'Content-Type': 'application/json'});
-  return this.http.post(this.apiUrl + 'registroProfesional', nuevoProfesional, {headers});
+  return this.http.post(this.apiUrl + 'registroProfesional', nuevoProfesional);
 }
 
 insertarGerente(nuevoGerente: Gerente): Observable<any>{
-  const headers = new HttpHeaders({'Content-Type': 'application/json'});
-  return this.http.post(this.apiUrl + 'registroGerente', nuevoGerente, {headers});
+  return this.http.post(this.apiUrl + 'registroGerente', nuevoGerente);
 }
 
 buscarPaciente(emailIngresado: string, passwordIngresado: string): Observable<any>{
@@ -65,6 +62,10 @@ verTurnos(): Observable<any>{
 verTurnosActivos(emailIngresado: string): Observable<any>{
   var recuperarTurnosActivos = this.http.post<Turno[]>(this.apiUrl + 'buscarTurnosActivos', {email: emailIngresado});
   return recuperarTurnosActivos;
+}
+
+insertarTurno(nuevoTurno: Turno): Observable<any>{
+  return this.http.post(this.apiUrl + 'insertarTurno', nuevoTurno);
 }
 
 }

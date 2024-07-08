@@ -4,5 +4,6 @@
     <span><strong>Especialidad:</strong> {{ turno.especialidad }}</span> |
     <span><strong>Día:</strong> {{ turno.dia }}</span> |
     <span><strong>Horario:</strong> {{ turno.horario }}</span> |
-    <span><strong>Profesional:</strong> {{ turno.profesional }}</span>
+    <span><strong>Profesional:</strong> {{ turno.profesional }}</span> |
+    <button (click)="solicitarTurno(emailPaciente,turno.especialidad,turno.dia,turno.horario,turno.profesional)">Solicitar</button>
 </div>
