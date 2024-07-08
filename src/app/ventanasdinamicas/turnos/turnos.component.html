@@ -1,10 +1,11 @@
 <p>TURNOS ACTIVOS</p>
 <div *ngFor="let turno of turnosUsuario; let i = index" class="turno">
-    <span><strong>Número:</strong> {{ i + 1 }}</span> |
+    <span>{{ i + 1 }}</span> |
     <span><strong>Especialidad:</strong> {{ turno.especialidad }}</span> |
     <span><strong>Día:</strong> {{ turno.dia }}</span> |
     <span><strong>Horario:</strong> {{ turno.horario }}</span> |
-    <span><strong>Profesional:</strong> {{ turno.profesional }}</span>
+    <span><strong>Profesional:</strong> {{ turno.profesional }}</span> |
+    <span><strong>Estado:</strong> {{ mostrarEstadoTurno(turno.estado) }}</span>
 </div>
 
 <button (click)="solicitarTurno()">Solicitar un Turno</button>

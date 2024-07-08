@@ -28,10 +28,16 @@
     <form (ngSubmit)="onSubmit()" [formGroup]="formularioProfesional">
 
       <label for="especialidad">Especialidad:</label>
-      <input id="especialidad" formControlName="especialidad" type="text">
+      <select id="especialidad" formControlName="especialidad">
+        <option *ngFor="let especialidad of especialidades" [value]="especialidad">{{ especialidad }}</option>
+      </select>
       
       <label for="diasAtencion">Días de Atención:</label>
-      <input id="diasAtencion" formControlName="diasAtencion" type="text">
+      <div id="diasAtencion">
+        <div *ngFor="let dia of dias">
+          <input type="checkbox" [value]="dia" (change)="onDiaChange($event)">{{ dia }}
+        </div>
+      </div>
 
       <label for="fotoEsp">Foto de Especialidad:</label>
       <input id="fotoEsp" formControlName="fotoEsp" type="text">

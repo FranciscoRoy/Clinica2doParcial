@@ -30,7 +30,6 @@ export class UsuarioActivoService {
         break;
     }
     this.usuarioActual.next(ingresarUsuario);
-    //console.log(this.getUsuarioActivo());
   }
 
   getUsuarioActivo(): Usuario {

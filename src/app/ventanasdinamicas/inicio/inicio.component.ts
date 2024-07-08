@@ -38,11 +38,18 @@ irDatosPersonales(){
 irTurnos(){
   this.ventanaActivaService.cambiarVentana('turnos');}
 
+irTurnosProfesional(){
+  this.ventanaActivaService.cambiarVentana('gestionTurnosProfesional');}
+
 irAyuda(){
   this.ventanaActivaService.cambiarVentana('ayuda');}
 
 irGestionUsuarios(){
   this.ventanaActivaService.cambiarVentana('gestionUsuarios');}
+
+irGestionTurnosGerente(){
+  this.ventanaActivaService.cambiarVentana('gestionTurnosGerente');
+}
 
 salir() {
   this.usuarioActivoService.cerrarSesion();

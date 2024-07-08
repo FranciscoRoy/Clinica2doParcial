@@ -27,7 +27,7 @@
 <div *ngIf="tipoUsuarioActivo === 'Profesional'">
     <p>Bienvenido {{ alias }} (profesional)</p>
     <button (click)="irDatosPersonales()">Ver mis Datos</button>
-    <!--BOTON GESTIONAR PACIENTES, GESTIONAR TURNOS-->
+    <button (click)="irTurnosProfesional()">Gestionar mis Turnos</button>
     <button (click)="irAyuda()">Ayuda</button>
     <button (click)="salir()">Cerrar Sesion</button>
 </div>
@@ -36,7 +36,7 @@
     <p>Bienvenido {{ alias }} (gerente)</p>
     <button (click)="irDatosPersonales()">Ver mis Datos</button>
     <button (click)="irGestionUsuarios()">Gestionar Usuarios</button>
-    <!--BOTON GESTIONAR USUARIOS, GESTIONAR TURNOS, GESTIONAR REGISTROS-->
+    <button (click)="irGestionTurnosGerente()">Gestionar Turnos</button>
     <button (click)="irAyuda()">Ayuda</button>
     <button (click)="salir()">Cerrar Sesion</button>
 </div>

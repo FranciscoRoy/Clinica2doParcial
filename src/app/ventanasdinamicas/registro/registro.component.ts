@@ -3,12 +3,12 @@ import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angula
 import { Gerente, Paciente, Profesional } from '../../clases/usuario';
 import { ApiService } from '../../servicios/api.service';
 import { VentanaActivaService } from '../../servicios/ventanaactiva.service';
-import { NgIf } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-registro',
   standalone: true,
-  imports: [ReactiveFormsModule, NgIf],
+  imports: [ReactiveFormsModule, NgIf, NgFor],
   templateUrl: './registro.component.html',
   styleUrl: './registro.component.css'
 })
@@ -17,6 +17,9 @@ export class RegistroComponent {
   @Input() tipoUsuario: string;
   formularioGeneral: FormGroup;
   formularioProfesional: FormGroup;
+  dias: string[] = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
+  diasSeleccionados: string[] = [];
+  especialidades: string[] = ['Clínica Médica', 'Cardiología', 'Dermatología', 'Ginecología', 'Oftalmología', 'Pediatría', 'Psiquiatría', 'Neurología', 'Traumatología', 'Urología'];
   
   constructor(
     private fb: FormBuilder,
@@ -40,6 +43,21 @@ export class RegistroComponent {
       fotoEsp: ['', Validators.required]
     });
 
+  }
+
+  onDiaChange(event: any): void {
+    const dia = event.target.value;
+    if (event.target.checked) {
+      this.diasSeleccionados.push(dia);
+    } else {
+      const index = this.diasSeleccionados.indexOf(dia);
+      if (index > -1) {
+        this.diasSeleccionados.splice(index, 1);
+      }
+    }
+    this.formularioProfesional.patchValue({
+      diasAtencion: this.diasSeleccionados.join('/')
+    });
   }
 
   onSubmit() {

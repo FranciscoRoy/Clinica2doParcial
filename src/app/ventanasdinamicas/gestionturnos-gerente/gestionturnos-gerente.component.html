@@ -1,0 +1,17 @@
+<p>TURNOS DISPONIBLES</p>
+<div *ngFor="let turno of turnosDisponibles; let i = index" class="turno">
+
+    <button (click)="solicitarTurno(i)">Asignar Turno</button>
+    <div *ngIf="mostrarCampoEmail === i">
+    <span><label for="email">Email el Paciente:</label></span>|
+    <span><input id="email" [(ngModel)]="emailTemporal" type="email"></span>|
+    <span><button (click)="asignarTurno(emailTemporal,turno.especialidad,turno.dia,turno.horario,turno.profesional)">Asignar</button></span> |
+    </div>|
+
+    <span>{{ i + 1 }}</span> |
+    <span><strong>Especialidad:</strong> {{ turno.especialidad }}</span> |
+    <span><strong>Día:</strong> {{ turno.dia }}</span> |
+    <span><strong>Horario:</strong> {{ turno.horario }}</span> |
+    <span><strong>Profesional:</strong> {{ turno.profesional }}</span>
+
+</div>

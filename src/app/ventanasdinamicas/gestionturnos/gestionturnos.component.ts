@@ -32,7 +32,7 @@ buscarTurnos(): void{
     (data: Turno[]) => {
       this.turnosDisponibles = [];
       data.forEach(turno => {
-        this.turnosDisponibles.push(new Turno('', turno.especialidad, turno.dia, turno.horario, turno.profesional));
+        this.turnosDisponibles.push(new Turno('', turno.especialidad, turno.dia, turno.horario, turno.profesional, 0));
       });
     },
     (error) => {
@@ -42,7 +42,7 @@ buscarTurnos(): void{
 }
 
 solicitarTurno(paciente: string, especialidad: string, dia: string, horario: string, profesional: string){
-  var nuevoTurno = new Turno(paciente, especialidad, dia, horario, profesional);
+  var nuevoTurno = new Turno(paciente, especialidad, dia, horario, profesional, 0);
   this.apiService.insertarTurno(nuevoTurno).subscribe();
   this.ventanaActivaService.cambiarVentana('turnos');
 }

@@ -33,7 +33,7 @@ export class TurnosComponent implements OnInit {
       (data: Turno[]) => {
         this.turnosUsuario = [];
         data.forEach(turno => {
-          this.turnosUsuario.push(new Turno(turno.paciente, turno.especialidad, turno.dia, turno.horario, turno.profesional));
+          this.turnosUsuario.push(new Turno(turno.paciente, turno.especialidad, turno.dia, turno.horario, turno.profesional, turno.estado));
         });
       },
       (error) => {
@@ -46,6 +46,11 @@ export class TurnosComponent implements OnInit {
     this.ventanaActivaService.cambiarVentana('gestionTurnos');
   }
 
+  mostrarEstadoTurno(estado: number): string{
+    if (estado===1) {return 'ACEPTADO'}
+    return 'PENDIENTE';
+  }
+  
   eliminarTurno(){
 
   }
