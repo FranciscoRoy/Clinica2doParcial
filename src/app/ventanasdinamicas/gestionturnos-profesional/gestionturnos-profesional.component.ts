@@ -3,18 +3,19 @@ import { Profesional } from '../../clases/usuario';
 import { ApiService } from '../../servicios/api.service';
 import { Turno } from '../../clases/turno';
 import { UsuarioActivoService } from '../../servicios/usuario-activo.service';
-import { NgFor } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-gestionturnos-profesional',
   standalone: true,
-  imports: [NgFor],
+  imports: [NgFor, NgIf],
   templateUrl: './gestionturnos-profesional.component.html',
   styleUrl: './gestionturnos-profesional.component.css'
 })
 
 export class GestionturnosProfesionalComponent implements OnInit{
   turnosPendientes: Turno[] = [];
+  turnosAceptados: Turno[] = [];
   nombre: string = '';
   apellido: string = '';
   profesional: string = '';
@@ -24,23 +25,23 @@ export class GestionturnosProfesionalComponent implements OnInit{
     private usuarioActivoService: UsuarioActivoService
   ){}
 
-  
-
   ngOnInit(): void {
     this.nombre = this.usuarioActivoService.getUsuarioActivo().nombre
     this.apellido = this.usuarioActivoService.getUsuarioActivo().apellido
     this.profesional = this.nombre + ' ' + this.apellido;
-    this.buscarTurnosPendientes();
+    this.buscarTurnosPropios();
   }
 
-  buscarTurnosPendientes(){
+  buscarTurnosPropios(){
+    this.turnosAceptados = [];
     this.turnosPendientes = [];
     this.apiService.verTurnosActivosPorProfesional(this.profesional).subscribe(
       (data: Turno[]) => {
         var i = 0;
         for (const turn of data) {
           var T = new Turno(turn.paciente, turn.especialidad, turn.dia, turn.horario, turn.profesional, turn.estado);
-          this.turnosPendientes[i] = T;
+          if (T.estado==0) {this.turnosPendientes.push(T);};
+          if (T.estado==1) {this.turnosAceptados.push(T);};
           i = i +1;
       }},
       (error) => {
@@ -51,10 +52,12 @@ export class GestionturnosProfesionalComponent implements OnInit{
 
   turnoRechazar(especialidad: string,dia: string, horario: string){
     this.apiService.turnoAceptarCancelar(especialidad,dia,horario,this.profesional,-1).subscribe();
+    this.buscarTurnosPropios();
   }
 
   turnoAceptar(especialidad: string,dia: string, horario: string){
     this.apiService.turnoAceptarCancelar(especialidad,dia,horario,this.profesional,1).subscribe();
+    this.buscarTurnosPropios();
   }
 
   obtenerEstado(estado: number){

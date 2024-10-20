@@ -34,8 +34,23 @@
       
       <label for="diasAtencion">Días de Atención:</label>
       <div id="diasAtencion">
-        <div *ngFor="let dia of dias">
+        <div *ngFor="let dia of dias; let i = index">
           <input type="checkbox" [value]="dia" (change)="onDiaChange($event)">{{ dia }}
+
+          <label for="inicioAtencion-{{i}}">desde:</label>
+          <div id="InicioAtencion">
+            <select id="inicioAtencion-{{i}}" [(ngModel)]="inicioSeleccionado" (change)="onInicioAtencionChange($event, dia)">
+              <option *ngFor="let inicio of horarios" [value]="inicio">{{ inicio }}</option>
+            </select>
+          </div>
+
+          <label for="finAtencion-{{i}}">hasta:</label>
+          <div id="finAtencion">
+            <select id="finAtencion-{{i}}" [(ngModel)]="finSeleccionado" (change)="onFinAtencionChange($event, dia)">
+              <option *ngFor="let fin of horariosfin" [value]="fin">{{ fin }}</option>
+            </select>
+          </div>
+
         </div>
       </div>
 

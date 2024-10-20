@@ -27,7 +27,7 @@ export class GestionusuariosComponent implements OnInit{
       (data: Profesional[]) => {
         var i = 0;
         for (const prof of data) {
-          var P = new Profesional(prof.nombre, prof.apellido, prof.dni, prof.email, '*******',prof.foto, prof.especialidad, prof.diasAtencion, prof.fotoEsp);
+          var P = new Profesional(prof.nombre, prof.apellido, prof.dni, prof.email, '*******',prof.foto, prof.especialidad, prof.diasAtencion, prof.inicioAtencion, prof.finAtencion, prof.fotoEsp);
           this.usuariosPendientes[i] = P;
           i = i +1;
       }},

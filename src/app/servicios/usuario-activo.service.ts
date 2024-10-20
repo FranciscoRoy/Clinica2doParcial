@@ -20,7 +20,7 @@ export class UsuarioActivoService {
         ingresarUsuario = new Paciente(datosUsuario.nombre, datosUsuario.apellido, datosUsuario.dni, datosUsuario.email, '*******', datosUsuario.foto);
         break;
       case datosUsuario instanceof Profesional:
-        ingresarUsuario = new Profesional(datosUsuario.nombre, datosUsuario.apellido, datosUsuario.dni, datosUsuario.email, '*******', datosUsuario.foto, '', '', '');
+        ingresarUsuario = new Profesional(datosUsuario.nombre, datosUsuario.apellido, datosUsuario.dni, datosUsuario.email, '*******', datosUsuario.foto, '', '', '', '', '');
         break;
       case datosUsuario instanceof Gerente:
         ingresarUsuario = new Gerente(datosUsuario.nombre, datosUsuario.apellido, datosUsuario.dni, datosUsuario.email, '*******', datosUsuario.foto);

@@ -53,6 +53,8 @@ export interface Usuario {
     activo: number;
     especialidad: string;
     diasAtencion: string;
+    inicioAtencion: string;
+    finAtencion: string;
     fotoEsp: string;
   }
   
@@ -67,6 +69,8 @@ export interface Usuario {
     activo = 0;
     especialidad: string;
     diasAtencion: string;
+    inicioAtencion: string;
+    finAtencion: string;
     fotoEsp: string;
 
     getAcceso(): number {return this.acceso;}
@@ -82,6 +86,8 @@ export interface Usuario {
       foto: string,
       especialidad: string,
       diasAtencion: string,
+      inicioAtencion: string,
+      finAtencion: string,
       fotoEsp: string
     ) {
       this.nombre = nombre;
@@ -92,6 +98,8 @@ export interface Usuario {
       this.foto = foto;
       this.especialidad = especialidad;
       this.diasAtencion = diasAtencion;
+      this.inicioAtencion = inicioAtencion;
+      this.finAtencion = finAtencion;
       this.fotoEsp = fotoEsp;
     }
   }
