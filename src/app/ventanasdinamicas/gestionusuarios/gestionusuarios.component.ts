@@ -11,6 +11,7 @@ import { ApiService } from '../../servicios/api.service';
   styleUrl: './gestionusuarios.component.css'
 })
 export class GestionusuariosComponent implements OnInit{
+  usuariosActivos: Profesional[] = [];
   usuariosPendientes: Profesional[] = [];
   
   constructor(
@@ -18,7 +19,24 @@ export class GestionusuariosComponent implements OnInit{
   ){}
 
   ngOnInit(): void {
+    this.buscarProfesionalesActivos();
     this.buscarProfesionalesPendientes();
+  }
+
+  buscarProfesionalesActivos(){
+    this.usuariosActivos = [];
+    this.apiService.buscarProfesionalesPorEstado(1).subscribe(
+      (data: Profesional[]) => {
+        var i = 0;
+        for (const prof of data) {
+          var P = new Profesional(prof.nombre, prof.apellido, prof.dni, prof.email, '*******',prof.foto, prof.especialidad, prof.diasAtencion, prof.inicioAtencion, prof.finAtencion, prof.fotoEsp);
+          this.usuariosActivos[i] = P;
+          i = i +1;
+      }},
+      (error) => {
+        console.error('Error:', error);
+      }
+    );
   }
 
   buscarProfesionalesPendientes(){
@@ -38,9 +56,7 @@ export class GestionusuariosComponent implements OnInit{
   }
 
   profesionalHabilitarDeshabilitar(email: string, estado: number){
-    var nuevoEstado = 1;
-    if (estado == 1) {nuevoEstado = 0}
-    this.apiService.profesionalesActivarDesactivar(email,nuevoEstado).subscribe();
+    this.apiService.profesionalesActivarDesactivar(email,estado).subscribe();
   }
 
 

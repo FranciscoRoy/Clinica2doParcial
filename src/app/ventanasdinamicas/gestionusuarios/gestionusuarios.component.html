@@ -1,14 +1,28 @@
-<p>USUARIOS SIN ACTIVAR</p>
+<p>USUARIOS ACTIVOS</p>
 
-<div *ngFor="let usuario of usuariosPendientes; let i = index" class="usuario">
+<div *ngFor="let usuarioP of usuariosActivos; let i = index" class="usuarioP">
 
     <span><strong></strong> {{ i + 1 }}</span> |
-    <span><strong>Nombre:</strong> {{ usuario.nombre }}</span> |
-    <span><strong>Apellido:</strong> {{ usuario.apellido }}</span> |
-    <span><strong>DNI:</strong> {{ usuario.dni }}</span> |
-    <span><strong>Email:</strong> {{ usuario.email }}</span> |
-    <span><strong>Rol:</strong> {{ usuario.acceso }}</span> |
-    <button (click)="profesionalHabilitarDeshabilitar(usuario.email,usuario.activo)">Activar/Desactivar</button>
+    <span><strong>Nombre:</strong> {{ usuarioP.nombre }}</span> |
+    <span><strong>Apellido:</strong> {{ usuarioP.apellido }}</span> |
+    <span><strong>DNI:</strong> {{ usuarioP.dni }}</span> |
+    <span><strong>Email:</strong> {{ usuarioP.email }}</span> |
+    <span><strong>Rol:</strong> {{ usuarioP.acceso }}</span> |
+    <button (click)="profesionalHabilitarDeshabilitar(usuarioP.email,-1)">Deshabilitar</button>
+
+</div>
+
+<p>USUARIOS SIN ACTIVAR</p>
+
+<div *ngFor="let usuarioA of usuariosPendientes; let i = index" class="usuarioA">
+
+    <span><strong></strong> {{ i + 1 }}</span> |
+    <span><strong>Nombre:</strong> {{ usuarioA.nombre }}</span> |
+    <span><strong>Apellido:</strong> {{ usuarioA.apellido }}</span> |
+    <span><strong>DNI:</strong> {{ usuarioA.dni }}</span> |
+    <span><strong>Email:</strong> {{ usuarioA.email }}</span> |
+    <span><strong>Rol:</strong> {{ usuarioA.acceso }}</span> |
+    <button (click)="profesionalHabilitarDeshabilitar(usuarioA.email,1)">Habilitar</button>
 
 </div>
 
