@@ -12,7 +12,7 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './barrademenu.component.html',
   styleUrls: ['./barrademenu.component.css']
 })
-export class BarraDeMenuComponent implements OnInit {
+export class BarrademenuComponent implements OnInit {
   usuarioActivo: Usuario = new UsuariosinIngresar();
   selectedTipoUsuario: string = '';
 
