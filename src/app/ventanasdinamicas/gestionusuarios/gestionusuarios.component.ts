@@ -62,36 +62,32 @@ export class GestionusuariosComponent implements OnInit{
   }
 
   exportarPDF() {
-    console.log('funcion ejecutada');
     const doc = new jsPDF();
-    console.log(doc);
     
-    // Cargar el logo
+    /*Logo
     const img = new Image();
-    //img.src = this.logoUrl;
+    img.src = this.logoUrl;
 
-    /*
     img.onload = () => {
-      // Agregar el logo
-      doc.addImage(img, 'PNG', 10, 10, 50, 20); // Posición y tamaño del logo en el PDF
+      doc.addImage(img, 'PNG', 10, 10, 50, 20);
+    };
     */
 
-    // Título
     doc.setFontSize(16);
     doc.text('Nómina de Especialistas', 70, 30);
 
-    // Agregar la lista de especialistas
-    let y = 50; // Posición inicial para el contenido
+    let y = 50; //Posición inicial 
     this.usuariosActivos.forEach(especialista => {
-      doc.setFontSize(12);
-      doc.text(`Nombre: ${especialista.nombre}`, 20, y);
-      doc.text(`Especialidad: ${especialista.especialidad}`, 120, y);
-      y += 10; // Espacio entre filas
+      doc.setFontSize(10);
+      doc.text(`${especialista.nombre + ' ' + especialista.apellido}`, 20, y);
+      doc.text(`${especialista.dni}`, 60, y);
+      doc.text(`${especialista.especialidad}`, 100, y);
+      doc.text(`${especialista.email}`, 140, y);
+      y += 10;//Espacio entre filas
     });
 
-    // Descargar el PDF
-    console.log(doc);
     doc.save('nomina_especialistas.pdf');
   };
+
 }
 
