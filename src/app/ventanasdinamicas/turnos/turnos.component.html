@@ -1,6 +1,6 @@
 <p>TURNOS ACTIVOS</p>
 <div *ngFor="let turno of turnosUsuario; let i = index" class="turno">
-    <button (click)="turnoRechazar(turno.especialidad, turno.dia, turno.horario, turno.profesional)">Cancelar</button> |
+    <button (click)="turnoRechazar(turno.paciente, turno.especialidad, turno.dia, turno.horario, turno.profesional)">Cancelar</button> |
     <span>{{ i + 1 }}</span> |
     <span><strong>Especialidad:</strong> {{ turno.especialidad }}</span> |
     <span><strong>Día:</strong> {{ turno.dia }}</span> |

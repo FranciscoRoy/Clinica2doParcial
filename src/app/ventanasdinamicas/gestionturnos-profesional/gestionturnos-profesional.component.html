@@ -2,7 +2,7 @@
 
 <div *ngFor="let turno of turnosAceptados; let i = index" class="turno">
 
-    <button (click)="turnoRechazar(turno.especialidad, turno.dia, turno.horario)">Cancelar</button>
+    <button (click)="turnoRechazar(turno.paciente, turno.especialidad, turno.dia, turno.horario)">Cancelar</button>
     <span>{{ i + 1 }}</span> |
     <span><strong>{{ turno.especialidad }}:</strong></span> |
     <span><strong>Paciente:</strong> {{ turno.paciente }}</span> |
@@ -16,8 +16,8 @@
 
 <div *ngFor="let turno of turnosPendientes; let i = index" class="turno">
 
-    <button (click)="turnoAceptar(turno.especialidad, turno.dia, turno.horario)">Aceptar</button>
-    <button (click)="turnoRechazar(turno.especialidad, turno.dia, turno.horario)">Cancelar</button>
+    <button (click)="turnoAceptar(turno.paciente, turno.especialidad, turno.dia, turno.horario)">Aceptar</button>
+    <button (click)="turnoRechazar(turno.paciente, turno.especialidad, turno.dia, turno.horario)">Cancelar</button>
     <span>{{ i + 1 }}</span> |
     <span><strong>{{ turno.especialidad }}:</strong></span> |
     <span><strong>Paciente:</strong> {{ turno.paciente }}</span> |

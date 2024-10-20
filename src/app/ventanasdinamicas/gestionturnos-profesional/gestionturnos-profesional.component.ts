@@ -50,13 +50,13 @@ export class GestionturnosProfesionalComponent implements OnInit{
     );
   }
 
-  turnoRechazar(especialidad: string,dia: string, horario: string){
-    this.apiService.turnoAceptarCancelar(especialidad,dia,horario,this.profesional,-1).subscribe();
+  turnoRechazar(paciente: string, especialidad: string,dia: string, horario: string){
+    this.apiService.turnoAceptarCancelar(paciente, especialidad,dia,horario,this.profesional,-1).subscribe();
     this.buscarTurnosPropios();
   }
 
-  turnoAceptar(especialidad: string,dia: string, horario: string){
-    this.apiService.turnoAceptarCancelar(especialidad,dia,horario,this.profesional,1).subscribe();
+  turnoAceptar(paciente: string, especialidad: string,dia: string, horario: string){
+    this.apiService.turnoAceptarCancelar(paciente,especialidad,dia,horario,this.profesional,1).subscribe();
     this.buscarTurnosPropios();
   }
 
