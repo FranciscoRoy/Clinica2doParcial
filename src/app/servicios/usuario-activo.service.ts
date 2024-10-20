@@ -18,6 +18,7 @@ export class UsuarioActivoService {
     switch (true) {
       case datosUsuario instanceof Paciente:
         ingresarUsuario = new Paciente(datosUsuario.nombre, datosUsuario.apellido, datosUsuario.dni, datosUsuario.email, '*******', datosUsuario.foto);
+        (ingresarUsuario as Paciente).setValPend(datosUsuario.valPend);
         break;
       case datosUsuario instanceof Profesional:
         ingresarUsuario = new Profesional(datosUsuario.nombre, datosUsuario.apellido, datosUsuario.dni, datosUsuario.email, '*******', datosUsuario.foto, '', '', '', '', '');

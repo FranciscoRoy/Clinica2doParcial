@@ -51,7 +51,7 @@ ingresarComoPaciente(){
   this.apiService.buscarPaciente(this.email,this.password).subscribe(
     (data: Paciente) => {
       this.usuarioBuscado = new Paciente (data.nombre, data.apellido, data.dni, data.email, '*******', data.foto);
-      //console.log(this.usuarioBuscado);
+      this.usuarioBuscado.setValPend(data.valPend);
     },
     (error) => {
       console.error('Error:', error);

@@ -34,10 +34,13 @@ export interface Usuario {
     password: string;
     foto: string;
     acceso = 1;
+    valPend = 0;
 
     getAcceso(): number {return this.acceso;}
     getTipoUsuario(): string {return 'Paciente'}
     getActivacion(){return 1};
+    setValPend(cantidad: number){this.valPend = cantidad};
+    getValPend(){return this.valPend};
 
     constructor(nombre: string, apellido: string, dni: number, email: string, password: string, foto: string) {
       this.nombre = nombre;

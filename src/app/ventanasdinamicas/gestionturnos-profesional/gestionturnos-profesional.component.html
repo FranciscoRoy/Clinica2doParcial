@@ -7,7 +7,8 @@
     <span><strong>{{ turno.especialidad }}:</strong></span> |
     <span><strong>Paciente:</strong> {{ turno.paciente }}</span> |
     <span><strong>Dia</strong> {{ turno.dia }}</span> |
-    <span><strong>Horario</strong> {{ turno.horario }}</span>
+    <span><strong>Horario</strong> {{ turno.horario }}</span> |
+    <button (click)="turnoFinalizar(turno.paciente, turno.especialidad, turno.dia, turno.horario)">Finalizar</button>
 
 </div>
 <button (click)="descargarTurnosCSV()">Descargar Turnos como CSV</button>

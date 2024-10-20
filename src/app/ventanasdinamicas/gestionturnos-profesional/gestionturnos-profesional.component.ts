@@ -50,7 +50,7 @@ export class GestionturnosProfesionalComponent implements OnInit{
     );
   }
 
-  turnoRechazar(paciente: string, especialidad: string,dia: string, horario: string){
+  turnoRechazar(paciente: string, especialidad: string, dia: string, horario: string){
     this.apiService.turnoAceptarCancelar(paciente, especialidad,dia,horario,this.profesional,-1).subscribe();
     this.buscarTurnosPropios();
   }
@@ -58,6 +58,11 @@ export class GestionturnosProfesionalComponent implements OnInit{
   turnoAceptar(paciente: string, especialidad: string,dia: string, horario: string){
     this.apiService.turnoAceptarCancelar(paciente,especialidad,dia,horario,this.profesional,1).subscribe();
     this.buscarTurnosPropios();
+  }
+
+  turnoFinalizar(paciente: string, especialidad: string, dia: string, horario: string){
+    this.apiService.turnoAceptarCancelar(paciente, especialidad,dia,horario,this.profesional,2).subscribe();
+    //ACA VA LA NAVEGACION A ESCRIBIR EL REPORTE
   }
 
   obtenerEstado(estado: number){

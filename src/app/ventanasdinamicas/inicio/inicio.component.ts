@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { VentanaActivaService } from '../../servicios/ventanaactiva.service';
 import { UsuarioActivoService } from '../../servicios/usuario-activo.service';
+import { Paciente } from '../../clases/usuario';
 
 @Component({
   selector: 'app-inicio',
@@ -15,6 +16,7 @@ export class InicioComponent implements OnInit  {
   selectedTipoUsuario: string = '';
   tipoUsuarioActivo = 'Invitado';
   alias: string = 'Invitado';
+  valoracionesPendientes: number = 3;
 
   constructor(
     private ventanaActivaService: VentanaActivaService,
@@ -24,6 +26,7 @@ export class InicioComponent implements OnInit  {
 ngOnInit(): void {
   this.ventanaActivaService.getTipoUsuarioSolicitado().subscribe(usuarioTipo => {this.tipoUsuarioActivo = usuarioTipo;});
   this.alias = this.usuarioActivoService.getUsuarioActivo().nombre;
+  this.valoracionesPendientes = (this.usuarioActivoService.getUsuarioActivo() as Paciente).valPend;
 }
 
 irIngreso(){
@@ -50,6 +53,9 @@ irGestionUsuarios(){
 irGestionTurnosGerente(){
   this.ventanaActivaService.cambiarVentana('gestionTurnosGerente');
 }
+
+irValorarServicios(){
+  this.ventanaActivaService.cambiarVentana('valoraciones');}
 
 salir() {
   this.usuarioActivoService.cerrarSesion();

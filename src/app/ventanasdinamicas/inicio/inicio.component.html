@@ -22,6 +22,7 @@
     <button (click)="irTurnos()">Ver mis Turnos</button>
     <button (click)="irAyuda()">Ayuda</button>
     <button (click)="salir()">Cerrar Sesion</button>
+    <button *ngIf="valoracionesPendientes > 0" (click)="irValorarServicios()">Valorar mi Experiencia</button>
 </div>
 
 <div *ngIf="tipoUsuarioActivo === 'Profesional'">
