@@ -1,3 +1,4 @@
+<p>ASIGNAR TURNOS</p>
 <div class="filtros">
     <label for="especialidad">Especialidad:</label>
     <select id="especialidad" [(ngModel)]="filtroEspecialidad">
@@ -37,6 +38,49 @@
         <span><button (click)="asignarTurno(emailTemporal,turno.especialidad,turno.dia,turno.horario,turno.profesional)">Asignar</button></span> |
         </div>|
 
+        <span>{{ i + 1 }}</span> |
+        <span><strong>Especialidad:</strong> {{ turno.especialidad }}</span> |
+        <span><strong>Día:</strong> {{ turno.dia }}</span> |
+        <span><strong>Horario:</strong> {{ turno.horario }}</span> |
+        <span><strong>Profesional:</strong> {{ turno.profesional }}</span>
+
+    </div>
+</div>
+
+<p>GESTIONAR TURNOS ACTIVOS</p>
+<div class="filtrosA">
+  <label for="especialidadA">Especialidad:</label>
+  <select id="especialidadA" [(ngModel)]="filtroEspecialidadA">
+    <option value="">Todas</option>
+    <option *ngFor="let espA of especialidadesA" [value]="espA">{{ espA }}</option>
+  </select>
+
+  <label for="diaA">Día:</label>
+  <select id="diaA" [(ngModel)]="filtroDiaA">
+    <option value="">Todos</option>
+    <option *ngFor="let diaA of diasA" [value]="diaA">{{ diaA }}</option>
+  </select>
+
+  <label for="horarioA">Horario:</label>
+  <select id="horarioA" [(ngModel)]="filtroHorarioA">
+    <option value="">Todos</option>
+    <option *ngFor="let horarioA of horariosA" [value]="horarioA">{{ horarioA }}</option>
+  </select>
+
+  <label for="profesionalA">Profesional:</label>
+  <select id="profesionalA" [(ngModel)]="filtroProfesionalA">
+    <option value="">Todos</option>
+    <option *ngFor="let profesionalA of profesionalesA" [value]="profesionalA">{{ profesionalA }}</option>
+  </select>
+</div>
+
+<p>TURNOS ACTIVOS</p>
+<p *ngIf="!alMenosUnFiltroSeleccionadoA()">Por favor, selecciona al menos un filtro para ver los turnos disponibles.</p>
+
+<div *ngIf="alMenosUnFiltroSeleccionadoA()">
+    <div *ngFor="let turno of turnosFiltradosA(); let i = index" class="turno">
+
+        <button (click)="cancelarTurno(turno.paciente,turno.especialidad,turno.dia,turno.horario,turno.profesional)">Cancelar Turno</button>
         <span>{{ i + 1 }}</span> |
         <span><strong>Especialidad:</strong> {{ turno.especialidad }}</span> |
         <span><strong>Día:</strong> {{ turno.dia }}</span> |
