@@ -1,0 +1,10 @@
+{
+  "hosting": {
+    "public": "dist/clinicamedica/browser",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}
