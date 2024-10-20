@@ -2,6 +2,8 @@ import { NgFor } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Profesional } from '../../clases/usuario';
 import { ApiService } from '../../servicios/api.service';
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
 
 @Component({
   selector: 'app-gestionusuarios',
@@ -59,5 +61,37 @@ export class GestionusuariosComponent implements OnInit{
     this.apiService.profesionalesActivarDesactivar(email,estado).subscribe();
   }
 
+  exportarPDF() {
+    console.log('funcion ejecutada');
+    const doc = new jsPDF();
+    console.log(doc);
+    
+    // Cargar el logo
+    const img = new Image();
+    //img.src = this.logoUrl;
 
+    /*
+    img.onload = () => {
+      // Agregar el logo
+      doc.addImage(img, 'PNG', 10, 10, 50, 20); // Posición y tamaño del logo en el PDF
+    */
+
+    // Título
+    doc.setFontSize(16);
+    doc.text('Nómina de Especialistas', 70, 30);
+
+    // Agregar la lista de especialistas
+    let y = 50; // Posición inicial para el contenido
+    this.usuariosActivos.forEach(especialista => {
+      doc.setFontSize(12);
+      doc.text(`Nombre: ${especialista.nombre}`, 20, y);
+      doc.text(`Especialidad: ${especialista.especialidad}`, 120, y);
+      y += 10; // Espacio entre filas
+    });
+
+    // Descargar el PDF
+    console.log(doc);
+    doc.save('nomina_especialistas.pdf');
+  };
 }
+
