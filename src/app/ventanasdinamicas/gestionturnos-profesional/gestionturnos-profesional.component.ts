@@ -65,4 +65,48 @@ export class GestionturnosProfesionalComponent implements OnInit{
     else return 'PENDIENTE';
   }
 
+  descargarTurnosCSV() {
+    const csvContent = this.generarCSV(this.turnosAceptados);
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    const link = document.createElement('a');
+    
+    const url = URL.createObjectURL(blob);
+    link.setAttribute('href', url);
+    link.setAttribute('download', 'turnos_tomados.csv');
+    link.style.visibility = 'hidden';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  }
+  
+  generarCSV(turnos: Turno[]): string {
+    const headers = 'Paciente, Especialidad, Fecha, Horario\n';
+    const rows = turnos.map(turno => {
+      return `${this.eliminarTildes(turno.paciente)}, ${this.eliminarTildes(turno.especialidad)}, ${this.eliminarTildes(turno.dia)}, ${turno.horario}`;
+    });
+  
+    return headers + rows.join('\n');
+  }
+
+  eliminarTildes(palabra: string): string {
+    let nuevaPalabra = '';
+
+    for (let letra of palabra) {
+        if (letra === 'á') {
+            nuevaPalabra += 'a';
+        } else if (letra === 'é') {
+            nuevaPalabra += 'e';
+        } else if (letra === 'í') {
+            nuevaPalabra += 'i';
+        } else if (letra === 'ó') {
+            nuevaPalabra += 'o';
+        } else if (letra === 'ú') {
+            nuevaPalabra += 'u';
+        } else {
+            nuevaPalabra += letra;
+        }
+    }
+    return nuevaPalabra;
+  }
+
 }
