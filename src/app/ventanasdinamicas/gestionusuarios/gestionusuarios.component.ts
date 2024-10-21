@@ -68,7 +68,7 @@ export class GestionusuariosComponent implements OnInit{
     const doc = new jsPDF();
   
     const img = new Image();
-    img.src = 'assets/images/logo_clinica.png';
+    img.src = 'app/assets/images/logo_clinica.png';
   
     img.onload = () => {
       doc.addImage(img, 'PNG', 15, 5, 40, 40);
