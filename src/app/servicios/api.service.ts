@@ -83,8 +83,8 @@ insertarTurno(nuevoTurno: Turno): Observable<any>{
   return this.http.post(this.apiUrl + 'insertarTurno', nuevoTurno);
 }
 
-turnoAceptarCancelar(paciente: string, especialidad: string, dia: string, horario: string, profesional: string, accion: number): Observable<any>{
-  return this.http.post(this.apiUrl + 'turnoAceptarCancelar', {paciente: paciente, especialidad: especialidad, dia: dia, horario: horario, profesional: profesional, accion: accion});
+turnoAceptarCancelar(paciente: string, especialidad: string, dia: string, horario: string, profesional: string, accion: number, resena: string): Observable<any>{
+  return this.http.post(this.apiUrl + 'turnoAceptarCancelar', {paciente: paciente, especialidad: especialidad, dia: dia, horario: horario, profesional: profesional, accion: accion, resena: resena});
 }
 
 calificarProfesional(turno: Turno, calificacion: number): Observable<any>{

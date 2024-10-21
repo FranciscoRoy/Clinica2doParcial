@@ -8,7 +8,15 @@
     <span><strong>Paciente:</strong> {{ turno.paciente }}</span> |
     <span><strong>Dia</strong> {{ turno.dia }}</span> |
     <span><strong>Horario</strong> {{ turno.horario }}</span> |
-    <button (click)="turnoFinalizar(turno.paciente, turno.especialidad, turno.dia, turno.horario)">Finalizar</button>
+    <!-- <button (click)="turnoFinalizar(turno.paciente, turno.especialidad, turno.dia, turno.horario)">Finalizar</button> -->
+
+    <button (click)="mostrarComentario(i)">Escribir Reporte</button>
+
+    <!-- Se muestra el área de comentario cuando se hace clic en "Finalizar" -->
+    <div *ngIf="mostrarComentarioIndex === i">
+        <textarea [(ngModel)]="comentarios[i]" placeholder="Escriba la reseña de la consulta:"></textarea>
+        <button (click)="turnoFinalizar(turno.paciente, turno.especialidad, turno.dia, turno.horario, comentarios[i])">Finalizar Consulta</button>
+    </div>
 
 </div>
 <button (click)="descargarTurnosCSV()">Descargar Turnos como CSV</button>

@@ -4,11 +4,12 @@ import { ApiService } from '../../servicios/api.service';
 import { Turno } from '../../clases/turno';
 import { UsuarioActivoService } from '../../servicios/usuario-activo.service';
 import { NgFor, NgIf } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-gestionturnos-profesional',
   standalone: true,
-  imports: [NgFor, NgIf],
+  imports: [NgFor, NgIf, FormsModule],
   templateUrl: './gestionturnos-profesional.component.html',
   styleUrl: './gestionturnos-profesional.component.css'
 })
@@ -24,6 +25,12 @@ export class GestionturnosProfesionalComponent implements OnInit{
     private apiService: ApiService,
     private usuarioActivoService: UsuarioActivoService
   ){}
+
+  comentarios: string[] = [];
+  mostrarComentarioIndex: number | null = null;
+  mostrarComentario(index: number) {
+    this.mostrarComentarioIndex = index;
+  }
 
   ngOnInit(): void {
     this.nombre = this.usuarioActivoService.getUsuarioActivo().nombre
@@ -51,18 +58,17 @@ export class GestionturnosProfesionalComponent implements OnInit{
   }
 
   turnoRechazar(paciente: string, especialidad: string, dia: string, horario: string){
-    this.apiService.turnoAceptarCancelar(paciente, especialidad,dia,horario,this.profesional,-1).subscribe();
+    this.apiService.turnoAceptarCancelar(paciente, especialidad,dia,horario,this.profesional,-1,'').subscribe();
     this.buscarTurnosPropios();
   }
 
   turnoAceptar(paciente: string, especialidad: string,dia: string, horario: string){
-    this.apiService.turnoAceptarCancelar(paciente,especialidad,dia,horario,this.profesional,1).subscribe();
+    this.apiService.turnoAceptarCancelar(paciente,especialidad,dia,horario,this.profesional,1,'').subscribe();
     this.buscarTurnosPropios();
   }
 
-  turnoFinalizar(paciente: string, especialidad: string, dia: string, horario: string){
-    this.apiService.turnoAceptarCancelar(paciente, especialidad,dia,horario,this.profesional,2).subscribe();
-    //ACA VA LA NAVEGACION A ESCRIBIR EL REPORTE
+  turnoFinalizar(paciente: string, especialidad: string, dia: string, horario: string, resena: string){
+    this.apiService.turnoAceptarCancelar(paciente, especialidad,dia,horario,this.profesional,2,resena).subscribe();
   }
 
   obtenerEstado(estado: number){
