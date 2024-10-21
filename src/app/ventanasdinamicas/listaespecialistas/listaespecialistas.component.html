@@ -15,8 +15,8 @@
       <span><strong>Profesional:</strong> {{ usuarioP.nombre + ' ' + usuarioP.apellido}}</span> |
       <span><strong>Especialidad:</strong> {{ usuarioP.especialidad }}</span> |
       <span><strong>Días Atención:</strong> {{ usuarioP.diasAtencion }}</span> |
-      <span><strong>Foto:</strong> <img [src]="usuarioP.foto" alt="Foto" /></span> |
       <span><strong>Calificación Usuarios:</strong> {{ usuarioP.puntuacion }}</span> |
+      <img *ngIf="usuarioP.foto" [src]="'data:image/png;base64,' + usuarioP.foto" alt="Foto de {{ usuarioP.nombre }}"> |
     </div>
   
     <div style="display: block; width: 50%; height: 300px; margin: 0 auto;">
