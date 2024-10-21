@@ -1,5 +1,5 @@
 <div>
-    <img *ngIf="mostrandoGif" [src]="imagenUrl" alt={{mensaje}}>
-    {{mensaje}}
+    <img *ngIf="mostrandoGif" [src]="imagenUrl" alt="{{mensaje}}" />
+    <div *ngIf="mostrandoGif">{{mensaje}}</div>
     <p *ngIf="!mostrandoGif">Terminado</p>
 </div>

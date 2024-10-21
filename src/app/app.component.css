@@ -1,1 +1,5 @@
-
+.contenedor-horizontal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }

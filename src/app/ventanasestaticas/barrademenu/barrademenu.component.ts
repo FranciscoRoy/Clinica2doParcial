@@ -33,30 +33,13 @@ export class BarrademenuComponent implements OnInit {
   ingresar() {
     this.ventanaActivaService.cambiarVentana('ingreso');}
 
-  registrarse(tipoUsuario: string) {
-    switch (tipoUsuario) {
-        case 'Paciente':
-            this.ventanaActivaService.cambiarVentana('registroPaciente');
-            break;
-        case 'Profesional':
-            this.ventanaActivaService.cambiarVentana('registroProfesional');
-            break;
-        case 'Gerente':
-            this.ventanaActivaService.cambiarVentana('registroGerente');
-            break;
-        default:
-            this.ventanaActivaService.cambiarVentana('inicio');
-            break;
-    }
-  }
-
   misDatos() {
     this.ventanaActivaService.cambiarVentana('datospersonales');}
 
   misTurnos() {
     this.ventanaActivaService.cambiarVentana('turnos');}
 
-  gestionarTurnos() {
+  gestionarTurnosP() {
     this.ventanaActivaService.cambiarVentana('gestionTurnosProfesional');}
 
   gestionarTurnosG() {
@@ -67,12 +50,17 @@ export class BarrademenuComponent implements OnInit {
 
   ayuda() {
     this.ventanaActivaService.cambiarVentana('ayuda');}
-
-  espera() {
-    this.ventanaActivaService.cambiarVentana('espera');}
     
   salir() {
     this.usuarioActivoService.cerrarSesion();
     this.ventanaActivaService.cambiarVentana('inicio');}
+
+  atras(){
+    this.ventanaActivaService.historial(-1);
+  }
+
+  adelante(){
+    this.ventanaActivaService.historial(+1);
+  }
     
 }

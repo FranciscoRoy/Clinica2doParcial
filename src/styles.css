@@ -1,1 +1,14 @@
-/* You can add global styles to this file, and also import other style files */
+* {
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    text-align: center;
+    background-color: #ADD8E6;
+  }
+
+  button {
+    background-color: #F5F5DC;
+  }
+  
+  button:hover {
+    background-color: #E6E6D6;
+  }  

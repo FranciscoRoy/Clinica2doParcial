@@ -1,6 +1,6 @@
-<p>VENTANA CENTRAL COMIENZO</p>
-
+<!--
 <p>Bienvenido Usuario {{ this.usuarioActual.getTipoUsuario() }}</p>
+-->
 
 @switch(this.ventanaActivaActual){
     @case ('inicio') {<app-inicio></app-inicio>}
@@ -23,5 +23,3 @@
 
     @default {<app-error></app-error>}
 }
-
-<p>VENTANA CENTRAL FINAL</p>

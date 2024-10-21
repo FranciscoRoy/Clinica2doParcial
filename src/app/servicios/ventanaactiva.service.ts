@@ -9,6 +9,8 @@ import { UsuarioActivoService } from './usuario-activo.service';
 export class VentanaActivaService{
   private ventanaActivaSubject = new BehaviorSubject<string>('inicio');
   private tipoUsuarioSolicitadoSubject = new BehaviorSubject<string>('Invitado');
+  private historialNavegacion: string[] = [];
+  private indiceActual: number = -1;
 
   constructor(
     private usuarioActivoService: UsuarioActivoService,
@@ -22,6 +24,7 @@ cambiarVentana(ventana: string,tipoUsuarioEntrada?: string){
     this.tipoUsuarioSolicitadoSubject.next(tipo);
   }
   this.ventanaActivaSubject.next(ventana);
+  if (ventana != 'espera') {this.agregarDestino(ventana)}
 }
 
 getTipoUsuarioSolicitado(){return this.tipoUsuarioSolicitadoSubject;}
@@ -33,6 +36,31 @@ navegar(origen: string, tiempo: number) {
   setTimeout(() => {
     this.cambiarVentana(origen);
   }, tiempo*1000);
+}
+
+historial(direccion: number) {
+  if (direccion === -1) {
+    if (this.indiceActual > 0) {
+      this.indiceActual--;
+      this.cambiarVentana(this.historialNavegacion[this.indiceActual]);
+    }
+  } else if (direccion === 1) {
+    if (this.indiceActual < this.historialNavegacion.length - 1) {
+      this.indiceActual++;
+      this.cambiarVentana(this.historialNavegacion[this.indiceActual]);
+    }
+  }
+}
+
+agregarDestino(ventana: string) {
+  if (this.historialNavegacion.length < 20) {
+    this.historialNavegacion.push(ventana);
+    this.indiceActual = this.historialNavegacion.length - 1;
+  } else {
+    this.historialNavegacion.shift();
+    this.historialNavegacion.push(ventana);
+    this.indiceActual--;
+  }
 }
 
 }

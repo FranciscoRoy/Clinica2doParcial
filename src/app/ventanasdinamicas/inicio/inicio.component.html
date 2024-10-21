@@ -1,14 +1,11 @@
-<p>BIENVENIDO A LA CLINICA MEDICA</p>
-
 <div *ngIf="tipoUsuarioActivo === 'Invitado'">
-    <p>DEBE INICIAR SESIÓN PARA CONTINUAR</p>
+    <p>Debe iniciar sesión para continuar</p>
     <select [(ngModel)]="selectedTipoUsuario">
         <option value="" disabled selected>Seleccione tipo de usuario</option>
         <option value="Paciente">Paciente</option>
         <option value="Profesional">Profesional</option>
         <option value="Gerente">Gerente</option>
     </select>
-    <button (click)="irAyuda()">Ayuda</button>
     
     <div *ngIf="selectedTipoUsuario">
         <button (click)="irIngreso()">Ingresar</button>
