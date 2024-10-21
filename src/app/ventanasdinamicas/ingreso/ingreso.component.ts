@@ -43,8 +43,7 @@ ingreso(){
   };
   setTimeout(() => {
     this.usuarioActivoService.setUsuarioActivo(this.usuarioBuscado);
-    this.ventanaActivaService.cambiarVentana('inicio');
-  }, 2500);
+  }, 2000);
 }
 
 ingresarComoPaciente(){
