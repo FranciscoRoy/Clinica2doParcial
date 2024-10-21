@@ -4,6 +4,7 @@ import { UsuarioActivoService } from '../../servicios/usuario-activo.service';
 import { UsuariosinIngresar, Usuario } from '../../clases/usuario';
 import { NgSwitch, NgSwitchCase, NgSwitchDefault } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { ColoresService } from '../../servicios/colores.service';
 
 @Component({
   selector: 'app-barrademenu',
@@ -15,10 +16,12 @@ import { FormsModule } from '@angular/forms';
 export class BarrademenuComponent implements OnInit {
   usuarioActivo: Usuario = new UsuariosinIngresar();
   selectedTipoUsuario: string = '';
+  paletaDefault = 'azules';
 
   constructor(
     private ventanaActivaService: VentanaActivaService,
     private usuarioActivoService: UsuarioActivoService,
+    private coloresServiceLocal: ColoresService,
   ) {}
 
   ngOnInit() {
@@ -54,13 +57,18 @@ export class BarrademenuComponent implements OnInit {
   salir() {
     this.usuarioActivoService.cerrarSesion();
     this.ventanaActivaService.cambiarVentana('inicio');}
-
+    
   atras(){
     this.ventanaActivaService.historial(-1);
   }
 
   adelante(){
-    this.ventanaActivaService.historial(+1);
+    this.ventanaActivaService.historial(1);
   }
-    
+
+  cambiarColores(paleta: string | null){
+    if (!paleta) {this.coloresServiceLocal.aplicarPaleta('azules');}
+    else {this.coloresServiceLocal.aplicarPaleta(paleta);}
+  }
+
 }

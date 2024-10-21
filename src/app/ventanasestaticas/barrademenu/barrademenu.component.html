@@ -1,64 +1,38 @@
-<!--
 <img [src]="'assets/images/logo_clinica.png'" alt="Logo de la clínica">
 
 <div [ngSwitch]="usuarioActivo.acceso" class="menu">
+    <button (click)="inicio()">Inicio</button>
+
+    <div *ngSwitchCase="1">
+        <button (click)="misDatos()">Datos</button>
+        <button (click)="misTurnos()">Turnos</button>
+    </div>
+
+    <div *ngSwitchCase="2">
+        <button (click)="misDatos()">Datos</button>
+        <button (click)="gestionarTurnosP()">Turnos</button>
+    </div>
+
+    <div *ngSwitchCase="3">
+        <button (click)="misDatos()">Datos</button>
+        <button (click)="gestionarTurnosG()">Turnos</button>
+        <button (click)="gestionarUsuariosG()">Usuarios</button>
+    </div>
+
+    <button (click)="ayuda()">Ayuda</button>
+
+    <div *ngSwitchCase!="0">
+        <button (click)="salir()">Salir</button>
+    </div>
+
+    <button (click)="atras()">atras</button>
+    <button (click)="adelante()">adela</button>
+
+    <select [(ngModel)]="paletaDefault" (ngModelChange)="cambiarColores(paletaDefault)">
+        <option value="azules">Azules</option>
+        <option value="rojos">Rojos</option>
+        <option value="verdes">Verdes</option>
+        <option value="grises">Grises</option>
+    </select>
     
-    <button (click)="inicio()">Inicio</button>
-
-    <div *ngSwitchCase="1">
-        <button (click)="misDatos()">Datos</button>
-        <button (click)="misTurnos()">Turnos</button>
-    </div>
-
-    <div *ngSwitchCase="2">
-        <button (click)="misDatos()">Datos</button>
-        <button (click)="gestionarTurnosP()">Turnos</button>
-    </div>
-
-    <div *ngSwitchCase="3">
-        <button (click)="misDatos()">Datos</button>
-        <button (click)="gestionarTurnosG()">Turnos</button>
-        <button (click)="gestionarUsuariosG()">Usuarios</button>
-    </div>
-
-    <button (click)="ayuda()">Ayuda</button>
-
-    <div *ngSwitchCase!="0">
-        <button (click)="salir()">Salir</button>
-    </div>
-
-    <button (click)="atras()">'<='</button>
-    <button (click)="adelante()">'=>'</button>
-
-</div>
--->
-<img [src]="'assets/images/logo_clinica.png'" alt="Logo de la clínica">
-
-<div [ngSwitch]="usuarioActivo.acceso" class="menu">
-    <button (click)="inicio()">Inicio</button>
-
-    <div *ngSwitchCase="1">
-        <button (click)="misDatos()">Datos</button>
-        <button (click)="misTurnos()">Turnos</button>
-    </div>
-
-    <div *ngSwitchCase="2">
-        <button (click)="misDatos()">Datos</button>
-        <button (click)="gestionarTurnosP()">Turnos</button>
-    </div>
-
-    <div *ngSwitchCase="3">
-        <button (click)="misDatos()">Datos</button>
-        <button (click)="gestionarTurnosG()">Turnos</button>
-        <button (click)="gestionarUsuariosG()">Usuarios</button>
-    </div>
-
-    <button (click)="ayuda()">Ayuda</button>
-
-    <div *ngSwitchCase!="0">
-        <button (click)="salir()">Salir</button>
-    </div>
-
-    <button (click)="atras()">'<='</button>
-    <button (click)="adelante()">'=>'</button>
 </div>

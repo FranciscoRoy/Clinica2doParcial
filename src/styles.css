@@ -1,14 +1,24 @@
-* {
-    font-family: Arial, sans-serif;
-    font-size: 12px;
-    text-align: center;
-    background-color: #ADD8E6;
-  }
+:root {
+  --fondo: #ADD8E6;
+  --boton: #F5F5DC;
+  --botonSeleccionado: #4682B4;
+  --borde: #87CEFA;
+  --fuente: #000000;
+}
 
-  button {
-    background-color: #F5F5DC;
-  }
-  
-  button:hover {
-    background-color: #E6E6D6;
-  }  
+* {
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  text-align: center;
+  background-color: var(--fondo);
+}
+
+button {
+  background-color: var(--boton);
+  color: var(--fuente);
+  border: 2px solid var(--borde);
+}
+
+button:hover {
+  background-color: var(--botonSeleccionado);
+}
