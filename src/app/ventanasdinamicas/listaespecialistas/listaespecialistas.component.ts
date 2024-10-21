@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { ApiService } from '../../servicios/api.service';
 import { VentanaActivaService } from '../../servicios/ventanaactiva.service';
 import { Profesional } from '../../clases/usuario';
@@ -21,6 +21,7 @@ Chart.register(...registerables);
   styleUrls: ['./listaespecialistas.component.css']
 })
 export class ListaespecialistasComponent {
+  @ViewChild(BaseChartDirective) chart!: BaseChartDirective; // Agregar esto para acceder al gráfico
   usuariosActivos: Profesional[] = [];
   filtroEspecialidad: string = '';
 
@@ -53,6 +54,7 @@ export class ListaespecialistasComponent {
   especialidades: string[] = ['Clínica Médica', 'Cardiología', 'Dermatología', 'Ginecología', 'Oftalmología', 'Pediatría', 'Psiquiatría', 'Neurología', 'Traumatología', 'Urología'];
 
   alMenosUnFiltroSeleccionado(): boolean {
+    this.actualizarGrafico();
     return this.filtroEspecialidad !== '';
   }
 
@@ -83,25 +85,33 @@ export class ListaespecialistasComponent {
     );
   }
 
-  // Método para filtrar profesionales
   get profesionalesFiltrados(): Profesional[] {
     return this.usuariosActivos.filter(usuario => 
       this.filtroEspecialidad === '' || usuario.especialidad === this.filtroEspecialidad
     );
   }
 
-  // Actualiza el gráfico con los profesionales filtrados
   actualizarGrafico() {
     const profesionales = this.profesionalesFiltrados;
-    const nombres = profesionales.map(prof => prof.nombre + ' ' + prof.apellido);
-    const puntuaciones = profesionales.map(prof => prof.puntuacion);
 
-    this.barChartData.labels = nombres;
-    this.barChartData.datasets[0].data = puntuaciones;
+    if (profesionales.length > 0) {
+      this.barChartData.labels = profesionales.map(prof => prof.nombre);
+      this.barChartData.datasets[0].data = profesionales.map(prof => prof.puntuacion);
+      
+      if (this.chart) {
+        this.chart.update();
+      }
+    } else {
+      this.barChartData.labels = [];
+      this.barChartData.datasets[0].data = [];
+
+      if (this.chart) {
+        this.chart.update();
+      }
+    }
   }
 
-  // Se ejecuta al cambiar el filtro
-  onFiltroEspecialidadChange() {
+  cambiarFiltro() {
     this.actualizarGrafico();
   }
 
