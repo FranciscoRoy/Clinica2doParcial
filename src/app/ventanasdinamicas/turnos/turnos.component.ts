@@ -55,9 +55,4 @@ export class TurnosComponent implements OnInit {
     if (estado===1) {return 'ACEPTADO'}
     return 'PENDIENTE';
   }
-  
-  eliminarTurno(){
-
-  }
-
 }
