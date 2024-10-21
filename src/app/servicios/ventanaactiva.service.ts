@@ -28,11 +28,11 @@ getTipoUsuarioSolicitado(){return this.tipoUsuarioSolicitadoSubject;}
 
 getVentanaActiva(){return this.ventanaActivaSubject}
 
-refrescar(origen: string) {
+navegar(origen: string, tiempo: number) {
   this.cambiarVentana('espera');
   setTimeout(() => {
     this.cambiarVentana(origen);
-  }, 6000);
+  }, tiempo*1000);
 }
 
 }

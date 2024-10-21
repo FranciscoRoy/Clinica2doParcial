@@ -24,7 +24,5 @@ export class DatospersonalesComponent implements OnInit {
     this.usuario = this.usuarioActivoService.getUsuarioActivo();
   }
   
-  refrescar() {this.ventanaActivaService.refrescar('datosPersonales')};
-  
 
 }

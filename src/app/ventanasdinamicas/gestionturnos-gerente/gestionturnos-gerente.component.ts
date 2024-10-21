@@ -119,10 +119,8 @@ asignarTurno(paciente: string, especialidad: string, dia: string, horario: strin
   if (this.emailTemporal) {
     var nuevoTurno = new Turno(paciente, especialidad, dia, horario, profesional, 0);
     this.apiService.insertarTurno(nuevoTurno).subscribe();
-    this.ventanaActivaService.cambiarVentana('gestionTurnosGerente');
+    this.ventanaActivaService.navegar('gestionTurnosGerente',3);
   }
 }
-
-refrescar() {this.ventanaActivaService.refrescar('gestionTurnosGerente')};
 
 }

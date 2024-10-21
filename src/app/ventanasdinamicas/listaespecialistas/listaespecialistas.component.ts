@@ -115,5 +115,4 @@ export class ListaespecialistasComponent {
     this.actualizarGrafico();
   }
 
-  refrescar() { this.ventanaActivaService.refrescar('listaEspecialistas') }
 }

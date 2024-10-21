@@ -71,9 +71,7 @@ buscarTurnos(): void{
 solicitarTurno(paciente: string, especialidad: string, dia: string, horario: string, profesional: string){
   var nuevoTurno = new Turno(paciente, especialidad, dia, horario, profesional, 0);
   this.apiService.insertarTurno(nuevoTurno).subscribe();
-  this.ventanaActivaService.cambiarVentana('turnos');
+  this.ventanaActivaService.navegar('turnos',6);
 }
-
-refrescar() {this.ventanaActivaService.refrescar('gestionTurnos')};
 
 }

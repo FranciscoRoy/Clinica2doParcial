@@ -18,6 +18,4 @@ export class AyudaComponent {
     this.ventanaActivaService.cambiarVentana('listaespecialistas');
   }
 
-  refrescar() {this.ventanaActivaService.refrescar('ayuda')};
-
 }

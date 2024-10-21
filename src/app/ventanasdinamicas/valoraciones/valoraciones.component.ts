@@ -52,6 +52,4 @@ valorar(turno: any, calificacion: number) {
   }
 }
 
-refrescar() {this.ventanaActivaService.refrescar('valoraciones')};
-
 }

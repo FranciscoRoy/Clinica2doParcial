@@ -1,10 +1,9 @@
-<p>datospersonales works!</p>
+<p>ESTOS SON SUS DATOS PERSONALES ACTUALES</p>
 
 <div *ngIf="usuario">
   <p>Nombre: {{ usuario.nombre }}</p>
   <p>Apellido: {{ usuario.apellido }}</p>
   <p>DNI: {{ usuario.dni }}</p>
   <p>Email: {{ usuario.email }}</p>
-  <!--<img [src]="usuario.foto" alt="Foto de {{ usuario.nombre }}">-->
+  <img *ngIf="usuario.foto" [src]="'data:image/png;base64,' + usuario.foto" alt="Foto de {{ usuario.nombre }}">
 </div>
-

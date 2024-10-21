@@ -57,6 +57,7 @@ ingresarComoPaciente(){
       console.error('Error:', error);
     }
   );
+  this.ventanaActivaService.navegar('inicio',6);
 }
 
 ingresarComoProfesional(){
@@ -68,6 +69,7 @@ ingresarComoProfesional(){
       console.error('Error:', error);
     }
   );
+  this.ventanaActivaService.navegar('inicio',6);
 }
 
 ingresarComoGerente(){
@@ -79,8 +81,7 @@ ingresarComoGerente(){
       console.error('Error:', error);
     }
   );
+  this.ventanaActivaService.navegar('inicio',6);
 }
-
-refrescar() {this.ventanaActivaService.refrescar('ingreso')};
 
 }

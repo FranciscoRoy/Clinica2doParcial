@@ -106,12 +106,28 @@ export class RegistroComponent {
     
     if (file) {
       const reader = new FileReader();
+      
       reader.onload = (e: any) => {
-        const base64String = e.target.result.split(',')[1];
-        this.formularioGeneral.patchValue({
-          foto: base64String
-        });
+        const img = new Image();
+        img.src = e.target.result;
+        
+        img.onload = () => {
+          const canvas = document.createElement('canvas');
+          const ctx = canvas.getContext('2d');
+          
+          canvas.width = 300;
+          canvas.height = 300;
+          
+          ctx?.drawImage(img, 0, 0, 300, 300);
+          
+          const resizedBase64 = canvas.toDataURL('image/png').split(',')[1];
+          
+          this.formularioGeneral.patchValue({
+            foto: resizedBase64
+          });
+        };
       };
+  
       reader.readAsDataURL(file);
     }
   }
@@ -121,12 +137,28 @@ export class RegistroComponent {
     
     if (file) {
       const reader = new FileReader();
+      
       reader.onload = (e: any) => {
-        const base64String = e.target.result.split(',')[1];
-        this.formularioProfesional.patchValue({
-          fotoEsp: base64String
-        });
+        const img = new Image();
+        img.src = e.target.result;
+        
+        img.onload = () => {
+          const canvas = document.createElement('canvas');
+          const ctx = canvas.getContext('2d');
+          
+          canvas.width = 300;
+          canvas.height = 300;
+          
+          ctx?.drawImage(img, 0, 0, 300, 300);
+          
+          const resizedBase64 = canvas.toDataURL('image/png').split(',')[1];
+          
+          this.formularioProfesional.patchValue({
+            foto: resizedBase64
+          });
+        };
       };
+  
       reader.readAsDataURL(file);
     }
   }
@@ -166,26 +198,23 @@ export class RegistroComponent {
       this.registrarGerente(ingresante);
     } else {
       console.log('Datos Incompletos.');
-      console.log(this.formularioGeneral);
-      console.log(this.formularioProfesional);
     }
   }
 
   registrarPaciente(nuevoPaciente: Paciente){
     this.apiService.insertarPaciente(nuevoPaciente).subscribe();
-    this.ventanaActivaService.cambiarVentana('espera');
+    this.ventanaActivaService.navegar('inicio',6);
   }
 
   registrarProfesional(nuevoProfesional: Profesional){
     this.apiService.insertarProfesional(nuevoProfesional).subscribe();
-    this.ventanaActivaService.cambiarVentana('espera');
+    this.ventanaActivaService.navegar('inicio',6);
   }
 
   registrarGerente(nuevoGerente: Gerente){
     this.apiService.insertarGerente(nuevoGerente).subscribe();
-    this.ventanaActivaService.cambiarVentana('espera');
+    this.ventanaActivaService.navegar('inicio',6);
   }
 
-  refrescar() {this.ventanaActivaService.refrescar('registro')};
 }
 

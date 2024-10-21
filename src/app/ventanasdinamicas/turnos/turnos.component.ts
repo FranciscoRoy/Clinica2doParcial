@@ -44,7 +44,7 @@ export class TurnosComponent implements OnInit {
 
   turnoRechazar(paciente: string, especialidad: string, dia: string, horario: string, profesional: string){
     this.apiService.turnoAceptarCancelar(paciente, especialidad,dia,horario,profesional,-1,'').subscribe();
-    this.buscarTurnosActivos();
+    this.ventanaActivaService.navegar('turnos',3);
   }
 
   solicitarTurno(){
@@ -56,5 +56,4 @@ export class TurnosComponent implements OnInit {
     return 'PENDIENTE';
   }
 
-  refrescar() {this.ventanaActivaService.refrescar('turnos')};
 }

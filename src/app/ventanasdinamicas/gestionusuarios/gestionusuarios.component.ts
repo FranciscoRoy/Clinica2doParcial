@@ -61,36 +61,37 @@ export class GestionusuariosComponent implements OnInit{
 
   profesionalHabilitarDeshabilitar(email: string, estado: number){
     this.apiService.profesionalesActivarDesactivar(email,estado).subscribe();
+    this.ventanaActivaService.navegar('gestionUsuarios',3);
   }
 
   exportarPDF() {
     const doc = new jsPDF();
-    
-    /*Logo
+  
     const img = new Image();
-    img.src = this.logoUrl;
-
+    img.src = 'assets/images/logo_clinica.png';
+  
     img.onload = () => {
-      doc.addImage(img, 'PNG', 10, 10, 50, 20);
+      doc.addImage(img, 'PNG', 15, 5, 40, 40);
+      this.generarPDF(doc);
     };
-    */
+  }
 
+  generarPDF(doc: jsPDF) {
     doc.setFontSize(16);
     doc.text('Nómina de Especialistas', 70, 30);
-
-    let y = 50;//Posición inicial 
+  
+    let y = 50;
     this.usuariosActivos.forEach(especialista => {
       doc.setFontSize(10);
       doc.text(`${especialista.nombre + ' ' + especialista.apellido}`, 20, y);
       doc.text(`${especialista.dni}`, 60, y);
       doc.text(`${especialista.especialidad}`, 100, y);
       doc.text(`${especialista.email}`, 140, y);
-      y += 10;//Espacio entre filas
+      y += 10;
     });
-
+  
     doc.save('nomina_especialistas.pdf');
-  };
-
-  refrescar() {this.ventanaActivaService.refrescar('gestionUsuarios')};
+  }
+  
 }
 
