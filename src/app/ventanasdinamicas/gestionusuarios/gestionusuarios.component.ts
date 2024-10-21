@@ -78,7 +78,7 @@ export class GestionusuariosComponent implements OnInit{
     doc.setFontSize(16);
     doc.text('Nómina de Especialistas', 70, 30);
 
-    let y = 50; //Posición inicial 
+    let y = 50;//Posición inicial 
     this.usuariosActivos.forEach(especialista => {
       doc.setFontSize(10);
       doc.text(`${especialista.nombre + ' ' + especialista.apellido}`, 20, y);

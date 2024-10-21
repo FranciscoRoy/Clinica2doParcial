@@ -59,6 +59,7 @@ export interface Usuario {
     inicioAtencion: string;
     finAtencion: string;
     fotoEsp: string;
+    puntuacion: number;
   }
   
   export class Profesional implements Profesional { 

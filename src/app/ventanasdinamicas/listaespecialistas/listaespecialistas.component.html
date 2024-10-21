@@ -1,0 +1,31 @@
+<div class="filtros">
+    <label for="especialidad">Especialidad:</label>
+    <select id="especialidad" [(ngModel)]="filtroEspecialidad" (change)="onFiltroEspecialidadChange()">
+      <option value="">Todas</option>
+      <option *ngFor="let esp of especialidades" [value]="esp">{{ esp }}</option>
+    </select>
+  </div>
+  
+  <p>LISTADO DE PROFESIONALES</p>
+  <p *ngIf="!alMenosUnFiltroSeleccionado()">Por favor, selecciona la especialidad para comparar profesionales.</p>
+  
+  <div *ngIf="alMenosUnFiltroSeleccionado()">
+    <div *ngFor="let usuarioP of profesionalesFiltrados; let i = index" class="usuarioP">
+      <span><strong></strong> {{ i + 1 }}</span> |
+      <span><strong>Nombre:</strong> {{ usuarioP.nombre }}</span> |
+      <span><strong>Apellido:</strong> {{ usuarioP.apellido }}</span> |
+      <span><strong>Especialidad:</strong> {{ usuarioP.especialidad }}</span> |
+      <span><strong>Días Atención:</strong> {{ usuarioP.diasAtencion }}</span> |
+      <span><strong>Foto:</strong> <img [src]="usuarioP.foto" alt="Foto" /></span> |
+      <span><strong>Calificación Usuarios:</strong> {{ usuarioP.puntuacion }}</span> |
+    </div>
+  
+    <!-- Gráfico de barras -->
+    <div style="display: block; width: 50%; height: 300px; margin: 0 auto;">
+      <canvas baseChart
+              [data]="barChartData"
+              [type]="barChartType"
+              [options]="barChartOptions">
+      </canvas>
+    </div>
+  </div>
