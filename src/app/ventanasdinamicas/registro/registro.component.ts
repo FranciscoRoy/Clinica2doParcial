@@ -101,6 +101,36 @@ export class RegistroComponent {
     });
   }
 
+  fotoSeleccionada(event: any): void {
+    const file = event.target.files[0];
+    
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
+        const base64String = e.target.result.split(',')[1];
+        this.formularioGeneral.patchValue({
+          foto: base64String
+        });
+      };
+      reader.readAsDataURL(file);
+    }
+  }
+
+  fotoEspSeleccionada(event: any): void {
+    const file = event.target.files[0];
+    
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
+        const base64String = e.target.result.split(',')[1];
+        this.formularioProfesional.patchValue({
+          fotoEsp: base64String
+        });
+      };
+      reader.readAsDataURL(file);
+    }
+  }
+
   onSubmit() {
     if (this.formularioGeneral.valid && this.tipoUsuario == 'Paciente') {
       const ingresante = new Paciente(

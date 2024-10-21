@@ -19,8 +19,8 @@
     <input id="password" formControlName="password" type="password">
     
     <label for="foto">Foto:</label>
-    <input id="foto" formControlName="foto" type="text">
-    
+    <input type="file" id="foto" (change)="fotoSeleccionada($event)">
+        
     <button type="submit" *ngIf="tipoUsuario !== 'Profesional'">Registrarse</button>
 </form>
 
@@ -53,10 +53,10 @@
 
         </div>
       </div>
-
-      <label for="fotoEsp">Foto de Especialidad:</label>
-      <input id="fotoEsp" formControlName="fotoEsp" type="text">
       
+      <label for="fotoEsp">Foto de Especialidad:</label>
+      <input type="file" id="fotoEsp" (change)="fotoEspSeleccionada($event)">
+
       <button type="submit">Registrarse</button>
     </form>
 </div>
