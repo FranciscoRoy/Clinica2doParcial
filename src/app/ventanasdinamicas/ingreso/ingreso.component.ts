@@ -81,5 +81,6 @@ ingresarComoGerente(){
   );
 }
 
+refrescar() {this.ventanaActivaService.refrescar('ingreso')};
 
 }

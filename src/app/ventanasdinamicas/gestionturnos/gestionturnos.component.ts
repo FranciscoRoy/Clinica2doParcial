@@ -74,4 +74,6 @@ solicitarTurno(paciente: string, especialidad: string, dia: string, horario: str
   this.ventanaActivaService.cambiarVentana('turnos');
 }
 
+refrescar() {this.ventanaActivaService.refrescar('gestionTurnos')};
+
 }

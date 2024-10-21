@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Profesional } from '../../clases/usuario';
 import { ApiService } from '../../servicios/api.service';
 import { Turno } from '../../clases/turno';
 import { UsuarioActivoService } from '../../servicios/usuario-activo.service';
 import { NgFor, NgIf } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { VentanaActivaService } from '../../servicios/ventanaactiva.service';
 
 @Component({
   selector: 'app-gestionturnos-profesional',
@@ -23,7 +23,8 @@ export class GestionturnosProfesionalComponent implements OnInit{
 
   constructor(
     private apiService: ApiService,
-    private usuarioActivoService: UsuarioActivoService
+    private usuarioActivoService: UsuarioActivoService,
+    private ventanaActivaService: VentanaActivaService,
   ){}
 
   comentarios: string[] = [];
@@ -59,16 +60,17 @@ export class GestionturnosProfesionalComponent implements OnInit{
 
   turnoRechazar(paciente: string, especialidad: string, dia: string, horario: string){
     this.apiService.turnoAceptarCancelar(paciente, especialidad,dia,horario,this.profesional,-1,'').subscribe();
-    this.buscarTurnosPropios();
+    this.refrescar();
   }
 
   turnoAceptar(paciente: string, especialidad: string,dia: string, horario: string){
     this.apiService.turnoAceptarCancelar(paciente,especialidad,dia,horario,this.profesional,1,'').subscribe();
-    this.buscarTurnosPropios();
+    this.refrescar();
   }
 
   turnoFinalizar(paciente: string, especialidad: string, dia: string, horario: string, resena: string){
     this.apiService.turnoAceptarCancelar(paciente, especialidad,dia,horario,this.profesional,2,resena).subscribe();
+    this.refrescar();
   }
 
   obtenerEstado(estado: number){
@@ -119,5 +121,7 @@ export class GestionturnosProfesionalComponent implements OnInit{
     }
     return nuevaPalabra;
   }
+
+  refrescar() {this.ventanaActivaService.refrescar('gestionTurnosProfesional')};
 
 }

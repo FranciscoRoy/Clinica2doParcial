@@ -123,5 +123,6 @@ asignarTurno(paciente: string, especialidad: string, dia: string, horario: strin
   }
 }
 
+refrescar() {this.ventanaActivaService.refrescar('gestionTurnosGerente')};
 
 }

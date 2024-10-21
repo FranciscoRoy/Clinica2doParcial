@@ -4,6 +4,7 @@ import { Profesional } from '../../clases/usuario';
 import { ApiService } from '../../servicios/api.service';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
+import { VentanaActivaService } from '../../servicios/ventanaactiva.service';
 
 @Component({
   selector: 'app-gestionusuarios',
@@ -18,6 +19,7 @@ export class GestionusuariosComponent implements OnInit{
   
   constructor(
     private apiService: ApiService,
+    private ventanaActivaService: VentanaActivaService,
   ){}
 
   ngOnInit(): void {
@@ -89,5 +91,6 @@ export class GestionusuariosComponent implements OnInit{
     doc.save('nomina_especialistas.pdf');
   };
 
+  refrescar() {this.ventanaActivaService.refrescar('gestionUsuarios')};
 }
 

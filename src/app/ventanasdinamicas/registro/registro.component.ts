@@ -156,5 +156,6 @@ export class RegistroComponent {
     this.ventanaActivaService.cambiarVentana('espera');
   }
 
+  refrescar() {this.ventanaActivaService.refrescar('registro')};
 }
 

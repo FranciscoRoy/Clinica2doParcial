@@ -61,4 +61,6 @@ salir() {
   this.usuarioActivoService.cerrarSesion();
   this.ventanaActivaService.cambiarVentana('inicio');}
 
+refrescar() {this.ventanaActivaService.refrescar('inicio')};
+
 }

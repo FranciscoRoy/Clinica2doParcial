@@ -21,6 +21,7 @@ export class ValoracionesComponent {
   constructor(
     private apiService: ApiService,
     private usuarioActivoService: UsuarioActivoService,
+    private ventanaActivaService: VentanaActivaService,
   ){}
 
 
@@ -50,5 +51,7 @@ valorar(turno: any, calificacion: number) {
     console.error('Seleccione una calificación antes de valorar.');
   }
 }
+
+refrescar() {this.ventanaActivaService.refrescar('valoraciones')};
 
 }
