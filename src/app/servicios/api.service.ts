@@ -69,6 +69,11 @@ verTurnosActivos(emailIngresado: string): Observable<any>{
   return recuperarTurnosActivos;
 }
 
+verTurnosFinalizados(emailIngresado: string): Observable<any>{
+  var recuperarTurnosFinalizados = this.http.post<Turno[]>(this.apiUrl + 'buscarTurnosFinalizadosPaciente', {email: emailIngresado});
+  return recuperarTurnosFinalizados;
+}
+
 verTurnosActivosPorProfesional(profesionalIngresado: string): Observable<any>{
   var recuperarTurnosActivos = this.http.post<Turno[]>(this.apiUrl + 'buscarTurnosActivosPorProfesional', {profesional: profesionalIngresado});
   return recuperarTurnosActivos;
@@ -80,6 +85,10 @@ insertarTurno(nuevoTurno: Turno): Observable<any>{
 
 turnoAceptarCancelar(paciente: string, especialidad: string, dia: string, horario: string, profesional: string, accion: number): Observable<any>{
   return this.http.post(this.apiUrl + 'turnoAceptarCancelar', {paciente: paciente, especialidad: especialidad, dia: dia, horario: horario, profesional: profesional, accion: accion});
+}
+
+calificarProfesional(turno: Turno, calificacion: number): Observable<any>{
+  return this.http.post(this.apiUrl + 'calificarProfesional', {turno: turno, calificacion: calificacion});
 }
 
 }
