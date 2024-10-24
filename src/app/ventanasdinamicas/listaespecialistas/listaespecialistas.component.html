@@ -16,7 +16,7 @@
       <span><strong>Especialidad:</strong> {{ usuarioP.especialidad }}</span> |
       <span><strong>Días Atención:</strong> {{ usuarioP.diasAtencion }}</span> |
       <span><strong>Calificación Usuarios:</strong> {{ usuarioP.puntuacion }}</span> |
-      <img *ngIf="usuarioP.foto" [src]="'data:image/png;base64,' + usuarioP.foto" alt="Foto de {{ usuarioP.nombre }}"> |
+      <img *ngIf="usuarioP.foto" [src]="'data:image/png;base64,' + usuarioP.foto" alt="Foto de {{ usuarioP.nombre }}" class="imagen_dinamica"> |
     </div>
   
     <div style="display: block; width: 50%; height: 300px; margin: 0 auto;">

@@ -22,3 +22,10 @@ button {
 button:hover {
   background-color: var(--botonSeleccionado);
 }
+
+.imagen_dinamica {
+  border: 5px solid var(--borde);
+  padding: 5px;
+  box-sizing: border-box;
+  border-radius: 10px;
+}
