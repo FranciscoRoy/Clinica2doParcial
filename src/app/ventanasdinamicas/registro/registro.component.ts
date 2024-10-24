@@ -103,33 +103,58 @@ export class RegistroComponent {
 
   fotoSeleccionada(event: any): void {
     const file = event.target.files[0];
-    
+  
     if (file) {
       const reader = new FileReader();
-      
+  
       reader.onload = (e: any) => {
         const img = new Image();
         img.src = e.target.result;
-        
+  
         img.onload = () => {
           const canvas = document.createElement('canvas');
           const ctx = canvas.getContext('2d');
-          
+  
           canvas.width = 300;
           canvas.height = 300;
-          
+  
           ctx?.drawImage(img, 0, 0, 300, 300);
-          
-          const resizedBase64 = canvas.toDataURL('image/png').split(',')[1];
-          
+  
+          let quality = 0.9;  // Iniciamos con una calidad del 90%
+          let resizedBase64 = canvas.toDataURL('image/jpeg', quality);
+  
+          // Convertimos la base64 a un Blob para medir el tamaño
+          const blob = this.base64ToBlob(resizedBase64);
+  
+          // Reducimos la calidad si el tamaño del archivo es mayor a 100KB
+          while (blob.size > 100 * 1024 && quality > 0.1) {
+            quality -= 0.1;  // Reducimos la calidad
+            resizedBase64 = canvas.toDataURL('image/jpeg', quality);
+          }
+  
+          // Actualizamos el formulario con la imagen comprimida
           this.formularioGeneral.patchValue({
-            foto: resizedBase64
+            foto: resizedBase64.split(',')[1] // eliminamos el prefijo 'data:image/jpeg;base64,'
           });
         };
       };
   
       reader.readAsDataURL(file);
     }
+  }
+  
+  // Función para convertir base64 a Blob
+  base64ToBlob(base64: string): Blob {
+    const byteString = atob(base64.split(',')[1]);
+    const mimeString = base64.split(',')[0].split(':')[1].split(';')[0];
+  
+    const ab = new ArrayBuffer(byteString.length);
+    const ia = new Uint8Array(ab);
+    for (let i = 0; i < byteString.length; i++) {
+      ia[i] = byteString.charCodeAt(i);
+    }
+  
+    return new Blob([ab], { type: mimeString });
   }
 
   fotoEspSeleccionada(event: any): void {
