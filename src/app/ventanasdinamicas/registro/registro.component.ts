@@ -118,39 +118,37 @@ export class RegistroComponent {
           const originalWidth = img.width;
           const originalHeight = img.height;
   
-          // Determinamos el lado más corto y ajustamos el recorte
+          //RECORTE
           let cropX = 0, cropY = 0, cropSize = 0;
   
           if (originalWidth > originalHeight) {
             cropSize = originalHeight;
-            cropX = (originalWidth - cropSize) / 2;  // Recorte desde ambos lados del ancho
+            cropX = (originalWidth - cropSize) / 2;
           } else {
             cropSize = originalWidth;
-            cropY = (originalHeight - cropSize) / 2;  // Recorte desde ambos lados del alto
+            cropY = (originalHeight - cropSize) / 2;
           }
   
-          // Redimensionamos la imagen recortada a 300x300
-          canvas.width = 300;
-          canvas.height = 300;
+          //CAMBIO DE TAMAÑO
+          canvas.width = 150;
+          canvas.height = 150;
   
-          // Dibujamos la imagen recortada en el canvas
-          ctx?.drawImage(img, cropX, cropY, cropSize, cropSize, 0, 0, 300, 300);
+          ctx?.drawImage(img, cropX, cropY, cropSize, cropSize, 0, 0, 150, 150);
   
-          let quality = 0.9;  // Iniciamos con una calidad del 90%
+          //CALIDAD
+          let quality = 0.9;
           let resizedBase64 = canvas.toDataURL('image/jpeg', quality);
   
-          // Convertimos la base64 a un Blob para medir el tamaño
           const blob = this.base64ToBlob(resizedBase64);
   
-          // Reducimos la calidad si el tamaño del archivo es mayor a 100KB
+          //AJUSTE TAMAÑO
           while (blob.size > 100 * 1024 && quality > 0.1) {
-            quality -= 0.1;  // Reducimos la calidad
+            quality -= 0.1;
             resizedBase64 = canvas.toDataURL('image/jpeg', quality);
           }
   
-          // Actualizamos el formulario con la imagen comprimida
           this.formularioGeneral.patchValue({
-            foto: resizedBase64.split(',')[1]  // eliminamos el prefijo 'data:image/jpeg;base64,'
+            foto: resizedBase64.split(',')[1]
           });
         };
       };
@@ -159,7 +157,6 @@ export class RegistroComponent {
     }
   }
   
-  // Función para convertir base64 a Blob
   base64ToBlob(base64: string): Blob {
     const byteString = atob(base64.split(',')[1]);
     const mimeString = base64.split(',')[0].split(':')[1].split(';')[0];
