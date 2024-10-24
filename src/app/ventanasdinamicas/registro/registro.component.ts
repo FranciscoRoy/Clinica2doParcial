@@ -115,10 +115,26 @@ export class RegistroComponent {
           const canvas = document.createElement('canvas');
           const ctx = canvas.getContext('2d');
   
+          const originalWidth = img.width;
+          const originalHeight = img.height;
+  
+          // Determinamos el lado más corto y ajustamos el recorte
+          let cropX = 0, cropY = 0, cropSize = 0;
+  
+          if (originalWidth > originalHeight) {
+            cropSize = originalHeight;
+            cropX = (originalWidth - cropSize) / 2;  // Recorte desde ambos lados del ancho
+          } else {
+            cropSize = originalWidth;
+            cropY = (originalHeight - cropSize) / 2;  // Recorte desde ambos lados del alto
+          }
+  
+          // Redimensionamos la imagen recortada a 300x300
           canvas.width = 300;
           canvas.height = 300;
   
-          ctx?.drawImage(img, 0, 0, 300, 300);
+          // Dibujamos la imagen recortada en el canvas
+          ctx?.drawImage(img, cropX, cropY, cropSize, cropSize, 0, 0, 300, 300);
   
           let quality = 0.9;  // Iniciamos con una calidad del 90%
           let resizedBase64 = canvas.toDataURL('image/jpeg', quality);
@@ -134,7 +150,7 @@ export class RegistroComponent {
   
           // Actualizamos el formulario con la imagen comprimida
           this.formularioGeneral.patchValue({
-            foto: resizedBase64.split(',')[1] // eliminamos el prefijo 'data:image/jpeg;base64,'
+            foto: resizedBase64.split(',')[1]  // eliminamos el prefijo 'data:image/jpeg;base64,'
           });
         };
       };
