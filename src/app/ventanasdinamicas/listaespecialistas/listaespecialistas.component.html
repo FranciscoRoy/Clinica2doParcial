@@ -10,13 +10,16 @@
   <p *ngIf="!alMenosUnFiltroSeleccionado()">Por favor, selecciona la especialidad para comparar profesionales.</p>
   
   <div *ngIf="alMenosUnFiltroSeleccionado()">
-    <div *ngFor="let usuarioP of profesionalesFiltrados; let i = index" class="usuarioP">
-      <span><strong></strong> {{ i + 1 }}</span> |
-      <span><strong>Profesional:</strong> {{ usuarioP.nombre + ' ' + usuarioP.apellido}}</span> |
-      <span><strong>Especialidad:</strong> {{ usuarioP.especialidad }}</span> |
-      <span><strong>Días Atención:</strong> {{ usuarioP.diasAtencion }}</span> |
-      <span><strong>Calificación Usuarios:</strong> {{ usuarioP.puntuacion }}</span> |
-      <img *ngIf="usuarioP.foto" [src]="'data:image/png;base64,' + usuarioP.foto" alt="Foto de {{ usuarioP.nombre }}" class="imagen_dinamica"> |
+    <div *ngFor="let usuarioP of profesionalesFiltrados; let i = index" class="contenedor">
+      <div class="datos-usuario">
+        <img *ngIf="usuarioP.foto" [src]="'data:image/png;base64,' + usuarioP.foto" alt="Foto de {{ usuarioP.nombre }}" class="imagen_dinamica">
+        <div class="informacion">
+          <p>{{ usuarioP.nombre + ' ' + usuarioP.apellido}}</p>
+          <p><strong>Especialidad:</strong> {{ usuarioP.especialidad }}</p>
+          <p><strong>Días Atención:</strong> {{ usuarioP.diasAtencion }}</p>
+          <p><strong>Calificación Usuarios:</strong> {{ usuarioP.puntuacion }}</p>
+        </div>
+      </div>
     </div>
   
     <div style="display: block; width: 50%; height: 300px; margin: 0 auto;">
