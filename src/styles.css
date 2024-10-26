@@ -8,7 +8,7 @@
 
 * {
   font-family: Arial, sans-serif;
-  font-size: 12px;
+  font-size: 18px;
   text-align: center;
   background-color: var(--fondo);
 }
@@ -24,8 +24,12 @@ button:hover {
 }
 
 .imagen_dinamica {
-  border: 5px solid var(--borde);
+  border: 2px solid var(--borde);
   padding: 5px;
   box-sizing: border-box;
   border-radius: 10px;
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  margin-bottom: 20px;
 }

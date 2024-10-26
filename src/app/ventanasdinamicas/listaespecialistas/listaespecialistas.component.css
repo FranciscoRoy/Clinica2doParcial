@@ -13,13 +13,6 @@
     align-items: center;
   }
   
-  .imagen_dinamica {
-    width: 100px;
-    height: 100px;
-    object-fit: cover;
-    margin-bottom: 20px;
-  }
-  
   .informacionusuario {
     text-align: center;
   }

@@ -1,6 +1,6 @@
 .imagen_estatica {
-    width: 200px;
-    height: 100px;
+    width: 300px;
+    height: 120px;
     object-fit: cover;
     margin-bottom: 5px;
   }
