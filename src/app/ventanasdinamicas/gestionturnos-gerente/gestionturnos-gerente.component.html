@@ -33,9 +33,9 @@
 
         <button (click)="solicitarTurno(i)">Asignar Turno</button>
         <div *ngIf="mostrarCampoEmail === i">
-        <span><label for="email">Email el Paciente:</label></span>|
-        <span><input id="email" [(ngModel)]="emailTemporal" type="email"></span>|
-        <span><button (click)="asignarTurno(emailTemporal,turno.especialidad,turno.dia,turno.horario,turno.profesional)">Asignar</button></span> |
+          <span><label for="email">Email el Paciente:</label></span>|
+          <span><input id="email" [(ngModel)]="emailTemporal" type="email"></span>|
+          <span><button (click)="asignarTurno(emailTemporal,turno.especialidad,turno.dia,turno.horario,turno.profesional)">Asignar</button></span> |
         </div>|
 
         <span>{{ i + 1 }}</span> |
