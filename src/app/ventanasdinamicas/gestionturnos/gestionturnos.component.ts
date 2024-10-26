@@ -61,6 +61,12 @@ buscarTurnos(): void{
         if (!this.horarios.includes(turno.horario)) {this.horarios.push(turno.horario);};
         if (!this.profesionales.includes(turno.profesional)) {this.profesionales.push(turno.profesional);};
       });
+      this.horarios.sort((a, b) => {
+        const [horaA, minA] = a.split(':').map(Number);
+        const [horaB, minB] = b.split(':').map(Number);
+        return horaA !== horaB ? horaA - horaB : minA - minB;
+      });
+      this.profesionales.sort();
     },
     (error) => {
       console.error('Error:', error);
