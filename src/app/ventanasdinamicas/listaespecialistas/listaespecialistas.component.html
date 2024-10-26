@@ -6,23 +6,23 @@
     </select>
   </div>
   
-  <p>LISTADO DE PROFESIONALES</p>
   <p *ngIf="!alMenosUnFiltroSeleccionado()">Por favor, selecciona la especialidad para comparar profesionales.</p>
+  <p *ngIf="alMenosUnFiltroSeleccionado()">Profesionales de la especialidad: {{filtroEspecialidad}}</p>
   
   <div *ngIf="alMenosUnFiltroSeleccionado()">
     <div *ngFor="let usuarioP of profesionalesFiltrados; let i = index" class="contenedor">
-      <div class="datos-usuario">
+      <div class="fotousuario">
         <img *ngIf="usuarioP.foto" [src]="'data:image/png;base64,' + usuarioP.foto" alt="Foto de {{ usuarioP.nombre }}" class="imagen_dinamica">
-        <div class="informacion">
+      </div>
+      <div class="informacionusuario">
           <p>{{ usuarioP.nombre + ' ' + usuarioP.apellido}}</p>
-          <p><strong>Especialidad:</strong> {{ usuarioP.especialidad }}</p>
+          <!--<p><strong>Especialidad:</strong> {{ usuarioP.especialidad }}</p>-->
           <p><strong>Días Atención:</strong> {{ usuarioP.diasAtencion }}</p>
           <p><strong>Calificación Usuarios:</strong> {{ usuarioP.puntuacion }}</p>
-        </div>
       </div>
     </div>
   
-    <div style="display: block; width: 50%; height: 300px; margin: 0 auto;">
+    <div style="display: block; width: 50%; height: 300px; margin: 0 auto;" class="contenedor">
       <canvas baseChart
               [data]="barChartData"
               [type]="barChartType"

@@ -1,7 +1,3 @@
-<!--
-<p>Bienvenido Usuario {{ this.usuarioActual.getTipoUsuario() }}</p>
--->
-
 @switch(this.ventanaActivaActual){
     @case ('inicio') {<app-inicio></app-inicio>}
     @case ('ingreso') {<app-ingreso [tipoUsuario]=tipoUsuarioSolicitante></app-ingreso>}

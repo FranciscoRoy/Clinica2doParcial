@@ -78,7 +78,7 @@ export class GestionturnosGerenteComponent implements OnInit{
 
   cancelarTurno(paciente: string, especialidad: string,dia: string, horario: string, profesional: string){
     this.apiService.turnoAceptarCancelar(paciente, especialidad, dia, horario, profesional, -1,'').subscribe();
-    this.buscarTodosTurnosActivos();
+    this.ventanaActivaService.navegar('gestionTurnosGerente',3);
   }
 
 buscarTurnos(): void{

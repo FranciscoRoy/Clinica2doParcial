@@ -35,6 +35,7 @@
       <label for="diasAtencion">Días de Atención:</label>
       <div id="diasAtencion">
         <div *ngFor="let dia of dias; let i = index">
+
           <input type="checkbox" [value]="dia" (change)="onDiaChange($event)">{{ dia }}
 
           <label for="inicioAtencion-{{i}}">desde:</label>

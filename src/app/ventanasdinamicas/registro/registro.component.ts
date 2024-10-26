@@ -17,8 +17,10 @@ export class RegistroComponent {
   @Input() tipoUsuario: string;
   formularioGeneral: FormGroup;
   formularioProfesional: FormGroup;
+
   dias: string[] = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
   diasSeleccionados: string[] = [];
+
   horarios: string[] = ['08:00', '08:30', '09:00', '09:30', '10:00', '10:30', '11:00', '11:30', '12:00', '12:30', '13:00', '13:30', '14:00', '14:30', '15:00', '15:30', '16:00', '16:30', '17:00', '17:30', '18:00', '18:30', '19:00', '19:30', '20:00'];
   horariosfin: string[] = [];
   inicioSeleccionado: string = '';
@@ -157,6 +159,62 @@ export class RegistroComponent {
     }
   }
   
+  fotoEspSeleccionada(event: any): void {
+    const file = event.target.files[0];
+  
+    if (file) {
+      const reader = new FileReader();
+  
+      reader.onload = (e: any) => {
+        const img = new Image();
+        img.src = e.target.result;
+  
+        img.onload = () => {
+          const canvas = document.createElement('canvas');
+          const ctx = canvas.getContext('2d');
+  
+          const originalWidth = img.width;
+          const originalHeight = img.height;
+  
+          //RECORTE
+          let cropX = 0, cropY = 0, cropSize = 0;
+  
+          if (originalWidth > originalHeight) {
+            cropSize = originalHeight;
+            cropX = (originalWidth - cropSize) / 2;
+          } else {
+            cropSize = originalWidth;
+            cropY = (originalHeight - cropSize) / 2;
+          }
+  
+          //CAMBIO DE TAMAÑO
+          canvas.width = 150;
+          canvas.height = 150;
+  
+          ctx?.drawImage(img, cropX, cropY, cropSize, cropSize, 0, 0, 150, 150);
+  
+          //CALIDAD
+          let quality = 0.9;
+          let resizedBase64 = canvas.toDataURL('image/jpeg', quality);
+  
+          const blob = this.base64ToBlob(resizedBase64);
+  
+          //AJUSTE TAMAÑO
+          while (blob.size > 100 * 1024 && quality > 0.1) {
+            quality -= 0.1;
+            resizedBase64 = canvas.toDataURL('image/jpeg', quality);
+          }
+  
+          this.formularioProfesional.patchValue({
+            fotoEsp: resizedBase64.split(',')[1]
+          });
+        };
+      };
+  
+      reader.readAsDataURL(file);
+    }
+  }
+
   base64ToBlob(base64: string): Blob {
     const byteString = atob(base64.split(',')[1]);
     const mimeString = base64.split(',')[0].split(':')[1].split(';')[0];
@@ -168,37 +226,6 @@ export class RegistroComponent {
     }
   
     return new Blob([ab], { type: mimeString });
-  }
-
-  fotoEspSeleccionada(event: any): void {
-    const file = event.target.files[0];
-    
-    if (file) {
-      const reader = new FileReader();
-      
-      reader.onload = (e: any) => {
-        const img = new Image();
-        img.src = e.target.result;
-        
-        img.onload = () => {
-          const canvas = document.createElement('canvas');
-          const ctx = canvas.getContext('2d');
-          
-          canvas.width = 300;
-          canvas.height = 300;
-          
-          ctx?.drawImage(img, 0, 0, 300, 300);
-          
-          const resizedBase64 = canvas.toDataURL('image/png').split(',')[1];
-          
-          this.formularioProfesional.patchValue({
-            foto: resizedBase64
-          });
-        };
-      };
-  
-      reader.readAsDataURL(file);
-    }
   }
 
   onSubmit() {
