@@ -6,6 +6,7 @@ import { VentanaActivaService } from '../../servicios/ventanaactiva.service';
 import { NgFor, NgIf } from '@angular/common';
 import especialidadesData from '../../archivos/lista_especialidades.json';
 import horariosData from '../../archivos/lista_horarios.json';
+import * as logoEspecialidadData from '../../archivos/logos_especialidades.json';
 
 @Component({
   selector: 'app-registro',
@@ -31,6 +32,8 @@ export class RegistroComponent {
   diasSeleccionados: string[] = [];
   inicioAtencionSeleccionados: string[] = [];
   finAtencionSeleccionados: string[] = [];
+
+  logoEspecialidad: { [key: string]: string } = logoEspecialidadData;
 
   constructor(
     private fb: FormBuilder,
@@ -169,60 +172,18 @@ export class RegistroComponent {
   }
   
   fotoEspSeleccionada(event: any): void {
-    const file = event.target.files[0];
-  
-    if (file) {
-      const reader = new FileReader();
-  
-      reader.onload = (e: any) => {
-        const img = new Image();
-        img.src = e.target.result;
-  
-        img.onload = () => {
-          const canvas = document.createElement('canvas');
-          const ctx = canvas.getContext('2d');
-  
-          const originalWidth = img.width;
-          const originalHeight = img.height;
-  
-          //RECORTE
-          let cropX = 0, cropY = 0, cropSize = 0;
-  
-          if (originalWidth > originalHeight) {
-            cropSize = originalHeight;
-            cropX = (originalWidth - cropSize) / 2;
-          } else {
-            cropSize = originalWidth;
-            cropY = (originalHeight - cropSize) / 2;
-          }
-  
-          //CAMBIO DE TAMAÑO
-          canvas.width = 150;
-          canvas.height = 150;
-  
-          ctx?.drawImage(img, cropX, cropY, cropSize, cropSize, 0, 0, 150, 150);
-  
-          //CALIDAD
-          let quality = 0.9;
-          let resizedBase64 = canvas.toDataURL('image/jpeg', quality);
-  
-          const blob = this.base64ToBlob(resizedBase64);
-  
-          //AJUSTE TAMAÑO
-          while (blob.size > 100 * 1024 && quality > 0.1) {
-            quality -= 0.1;
-            resizedBase64 = canvas.toDataURL('image/jpeg', quality);
-          }
-  
-          this.formularioProfesional.patchValue({
-            fotoEsp: resizedBase64.split(',')[1]
-          });
-        };
-      };
-  
-      reader.readAsDataURL(file);
-    }
-  }
+    const espSelec = event.target.value;
+    console.log(espSelec);
+
+    const imagenEspData: string = this.logoEspecialidad[espSelec];
+
+    console.log(imagenEspData);
+
+    this.formularioProfesional.patchValue({
+      fotoEsp: imagenEspData
+    });
+
+  };
 
   base64ToBlob(base64: string): Blob {
     const byteString = atob(base64.split(',')[1]);

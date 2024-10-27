@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import logoEspecialidad from '../../archivos/especialidades/pediatria.json';
+import logoEspecialidad from '../../archivos/logos_especialidades.json';
 
 @Component({
   selector: 'app-tarjetausuario',
@@ -17,7 +17,7 @@ export class TarjetaUsuarioComponent implements OnInit {
 
 
   ngOnInit() {
-    this.imagenData = logoEspecialidad.toString();
+    this.imagenData = logoEspecialidad.Ginecología.toString();
   }
 
 }
