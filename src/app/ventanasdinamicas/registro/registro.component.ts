@@ -21,6 +21,8 @@ export class RegistroComponent {
   formularioGeneral: FormGroup;
   formularioProfesional: FormGroup;
 
+  claveGerencia: string = '';
+
   especialidades: string[] = [];
   dias: string[] = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
   horarios: string[] = [];
@@ -43,11 +45,11 @@ export class RegistroComponent {
     this.tipoUsuario = 'Invitado';
 
     this.formularioGeneral = this.fb.group({
-      nombre: ['', Validators.required],
-      apellido: ['', Validators.required],
-      dni: ['', Validators.required],
+      nombre: ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿ\u00f1\u00d1\s]+$/)]],
+      apellido: ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ÿ\u00f1\u00d1\s]+$/)]],
+      dni: ['', [Validators.required, Validators.pattern(/^\d+$/)]],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required],
+      password: ['', [Validators.required, Validators.minLength(8), Validators.pattern(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]+$/)]],
       foto: ['', Validators.required]
     });
     this.formularioProfesional = this.fb.group({
@@ -173,16 +175,11 @@ export class RegistroComponent {
   
   fotoEspSeleccionada(event: any): void {
     const espSelec = event.target.value;
-    console.log(espSelec);
-
     const imagenEspData: string = this.logoEspecialidad[espSelec];
-
-    console.log(imagenEspData);
 
     this.formularioProfesional.patchValue({
       fotoEsp: imagenEspData
     });
-
   };
 
   base64ToBlob(base64: string): Blob {
@@ -199,7 +196,6 @@ export class RegistroComponent {
   }
 
   onSubmit() {
-    console.log(this.formularioProfesional);
     if (this.formularioGeneral.valid && this.tipoUsuario == 'Paciente') {
       const ingresante = new Paciente(
         this.formularioGeneral.value.nombre,
@@ -248,8 +244,10 @@ export class RegistroComponent {
   }
 
   registrarGerente(nuevoGerente: Gerente){
-    this.apiService.insertarGerente(nuevoGerente).subscribe();
-    this.ventanaActivaService.navegar('inicio',6);
+    if (this.claveGerencia === 'LEV79') {
+      this.apiService.insertarGerente(nuevoGerente).subscribe();
+      this.ventanaActivaService.navegar('inicio',6);
+    }
   }
 
 }

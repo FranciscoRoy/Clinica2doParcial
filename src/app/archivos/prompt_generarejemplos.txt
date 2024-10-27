@@ -1,0 +1,31 @@
+chat, ayudame a crear varios profesionales en mi base de datos phpmyadmin para mi tabla UsuarioProfesional.
+Esta tabla tiene las entradas nombre, apellido, dni, email, password, foto, acceso, activo, especialidad, diasAtencion, inicioAtencion, finAtencion, fotoEsp, cantServicios, puntuacion
+
+vamos a crear 35 profesionales con datos al azar pero al menos uno de cada especialidad, las especialidades son:
+  "Clínica Médica",
+  "Cardiología",
+  "Dermatología",
+  "Ginecología",
+  "Odontología",
+  "Oftalmología",
+  "Pediatría",
+  "Psiquiatría",
+  "Neurología",
+  "Traumatología",
+  "Urología"
+
+Todos deberan tener acceso = 2 y activo = 1;
+
+todos van a tener como foto y fotoEsp una linea de caracteres simple: "X"
+
+los días de atención van de lunes a sábado se ingresan con tíldes y mayúscula en la primer letra, además para los profesionales que atienden más de un día el formato de ingreso es el siguiente: si por ejemplo atiende lunes de 08:30 a 15:00, martes de 09:00 a 14:00 y sábado de 14:00 a 17:30 se ingresará en diasAtencion: "Lunes/Martes/Sábado", en inicioAtencion: "08:30/09:00/14:00" y en finAtencion: "15:00/14:00/17:30". Los horarios sólo pueden ser horas completas o con 30 minutos.
+
+2 de los profesionales trabajan 2 días de la semana, 15 trabajan 3 días de la semana, 10 trabajan 4 días de la semana, y 3 trabajan 5 días de la semana.
+
+Los horarios van desde las 08:00 hasta las 20:00
+
+randomiza las contraseñas como combinaciones de letras y números, al menos 8 caracteres
+
+la puntuación es un valor al azar entre 100 y 500 siendo 100 muy bajo y 500 muy bueno. No uses floor rand, dale un valor directamente, elegilo vos.
+cantServicios es un valor entre 10 y 70. No uses floor rand, dale un valor directamente, elegilo vos.
+

@@ -36,6 +36,12 @@
       <button type="submit" *ngIf="tipoUsuario !== 'Profesional'">Registrarse</button>
   </form>
 
+  <div *ngIf="tipoUsuario === 'Gerente'">
+    <div class="form-group">
+      <label for="clave">Clave:</label>
+      <input id="clave" [(ngModel)]="claveGerencia" type="text">
+    </div>
+  </div>
 
   <div *ngIf="tipoUsuario === 'Profesional'">
       <form (ngSubmit)="onSubmit()" [formGroup]="formularioProfesional" class="formulario-datos">
