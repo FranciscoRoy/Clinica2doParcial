@@ -27,6 +27,7 @@ export class TarjetaUsuarioComponent implements OnInit {
         this.fotoUsuario = user.foto;
       }
     });
+    
   }
 
   ngOnDestroy() {

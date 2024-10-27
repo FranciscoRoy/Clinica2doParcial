@@ -14,7 +14,7 @@
 </div>
 
 <div *ngIf="tipoUsuarioActivo === 'Paciente'">
-    <p>Bienvenido {{ alias }} (paciente)</p>
+    <p>Bienvenido/a {{ alias }} (paciente)</p>
     <button (click)="irDatosPersonales()">Ver mis Datos</button>
     <button (click)="irTurnos()">Ver mis Turnos</button>
     <button (click)="irAyuda()">Ayuda</button>
@@ -23,7 +23,7 @@
 </div>
 
 <div *ngIf="tipoUsuarioActivo === 'Profesional'">
-    <p>Bienvenido {{ alias }} (profesional)</p>
+    <p>Bienvenido/a {{ alias }} (profesional)</p>
     <button (click)="irDatosPersonales()">Ver mis Datos</button>
     <button (click)="irTurnosProfesional()">Gestionar mis Turnos</button>
     <button (click)="irAyuda()">Ayuda</button>
@@ -31,7 +31,7 @@
 </div>
 
 <div *ngIf="tipoUsuarioActivo === 'Gerente'">
-    <p>Bienvenido {{ alias }} (gerente)</p>
+    <p>Bienvenido/a {{ alias }} (gerente)</p>
     <button (click)="irDatosPersonales()">Ver mis Datos</button>
     <button (click)="irGestionUsuarios()">Gestionar Usuarios</button>
     <button (click)="irGestionTurnosGerente()">Gestionar Turnos</button>

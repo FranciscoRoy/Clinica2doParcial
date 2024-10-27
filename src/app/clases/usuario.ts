@@ -1,3 +1,5 @@
+import ImagenInvitadoData from '../archivos/imagen_invitado.json';
+
 export interface Usuario {
     nombre: string;
     apellido: string;
@@ -13,12 +15,12 @@ export interface Usuario {
   }
   
   export class UsuariosinIngresar implements Usuario {
-    nombre = '';
-    apellido = '';
+    nombre = 'Usuario';
+    apellido = 'Invitado';
     dni = 0;
     email = '';
     password = '';
-    foto = '';
+    foto = ImagenInvitadoData.toString();;
     acceso = 0;
 
     getAcceso(): number {return this.acceso;}
