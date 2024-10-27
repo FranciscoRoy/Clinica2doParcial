@@ -33,15 +33,15 @@
       <input type="file" id="foto" (change)="fotoSeleccionada($event)">
     </div>
 
-      <button type="submit" *ngIf="tipoUsuario !== 'Profesional'">Registrarse</button>
-  </form>
-
-  <div *ngIf="tipoUsuario === 'Gerente'">
-    <div class="form-group">
-      <label for="clave">Clave:</label>
-      <input id="clave" [(ngModel)]="claveGerencia" type="text">
+    <div *ngIf="tipoUsuario === 'Gerente'">
+      <div class="form-group">
+        <label for="clave">Clave:</label>
+        <input id="clave" [(ngModel)]="claveGerencia" type="text" [ngModelOptions]="{standalone: true}">
+      </div>
     </div>
-  </div>
+
+    <button type="submit" *ngIf="tipoUsuario !== 'Profesional'">Registrarse</button>
+  </form>
 
   <div *ngIf="tipoUsuario === 'Profesional'">
       <form (ngSubmit)="onSubmit()" [formGroup]="formularioProfesional" class="formulario-datos">

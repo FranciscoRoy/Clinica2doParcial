@@ -42,7 +42,7 @@ export class BarrademenuComponent implements OnInit {
     this.ventanaActivaService.cambiarVentana('ingreso');}
 
   misDatos() {
-    this.ventanaActivaService.cambiarVentana('datospersonales');}
+    this.ventanaActivaService.cambiarVentana('datosPersonales');}
 
   misTurnos() {
     this.ventanaActivaService.cambiarVentana('turnos');}
@@ -65,10 +65,6 @@ export class BarrademenuComponent implements OnInit {
     
   atras(){
     this.ventanaActivaService.historial(-1);
-  }
-
-  adelante(){
-    this.ventanaActivaService.historial(1);
   }
 
   cambiarColores(paleta: string | null){
