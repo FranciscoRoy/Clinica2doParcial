@@ -63,6 +63,11 @@ input {
   margin-bottom: 20px;
 }
 
+.imagen_estatica {
+  object-fit: cover;
+  margin-bottom: 5px;
+}
+
 .contenedor-lista {
   max-height: 300px;
   overflow-y: auto;

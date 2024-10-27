@@ -5,3 +5,8 @@
     justify-content: center;
     margin: 10px 0;
 }
+
+.imagen_estatica {
+    width: 250px;
+    height: 250px;
+}
