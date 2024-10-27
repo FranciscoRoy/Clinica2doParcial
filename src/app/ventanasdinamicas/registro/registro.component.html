@@ -49,6 +49,7 @@
       <div class="form-group">
         <label for="diasAtencion">Días de Atención:</label>
         <div id="diasAtencion">
+
           <div *ngFor="let dia of dias; let i = index">
 
             <div class="lista-elemento">
@@ -56,25 +57,23 @@
               <p>{{ dia }}</p>
 
               <div *ngIf="diasSeleccionados.includes(dia)">
-
-                  <select id="inicioAtencion-{{i}}" [(ngModel)]="inicioSeleccionado" [ngModelOptions]="{standalone: true}" (change)="onInicioAtencionChange($event, i)">
+                  <select id="inicioAtencion-{{i}}" [(ngModel)]="inicioSeleccionado[i]" (change)="onInicioAtencionChange($event, i)">
                     <option value="" disabled selected>desde</option>
                     <option *ngFor="let inicio of horarios" [value]="inicio">{{ inicio }}</option>
                   </select>
-
               </div>
 
               <div *ngIf="diasSeleccionados.includes(dia)">
-
-                  <select id="finAtencion-{{i}}" [ngModelOptions]="{standalone: true}" [(ngModel)]="finSeleccionado" (change)="onFinAtencionChange($event, i)">
+                  <select id="finAtencion-{{i}}" [(ngModel)]="finSeleccionado[i]" (change)="onFinAtencionChange($event, i)">
                     <option value="" disabled selected>hasta</option>
                     <option *ngFor="let fin of horariosfin[i]" [value]="fin">{{ fin }}</option>
                   </select>
-
               </div>
+
             </div>
 
           </div>
+
         </div>
       </div>
 

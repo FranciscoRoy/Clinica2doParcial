@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, ReactiveFormsModule, FormsModule} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule, FormsModule, FormControl, FormControlName} from '@angular/forms';
 import { Gerente, Paciente, Profesional } from '../../clases/usuario';
 import { ApiService } from '../../servicios/api.service';
 import { VentanaActivaService } from '../../servicios/ventanaactiva.service';
@@ -20,14 +20,16 @@ export class RegistroComponent {
   formularioGeneral: FormGroup;
   formularioProfesional: FormGroup;
 
+  
+
   dias: string[] = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
   
   especialidades: string[] = [];
   horarios: string[] = [];
 
   horariosfin: string[][] = [[], [], [], [], [], []];
-  inicioSeleccionado: string = '';
-  finSeleccionado: string = '';
+  inicioSeleccionado: string[] = [];
+  finSeleccionado: string[] = [];
 
   diasSeleccionados: string[] = [];
 
@@ -49,7 +51,6 @@ export class RegistroComponent {
       password: ['', Validators.required],
       foto: ['', Validators.required]
     });
-
     this.formularioProfesional = this.fb.group({
       especialidad: ['', Validators.required],
       diasAtencion: ['', Validators.required],
