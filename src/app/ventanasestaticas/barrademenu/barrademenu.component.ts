@@ -6,6 +6,8 @@ import { NgSwitch, NgSwitchCase, NgSwitchDefault } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ColoresService } from '../../servicios/colores.service';
 
+import logoClinicaData from '../../archivos/logo_clinica.json';
+
 @Component({
   selector: 'app-barrademenu',
   standalone: true,
@@ -18,6 +20,8 @@ export class BarrademenuComponent implements OnInit {
   selectedTipoUsuario: string = '';
   paletaDefault = 'azules';
 
+  imagenData: string = '';
+  
   constructor(
     private ventanaActivaService: VentanaActivaService,
     private usuarioActivoService: UsuarioActivoService,
@@ -28,6 +32,7 @@ export class BarrademenuComponent implements OnInit {
     this.usuarioActivoService.usuarioActual$.subscribe(usuario => {
       this.usuarioActivo = usuario;
     });
+    this.imagenData = logoClinicaData.toString();
   }
   
   inicio() {

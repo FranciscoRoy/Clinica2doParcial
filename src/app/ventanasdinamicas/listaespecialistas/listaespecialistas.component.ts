@@ -6,11 +6,8 @@ import { FormsModule } from '@angular/forms';
 import { NgFor, NgIf } from '@angular/common';
 import { ChartConfiguration, ChartOptions, ChartType } from 'chart.js'; 
 import { BaseChartDirective } from 'ng2-charts';
-
-// Importa los módulos de Chart.js que vas a utilizar
 import { Chart, registerables } from 'chart.js';
 
-// Registra los componentes de Chart.js
 Chart.register(...registerables);
 
 @Component({
@@ -21,7 +18,7 @@ Chart.register(...registerables);
   styleUrls: ['./listaespecialistas.component.css']
 })
 export class ListaespecialistasComponent {
-  @ViewChild(BaseChartDirective) chart!: BaseChartDirective; // Agregar esto para acceder al gráfico
+  @ViewChild(BaseChartDirective) chart!: BaseChartDirective;
   usuariosActivos: Profesional[] = [];
   filtroEspecialidad: string = '';
 
