@@ -1,0 +1,9 @@
+.horarios {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+.lista-elemento {
+  grid-template-columns: 10px 100px 75px 75px;
+}

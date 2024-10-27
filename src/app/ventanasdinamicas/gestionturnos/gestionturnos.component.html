@@ -28,10 +28,12 @@
 <p *ngIf="alMenosUnFiltroSeleccionado()">Turnos disponibles para {{filtroEspecialidad}}</p>
 
 <div *ngIf="alMenosUnFiltroSeleccionado()" class="contenedor-lista">
+
     <div *ngFor="let turno of turnosFiltrados(); let i = index" class="lista-elemento">
       <button (click)="solicitarTurno(emailPaciente, turno.especialidad, turno.dia, turno.horario, turno.profesional)">Solicitar</button>
       <p class="dia">{{ turno.dia }}</p>
       <p class="horario">{{ turno.horario }}</p>
       <p class="profesional">{{ turno.profesional }}</p>
     </div>
+    
 </div>

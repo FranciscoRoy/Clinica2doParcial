@@ -4,6 +4,8 @@ import { Gerente, Paciente, Profesional } from '../../clases/usuario';
 import { ApiService } from '../../servicios/api.service';
 import { VentanaActivaService } from '../../servicios/ventanaactiva.service';
 import { NgFor, NgIf } from '@angular/common';
+import especialidadesData from '../../clases/lista_especialidades.json';
+import horariosData from '../../clases/lista_horarios.json';
 
 @Component({
   selector: 'app-registro',
@@ -19,16 +21,19 @@ export class RegistroComponent {
   formularioProfesional: FormGroup;
 
   dias: string[] = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
-  diasSeleccionados: string[] = [];
+  
+  especialidades: string[] = [];
+  horarios: string[] = [];
 
-  horarios: string[] = ['08:00', '08:30', '09:00', '09:30', '10:00', '10:30', '11:00', '11:30', '12:00', '12:30', '13:00', '13:30', '14:00', '14:30', '15:00', '15:30', '16:00', '16:30', '17:00', '17:30', '18:00', '18:30', '19:00', '19:30', '20:00'];
-  horariosfin: string[] = [];
+  horariosfin: string[][] = [[], [], [], [], [], []];
   inicioSeleccionado: string = '';
   finSeleccionado: string = '';
+
+  diasSeleccionados: string[] = [];
+
   inicioAtencionSeleccionados: string[] = [];
   finAtencionSeleccionados: string[] = [];
-  especialidades: string[] = ['Clínica Médica', 'Cardiología', 'Dermatología', 'Ginecología', 'Oftalmología', 'Pediatría', 'Psiquiatría', 'Neurología', 'Traumatología', 'Urología'];
-  
+
   constructor(
     private fb: FormBuilder,
     private apiService: ApiService,
@@ -55,27 +60,28 @@ export class RegistroComponent {
 
   }
 
-  onDiaChange(event: any): void {
+  ngOnInit(): void {
+    especialidadesData.forEach(especialidad => {this.especialidades.push(especialidad);});
+    horariosData.forEach(horario => {this.horarios.push(horario);});
+  }
+
+  onDiaChange(event: any, index: number): void {
     const dia = event.target.value;
     if (event.target.checked) {
       this.diasSeleccionados.push(dia);
     } else {
-      const index = this.diasSeleccionados.indexOf(dia);
       if (index > -1) {
         this.diasSeleccionados.splice(index, 1);
       }
     }
-    this.formularioProfesional.patchValue({
-      diasAtencion: this.diasSeleccionados.join('/')
-    });
+    this.formularioProfesional.patchValue({diasAtencion: this.diasSeleccionados.join('/')});
   }
 
-  onInicioAtencionChange(event: any, dia: string): void {
+  onInicioAtencionChange(event: any, index: number): void {
     const inicio = event.target.value;
     if (event.target.value) {
       this.inicioAtencionSeleccionados.push(inicio);
     } else {
-      const index = this.diasSeleccionados.indexOf(dia);
       if (index > -1) {
         this.inicioAtencionSeleccionados.splice(index, 1);
       }
@@ -83,17 +89,15 @@ export class RegistroComponent {
     this.formularioProfesional.patchValue({
       inicioAtencion: this.inicioAtencionSeleccionados.join('/')
     });
-    const indexInicio = this.horarios.indexOf(inicio);
-    this.horariosfin = this.horarios.slice(indexInicio+1);
-
+    var indexInicio = this.horarios.indexOf(inicio);
+    this.horariosfin[index] = this.horarios.slice(indexInicio+1);
   }
 
-  onFinAtencionChange(event: any, dia: string): void {
+  onFinAtencionChange(event: any, index: number): void {
     const fin = event.target.value;
     if (event.target.value) {
       this.finAtencionSeleccionados.push(fin);
     } else {
-      const index = this.diasSeleccionados.indexOf(dia);
       if (index > -1) {
         this.finAtencionSeleccionados.splice(index, 1);
       }
