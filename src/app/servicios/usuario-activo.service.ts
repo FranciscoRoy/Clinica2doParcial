@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Gerente, Paciente, Profesional, Usuario, UsuariosinIngresar } from '../clases/usuario';
-import { VentanaActivaService } from './ventanaactiva.service';
 
 @Injectable({
   providedIn: 'root'
