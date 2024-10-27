@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import logoEspecialidad from '../../archivos/logos_especialidades.json';
+import { UsuarioActivoService } from '../../servicios/usuario-activo.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-tarjetausuario',
@@ -10,14 +11,28 @@ import logoEspecialidad from '../../archivos/logos_especialidades.json';
 })
 
 export class TarjetaUsuarioComponent implements OnInit {
-  @Input() nombreUsuario: string = 'Nombre del Usuario';
-  @Input() imagenUrl: string = 'ruta/a/imagen.jpg';
+  nombreUsuario: string = '';
+  fotoUsuario: string = '';
+  private subscription: Subscription = new Subscription;
 
-  imagenData: string = '';
-
+  constructor(
+    private usuarioActivoService: UsuarioActivoService
+  ){}
 
   ngOnInit() {
-    this.imagenData = logoEspecialidad.Ginecología.toString();
+    this.subscription = this.usuarioActivoService.usuarioActual$.subscribe(usuario => {
+      if (usuario) {
+        const user = this.usuarioActivoService.getUsuarioActivo()
+        this.nombreUsuario = user.nombre + ' ' + user.apellido;
+        this.fotoUsuario = user.foto;
+      }
+    });
+  }
+
+  ngOnDestroy() {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
 
 }
