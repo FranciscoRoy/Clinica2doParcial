@@ -1,87 +1,89 @@
 <p>Registrarse como {{tipoUsuario}}</p>
 
-<form (ngSubmit)="onSubmit()" [formGroup]="formularioGeneral" class="formulario-datos">
-  
-  <div class="form-group">
-    <label for="nombre">Nombre:</label>
-    <input id="nombre" formControlName="nombre" type="text">
-  </div>
+<div class="contenedor-lista">
+  <form (ngSubmit)="onSubmit()" [formGroup]="formularioGeneral">
+    
+    <div class="form-group">
+      <label for="nombre">Nombre:</label>
+      <input id="nombre" formControlName="nombre" type="text">
+    </div>
 
-  <div class="form-group">
-    <label for="apellido">Apellido:</label>
-    <input id="apellido" formControlName="apellido" type="text">
-  </div>
+    <div class="form-group">
+      <label for="apellido">Apellido:</label>
+      <input id="apellido" formControlName="apellido" type="text">
+    </div>
 
-  <div class="form-group">
-    <label for="dni">DNI:</label>
-    <input id="dni" formControlName="dni" type="number">
-  </div>
+    <div class="form-group">
+      <label for="dni">DNI:</label>
+      <input id="dni" formControlName="dni" type="number">
+    </div>
 
-  <div class="form-group">
-    <label for="email">Email:</label>
-    <input id="email" formControlName="email" type="email">
-  </div>
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input id="email" formControlName="email" type="email">
+    </div>
 
-  <div class="form-group">
-    <label for="password">Password:</label>
-    <input id="password" formControlName="password" type="password">
-  </div>
+    <div class="form-group">
+      <label for="password">Password:</label>
+      <input id="password" formControlName="password" type="password">
+    </div>
 
-  <div class="form-group">
-    <label for="foto">Foto:</label>
-    <input type="file" id="foto" (change)="fotoSeleccionada($event)">
-  </div>
+    <div class="form-group">
+      <label for="foto">Foto:</label>
+      <input type="file" id="foto" (change)="fotoSeleccionada($event)">
+    </div>
 
-    <button type="submit" *ngIf="tipoUsuario !== 'Profesional'">Registrarse</button>
-</form>
+      <button type="submit" *ngIf="tipoUsuario !== 'Profesional'">Registrarse</button>
+  </form>
 
 
-<div *ngIf="tipoUsuario === 'Profesional'">
-    <form (ngSubmit)="onSubmit()" [formGroup]="formularioProfesional" class="formulario-datos">
+  <div *ngIf="tipoUsuario === 'Profesional'">
+      <form (ngSubmit)="onSubmit()" [formGroup]="formularioProfesional" class="formulario-datos">
 
-      <div class="form-group">
-        <label for="especialidad">Especialidad:</label>
-        <select id="especialidad" formControlName="especialidad">
-          <option *ngFor="let especialidad of especialidades" [value]="especialidad">{{ especialidad }}</option>
-        </select>
-      </div>      
+        <div class="form-group">
+          <label for="especialidad">Especialidad:</label>
+          <select id="especialidad" formControlName="especialidad">
+            <option *ngFor="let especialidad of especialidades" [value]="especialidad">{{ especialidad }}</option>
+          </select>
+        </div>      
 
-      <div class="form-group">
-        <label for="diasAtencion">Días de Atención:</label>
-        <div id="diasAtencion">
+        <div class="form-group">
+          <label for="diasAtencion">Días de Atención:</label>
+          <div id="diasAtencion">
 
-          <div *ngFor="let dia of dias; let i = index">
+            <div *ngFor="let dia of dias; let i = index">
 
-            <div class="lista-elemento">
-              <input type="checkbox" [value]="dia" (change)="onDiaChange($event, i)">
-              <p>{{ dia }}</p>
+              <div class="lista-elemento">
+                <input type="checkbox" [value]="dia" (change)="onDiaChange($event, i)">
+                <p>{{ dia }}</p>
 
-              <div *ngIf="diasSeleccionados.includes(dia)">
-                  <select id="inicioAtencion-{{i}}" (change)="onInicioAtencionChange($event, i)">
-                    <option value="" disabled selected>desde</option>
-                    <option *ngFor="let inicio of horarios" [value]="inicio">{{ inicio }}</option>
-                  </select>
-              </div>
+                <div *ngIf="diasSeleccionados.includes(dia)">
+                    <select id="inicioAtencion-{{i}}" (change)="onInicioAtencionChange($event, i)">
+                      <option value="" disabled selected>desde</option>
+                      <option *ngFor="let inicio of horarios" [value]="inicio">{{ inicio }}</option>
+                    </select>
+                </div>
 
-              <div *ngIf="diasSeleccionados.includes(dia)">
-                  <select id="finAtencion-{{i}}" (change)="onFinAtencionChange($event, i)">
-                    <option value="" disabled selected>hasta</option>
-                    <option *ngFor="let fin of horariosfin[i]" [value]="fin">{{ fin }}</option>
-                  </select>
+                <div *ngIf="diasSeleccionados.includes(dia)">
+                    <select id="finAtencion-{{i}}" (change)="onFinAtencionChange($event, i)">
+                      <option value="" disabled selected>hasta</option>
+                      <option *ngFor="let fin of horariosfin[i]" [value]="fin">{{ fin }}</option>
+                    </select>
+                </div>
+
               </div>
 
             </div>
 
           </div>
-
         </div>
-      </div>
 
-      <div class="form-group">
-        <label for="fotoEsp">Foto de Especialidad:</label>
-        <input type="file" id="fotoEsp" (change)="fotoEspSeleccionada($event)">
-      </div>
+        <div class="form-group">
+          <label for="fotoEsp">Foto de Especialidad:</label>
+          <input type="file" id="fotoEsp" (change)="fotoEspSeleccionada($event)">
+        </div>
 
-      <button type="submit">Registrarse</button>
-    </form>
+        <button type="submit">Registrarse</button>
+      </form>
+  </div>
 </div>

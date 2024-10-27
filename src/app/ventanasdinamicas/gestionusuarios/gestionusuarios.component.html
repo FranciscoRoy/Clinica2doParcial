@@ -1,6 +1,6 @@
 <p>USUARIOS ACTIVOS</p>
 
-<div *ngFor="let usuarioP of usuariosActivos; let i = index" class="usuarioP">
+<div *ngFor="let usuarioP of usuariosActivos; let i = index" class="contenedor-lista">
 
     <span><strong></strong> {{ i + 1 }}</span> |
     <span><strong>Nombre:</strong> {{ usuarioP.nombre }}</span> |
@@ -11,12 +11,12 @@
     <button (click)="profesionalHabilitarDeshabilitar(usuarioP.email,-1)">Deshabilitar</button>
 
 </div>
-<button (click)="exportarPDF()">Exportar Nómina a PDF</button>
+<button (click)="exportarPDF()">Exportar Nómina</button>
 
 
 <p>USUARIOS SIN ACTIVAR</p>
 
-<div *ngFor="let usuarioA of usuariosPendientes; let i = index" class="usuarioA">
+<div *ngFor="let usuarioA of usuariosPendientes; let i = index" class="contenedor-lista">
 
     <span><strong></strong> {{ i + 1 }}</span> |
     <span><strong>Nombre:</strong> {{ usuarioA.nombre }}</span> |

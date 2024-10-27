@@ -1,5 +1,14 @@
+.css_ventanacentral {
+  display: flex;
+  justify-content: center;
+  align-items: top;
+  height: 50vh;
+  max-width: 66vh;
+  margin: 0 auto;
+}
+
 .contenedor-horizontal {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

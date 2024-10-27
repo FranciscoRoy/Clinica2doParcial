@@ -4,7 +4,7 @@ import { Gerente, Paciente, Profesional } from '../../clases/usuario';
 import { ApiService } from '../../servicios/api.service';
 import { VentanaActivaService } from '../../servicios/ventanaactiva.service';
 import { NgFor, NgIf } from '@angular/common';
-import especialidadesData from '../../archivos/especialidades/lista_especialidades.json';
+import especialidadesData from '../../archivos/lista_especialidades.json';
 import horariosData from '../../archivos/lista_horarios.json';
 
 @Component({

@@ -1,13 +1,18 @@
 <app-barrademenu></app-barrademenu>
 
-<app-ventanacentral></app-ventanacentral>
-    
+<div class="css_ventanacentral">
+    <app-ventanacentral></app-ventanacentral>
+</div>
+
 <div class="contenedor-horizontal">
     <div>
         <app-publicidad></app-publicidad>
     </div>
     <div>
-        <app-ventanausuario></app-ventanausuario>
+        <app-tarjetausuario
+            [nombreUsuario]="'Juan Pérez'"
+            [imagenUrl]="'assets/imagen-usuario.jpg'"
+        ></app-tarjetausuario>
     </div>
 </div>
 

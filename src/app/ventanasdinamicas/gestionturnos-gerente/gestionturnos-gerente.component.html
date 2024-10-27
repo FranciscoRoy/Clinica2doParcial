@@ -28,7 +28,7 @@
 <p>TURNOS DISPONIBLES</p>
 <p *ngIf="!alMenosUnFiltroSeleccionado()">Por favor, selecciona al menos un filtro para ver los turnos disponibles.</p>
 
-<div *ngIf="alMenosUnFiltroSeleccionado()">
+<div *ngIf="alMenosUnFiltroSeleccionado()" class="contenedor-lista">
     <div *ngFor="let turno of turnosFiltrados(); let i = index" class="turno">
 
         <button (click)="solicitarTurno(i)">Asignar Turno</button>

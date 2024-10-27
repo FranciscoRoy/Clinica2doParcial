@@ -9,7 +9,7 @@
   <p *ngIf="!alMenosUnFiltroSeleccionado()">Por favor, selecciona la especialidad para comparar profesionales.</p>
   <p *ngIf="alMenosUnFiltroSeleccionado()">Profesionales de la especialidad: {{filtroEspecialidad}}</p>
   
-  <div *ngIf="alMenosUnFiltroSeleccionado()">
+  <div *ngIf="alMenosUnFiltroSeleccionado()" class="contenedor-lista">
     <div *ngFor="let usuarioP of profesionalesFiltrados; let i = index" class="contenedor">
       <div class="fotousuario">
         <img *ngIf="usuarioP.foto" [src]="'data:image/png;base64,' + usuarioP.foto" alt="Foto de {{ usuarioP.nombre }}" class="imagen_dinamica">
