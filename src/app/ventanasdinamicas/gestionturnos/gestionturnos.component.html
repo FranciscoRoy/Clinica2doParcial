@@ -24,12 +24,14 @@
   </select>
 </div>
 
-<p>TURNOS DISPONIBLES</p>
 <p *ngIf="!alMenosUnFiltroSeleccionado()">Por favor, selecciona al menos un filtro para ver los turnos disponibles.</p>
+<p *ngIf="alMenosUnFiltroSeleccionado()">Turnos disponibles para {{filtroEspecialidad}}</p>
 
-<div *ngIf="alMenosUnFiltroSeleccionado()">
-    <div *ngFor="let turno of turnosFiltrados(); let i = index" class="turno">
+<div *ngIf="alMenosUnFiltroSeleccionado()" class="contenedor-lista">
+    <div *ngFor="let turno of turnosFiltrados(); let i = index" class="lista-elemento">
       <button (click)="solicitarTurno(emailPaciente, turno.especialidad, turno.dia, turno.horario, turno.profesional)">Solicitar</button>
-      <p><strong>{{turno.especialidad}}</strong> - {{turno.dia}} {{ turno.horario }} - {{ turno.profesional }}</p>
+      <p class="dia">{{ turno.dia }}</p>
+      <p class="horario">{{ turno.horario }}</p>
+      <p class="profesional">{{ turno.profesional }}</p>
     </div>
-  </div>
+</div>
