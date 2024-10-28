@@ -52,8 +52,8 @@ export class TurnosComponent implements OnInit {
   }
 
   mostrarEstadoTurno(estado: number): string{
-    if (estado===1) {return 'ACEPTADO'}
-    return 'PENDIENTE';
+    if (estado===1) {return 'A'}
+    return 'P';
   }
 
 }

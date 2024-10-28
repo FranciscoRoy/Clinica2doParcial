@@ -110,3 +110,9 @@ input {
   gap: 10px;
   padding: 5px 0;
 }
+
+.texto-peque {
+  font-size: 10px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}

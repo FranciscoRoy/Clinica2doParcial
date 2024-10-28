@@ -93,7 +93,7 @@ export class GestionturnosProfesionalComponent implements OnInit{
   }
   
   generarCSV(turnos: Turno[]): string {
-    const headers = 'Paciente, Especialidad, Fecha, Horario\n';
+    const headers = 'Paciente, Fecha, Horario\n';
     const rows = turnos.map(turno => {
       return `${this.eliminarTildes(turno.paciente)}, ${this.eliminarTildes(turno.dia)}, ${turno.horario}`;
     });

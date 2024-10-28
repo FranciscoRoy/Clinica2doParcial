@@ -1,13 +1,14 @@
 <p>TURNOS ACTIVOS</p>
-<div *ngFor="let turno of turnosUsuario; let i = index" class="turno">
-    <button (click)="turnoRechazar(turno.paciente, turno.especialidad, turno.dia, turno.horario, turno.profesional)">Cancelar</button> |
-    <span>{{ i + 1 }}</span> |
-    <span><strong>Especialidad:</strong> {{ turno.especialidad }}</span> |
-    <span><strong>Día:</strong> {{ turno.dia }}</span> |
-    <span><strong>Horario:</strong> {{ turno.horario }}</span> |
-    <span><strong>Profesional:</strong> {{ turno.profesional }}</span> |
-    <span><strong>Estado:</strong> {{ mostrarEstadoTurno(turno.estado) }}</span>
+
+<div class="contenedor-lista">
+    <div *ngFor="let turno of turnosUsuario; let i = index" class="lista-elemento">
+        <button style="font-size: 15px;" (click)="turnoRechazar(turno.paciente, turno.especialidad, turno.dia, turno.horario, turno.profesional)">Cancelar</button>
+        <span class="turno_horario">{{ turno.especialidad }}</span>
+        <span class="turno_horario"> {{ turno.dia }} - {{ turno.horario }}</span>
+        <span class="turno_horario">{{ turno.profesional }}</span>
+        <span class="turno_horario">{{ mostrarEstadoTurno(turno.estado) }}</span>
+    </div>
 </div>
 
-<button (click)="solicitarTurno()">Solicitar un Turno</button>
+<button (click)="solicitarTurno()" style="margin-top: 20px">Solicitar un Turno</button>
 

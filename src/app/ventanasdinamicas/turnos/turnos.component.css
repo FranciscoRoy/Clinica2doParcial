@@ -1,0 +1,7 @@
+.lista-elemento {
+    grid-template-columns: 80px 100px 150px 120px 25px;
+  }
+
+.turno_horario{
+    font-size: 14px;
+}
