@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { VentanaActivaService } from '../../servicios/ventanaactiva.service';
 import { UsuarioActivoService } from '../../servicios/usuario-activo.service';
 import { Paciente } from '../../clases/usuario';
+import noticiasImgData from '../../archivos/noticias.json';
 
 @Component({
   selector: 'app-inicio',
@@ -18,6 +19,8 @@ export class InicioComponent implements OnInit  {
   alias: string = 'Invitado';
   valoracionesPendientes: number = 3;
 
+  noticiasData: string = '';
+
   constructor(
     private ventanaActivaService: VentanaActivaService,
     private usuarioActivoService: UsuarioActivoService,
@@ -27,6 +30,7 @@ ngOnInit(): void {
   this.ventanaActivaService.getTipoUsuarioSolicitado().subscribe(usuarioTipo => {this.tipoUsuarioActivo = usuarioTipo;});
   this.alias = this.usuarioActivoService.getUsuarioActivo().nombre;
   this.valoracionesPendientes = (this.usuarioActivoService.getUsuarioActivo() as Paciente).valPend;
+  this.noticiasData = noticiasImgData[0].toString();
 }
 
 irIngreso(){

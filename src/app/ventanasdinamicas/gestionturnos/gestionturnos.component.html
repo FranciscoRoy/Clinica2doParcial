@@ -1,9 +1,18 @@
-<div class="filtros">
+<div class="menu">
+
   <label for="especialidad">Especialidad:</label>
   <select id="especialidad" [(ngModel)]="filtroEspecialidad">
     <option value="">Todas</option>
     <option *ngFor="let esp of especialidades" [value]="esp">{{ esp }}</option>
   </select>
+
+  <label for="profesional">Profesional:</label>
+  <select id="profesional" [(ngModel)]="filtroProfesional">
+    <option value="">Todos</option>
+    <option *ngFor="let profesional of profesionales" [value]="profesional">{{ profesional }}</option>
+  </select>
+
+</div><div class="menu">
 
   <label for="dia">Día:</label>
   <select id="dia" [(ngModel)]="filtroDia">
@@ -17,11 +26,6 @@
     <option *ngFor="let horario of horarios" [value]="horario">{{ horario }}</option>
   </select>
 
-  <label for="profesional">Profesional:</label>
-  <select id="profesional" [(ngModel)]="filtroProfesional">
-    <option value="">Todos</option>
-    <option *ngFor="let profesional of profesionales" [value]="profesional">{{ profesional }}</option>
-  </select>
 </div>
 
 <p *ngIf="!alMenosUnFiltroSeleccionado()">Por favor, selecciona al menos un filtro para ver los turnos disponibles.</p>

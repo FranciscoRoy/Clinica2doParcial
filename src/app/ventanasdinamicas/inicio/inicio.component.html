@@ -8,10 +8,18 @@
     </select>
     
     <div *ngIf="selectedTipoUsuario">
-        <button (click)="irIngreso()">Ingresar</button>
-        <button (click)="irRegistro()">Registrarse</button>
+        <button (click)="irIngreso()" style="margin-top: 10px">Ingresar</button>
+        <button (click)="irRegistro()" style="margin-top: 10px">Registrarse</button>
     </div>
 </div>
+
+<!--
+<div *ngIf="tipoUsuarioActivo != 'Invitado'">
+    <div class="contenedor-lista" style="max-width: 50pv;">
+        <img [src]="'data:image/png;base64,' + noticiasData" alt="Noticia" class="imagen_estatica">
+    </div>
+</div>
+-->
 
 <div *ngIf="tipoUsuarioActivo === 'Paciente'">
     <p>Bienvenido/a {{ alias }} (paciente)</p>

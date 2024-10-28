@@ -44,6 +44,22 @@ input {
   box-sizing: border-box;
 }
 
+.menu {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin: 10px 0;
+}
+
+.menu_vertical {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
+  margin: 10px 0;
+}
+
 .formulario-datos {
   display: flex;
   flex-direction: column;

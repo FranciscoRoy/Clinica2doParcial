@@ -1,11 +1,20 @@
 <p>ASIGNAR TURNOS</p>
-<div class="filtros">
+<div class="menu">
+
     <label for="especialidad">Especialidad:</label>
     <select id="especialidad" [(ngModel)]="filtroEspecialidad">
       <option value="">Todas</option>
       <option *ngFor="let esp of especialidades" [value]="esp">{{ esp }}</option>
     </select>
   
+    <label for="profesional">Profesional:</label>
+    <select id="profesional" [(ngModel)]="filtroProfesional">
+      <option value="">Todos</option>
+      <option *ngFor="let profesional of profesionales" [value]="profesional">{{ profesional }}</option>
+    </select>
+
+  </div><div class="menu">
+
     <label for="dia">Día:</label>
     <select id="dia" [(ngModel)]="filtroDia">
       <option value="">Todos</option>
@@ -18,11 +27,6 @@
       <option *ngFor="let horario of horarios" [value]="horario">{{ horario }}</option>
     </select>
   
-    <label for="profesional">Profesional:</label>
-    <select id="profesional" [(ngModel)]="filtroProfesional">
-      <option value="">Todos</option>
-      <option *ngFor="let profesional of profesionales" [value]="profesional">{{ profesional }}</option>
-    </select>
   </div>
 
 <p>TURNOS DISPONIBLES</p>
@@ -48,12 +52,21 @@
 </div>
 
 <p>GESTIONAR TURNOS ACTIVOS</p>
-<div class="filtrosA">
+<div class="menu">
+  
   <label for="especialidadA">Especialidad:</label>
   <select id="especialidadA" [(ngModel)]="filtroEspecialidadA">
     <option value="">Todas</option>
     <option *ngFor="let espA of especialidadesA" [value]="espA">{{ espA }}</option>
   </select>
+
+  <label for="profesionalA">Profesional:</label>
+  <select id="profesionalA" [(ngModel)]="filtroProfesionalA">
+    <option value="">Todos</option>
+    <option *ngFor="let profesionalA of profesionalesA" [value]="profesionalA">{{ profesionalA }}</option>
+  </select>
+
+</div><div class="menu">
 
   <label for="diaA">Día:</label>
   <select id="diaA" [(ngModel)]="filtroDiaA">
@@ -67,11 +80,6 @@
     <option *ngFor="let horarioA of horariosA" [value]="horarioA">{{ horarioA }}</option>
   </select>
 
-  <label for="profesionalA">Profesional:</label>
-  <select id="profesionalA" [(ngModel)]="filtroProfesionalA">
-    <option value="">Todos</option>
-    <option *ngFor="let profesionalA of profesionalesA" [value]="profesionalA">{{ profesionalA }}</option>
-  </select>
 </div>
 
 <p>TURNOS ACTIVOS</p>
