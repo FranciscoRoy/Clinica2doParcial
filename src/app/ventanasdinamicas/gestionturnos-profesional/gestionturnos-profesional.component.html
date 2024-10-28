@@ -1,34 +1,40 @@
+<div class="contenedor-lista">
+
 <p>TURNOS ACEPTADOS</p>
 
-<div *ngFor="let turno of turnosAceptados; let i = index" class="contenedor-lista">
+<div class="contenedor-lista">
+    <div *ngFor="let turno of turnosAceptados; let i = index" class="lista-elemento">
 
-    <button (click)="turnoRechazar(turno.paciente, turno.especialidad, turno.dia, turno.horario)">Cancelar</button>
-    <span>{{ i + 1 }}</span> |
-    <span><strong>{{ turno.especialidad }}:</strong></span> |
-    <span><strong>Paciente:</strong> {{ turno.paciente }}</span> |
-    <span><strong>Dia</strong> {{ turno.dia }}</span> |
-    <span><strong>Horario</strong> {{ turno.horario }}</span> |
-
-    <button (click)="mostrarComentario(i)">Escribir Reporte</button>
-
-    <div *ngIf="mostrarComentarioIndex === i">
-        <textarea [(ngModel)]="comentarios[i]" placeholder="Escriba la reseña de la consulta:"></textarea>
-        <button (click)="turnoFinalizar(turno.paciente, turno.especialidad, turno.dia, turno.horario, comentarios[i])">Finalizar Consulta</button>
+        <button (click)="turnoRechazar(turno.paciente, turno.especialidad, turno.dia, turno.horario)">Cancelar</button>
+        <span><strong>Paciente:</strong> {{ turno.paciente }}</span>
+        <span>{{ turno.dia }}</span>
+        <span>{{ turno.horario }}</span>
+    
+        <button (click)="mostrarComentario(i)">Reporte</button>
+    
+        <div *ngIf="mostrarComentarioIndex === i">
+            <textarea [(ngModel)]="comentarios[i]" placeholder="Escriba la reseña de la consulta:"></textarea>
+            <button (click)="turnoFinalizar(turno.paciente, turno.especialidad, turno.dia, turno.horario, comentarios[i])">Finalizar Consulta</button>
+        </div>
+    
     </div>
-
 </div>
+
 <button (click)="descargarTurnosCSV()">Descargar Turnos como CSV</button>
 
 <p>TURNOS PENDIENTES</p>
 
-<div *ngFor="let turno of turnosPendientes; let i = index" class="contenedor-lista">
+<div class="contenedor-lista">
+    <div *ngFor="let turno of turnosPendientes; let i = index" class="lista-elemento listatipo2">
 
-    <button (click)="turnoAceptar(turno.paciente, turno.especialidad, turno.dia, turno.horario)">Aceptar</button>
-    <button (click)="turnoRechazar(turno.paciente, turno.especialidad, turno.dia, turno.horario)">Cancelar</button>
-    <span>{{ i + 1 }}</span> |
-    <span><strong>{{ turno.especialidad }}:</strong></span> |
-    <span><strong>Paciente:</strong> {{ turno.paciente }}</span> |
-    <span><strong>Dia</strong> {{ turno.dia }}</span> |
-    <span><strong>Horario</strong> {{ turno.horario }}</span>    
+        <button (click)="turnoAceptar(turno.paciente, turno.especialidad, turno.dia, turno.horario)">Aceptar</button>
+        <button (click)="turnoRechazar(turno.paciente, turno.especialidad, turno.dia, turno.horario)">Cancelar</button>
+        <span><strong>Paciente:</strong> {{ turno.paciente }}</span>
+        <span>{{ turno.dia }}</span>
+        <span>{{ turno.horario }}</span>    
+
+    </div>
+</div>
+
 
 </div>

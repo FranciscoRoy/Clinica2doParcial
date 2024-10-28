@@ -1,0 +1,7 @@
+.lista-elemento {
+    grid-template-columns: 100px 300px 150px 35px 100px 200px 400px;
+  }
+
+.listatipo2 {
+grid-template-columns: 100px 100px 300px 150px 35px;
+}
