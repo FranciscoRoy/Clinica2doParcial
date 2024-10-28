@@ -15,27 +15,19 @@
 
 <div *ngIf="tipoUsuarioActivo === 'Paciente'">
     <p>Bienvenido/a {{ alias }} (paciente)</p>
-    <button (click)="irDatosPersonales()">Ver mis Datos</button>
-    <button (click)="irTurnos()">Ver mis Turnos</button>
-    <button (click)="irAyuda()">Ayuda</button>
     <button (click)="salir()">Cerrar Sesion</button>
-    <button *ngIf="valoracionesPendientes > 0" (click)="irValorarServicios()">Valorar mi Experiencia</button>
 </div>
 
 <div *ngIf="tipoUsuarioActivo === 'Profesional'">
     <p>Bienvenido/a {{ alias }} (profesional)</p>
-    <button (click)="irDatosPersonales()">Ver mis Datos</button>
     <button (click)="irTurnosProfesional()">Gestionar mis Turnos</button>
-    <button (click)="irAyuda()">Ayuda</button>
     <button (click)="salir()">Cerrar Sesion</button>
 </div>
 
 <div *ngIf="tipoUsuarioActivo === 'Gerente'">
     <p>Bienvenido/a {{ alias }} (gerente)</p>
-    <button (click)="irDatosPersonales()">Ver mis Datos</button>
     <button (click)="irGestionUsuarios()">Gestionar Usuarios</button>
     <button (click)="irGestionTurnosGerente()">Gestionar Turnos</button>
-    <button (click)="irAyuda()">Ayuda</button>
     <button (click)="salir()">Cerrar Sesion</button>
 </div>
 

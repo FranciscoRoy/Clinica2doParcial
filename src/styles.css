@@ -23,6 +23,12 @@ button:hover {
   background-color: var(--botonSeleccionado);
 }
 
+.boton_iluminado {
+  background-color: white;
+  color: var(--fuente);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
 .submit-button {
   align-self: center;
   padding: 10px 20px;

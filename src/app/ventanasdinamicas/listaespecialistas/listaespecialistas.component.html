@@ -1,32 +1,37 @@
 <div class="filtros">
-    <label for="especialidad">Especialidad:</label>
-    <select id="especialidad" [(ngModel)]="filtroEspecialidad" (change)="cambiarFiltro()">
-      <option value="">Todas</option>
-      <option *ngFor="let esp of especialidades" [value]="esp">{{ esp }}</option>
-    </select>
-  </div>
+  <label for="especialidad">Especialidad:</label>
+  <select id="especialidad" [(ngModel)]="filtroEspecialidad" (change)="cambiarFiltro()">
+    <option value="">Todas</option>
+    <option *ngFor="let esp of especialidades" [value]="esp">{{ esp }}</option>
+  </select>
+</div>
   
-  <p *ngIf="!alMenosUnFiltroSeleccionado()">Por favor, selecciona la especialidad para comparar profesionales.</p>
-  <p *ngIf="alMenosUnFiltroSeleccionado()">Profesionales de la especialidad: {{filtroEspecialidad}}</p>
-  
-  <div *ngIf="alMenosUnFiltroSeleccionado()" class="contenedor-lista">
-    <div *ngFor="let usuarioP of profesionalesFiltrados; let i = index" class="contenedor">
-      <div class="fotousuario">
-        <img *ngIf="usuarioP.foto" [src]="'data:image/png;base64,' + usuarioP.foto" alt="Foto de {{ usuarioP.nombre }}" class="imagen_dinamica">
-      </div>
-      <div class="informacionusuario">
-          <p>{{ usuarioP.nombre + ' ' + usuarioP.apellido}}</p>
-          <!--<p><strong>Especialidad:</strong> {{ usuarioP.especialidad }}</p>-->
-          <p><strong>Días Atención:</strong> {{ usuarioP.diasAtencion }}</p>
-          <p><strong>Calificación Usuarios:</strong> {{ usuarioP.puntuacion }}</p>
-      </div>
+<p *ngIf="!alMenosUnFiltroSeleccionado()">Por favor, selecciona la especialidad para comparar profesionales.</p>
+<p *ngIf="alMenosUnFiltroSeleccionado()">Profesionales de la especialidad: {{filtroEspecialidad}}</p>
+
+<div *ngIf="alMenosUnFiltroSeleccionado()" class="contenedor-lista">
+
+  <div *ngFor="let usuarioP of profesionalesFiltrados; let i = index" class="contenedor">
+
+    <div class="fotousuario">
+      <img *ngIf="usuarioP.foto" [src]="'data:image/png;base64,' + usuarioP.foto" alt="Foto de {{ usuarioP.nombre }}" class="imagen_dinamica">
     </div>
-  
-    <div style="display: block; width: 50%; height: 300px; margin: 0 auto;" class="contenedor">
-      <canvas baseChart
-              [data]="barChartData"
-              [type]="barChartType"
-              [options]="barChartOptions">
-      </canvas>
+
+    <div class="informacionusuario">
+        <p style="margin-top: 0px; font-size: 22px; font-style: italic; font-weight: bold;">{{ usuarioP.nombre + ' ' + usuarioP.apellido}}</p>
+        <p style="margin-bottom: 0px;"><strong>Días de Atención:</strong></p>
+        <p style="margin-top: 0px;">{{ usuarioP.diasAtencion }}</p>
+        <p><strong>Calificación Usuarios:</strong> {{ usuarioP.puntuacion }}</p>
     </div>
+
   </div>
+
+  <div style="display: block; width: 80%; height: 400px; margin: 0 auto;" class="contenedor">
+    <canvas baseChart
+            [data]="barChartData"
+            [type]="barChartType"
+            [options]="barChartOptions">
+    </canvas>
+  </div>
+
+</div>

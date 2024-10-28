@@ -8,6 +8,7 @@ export interface Usuario {
     password: string;
     foto: string;
     acceso: number;
+    chatsPend: number;
 
     getAcceso(): number;
     getTipoUsuario(): string;
@@ -22,6 +23,7 @@ export interface Usuario {
     password = '';
     foto = ImagenInvitadoData.toString();;
     acceso = 0;
+    chatsPend = 0;
 
     getAcceso(): number {return this.acceso;}
     getTipoUsuario(): string {return 'Invitado'}
@@ -37,6 +39,7 @@ export interface Usuario {
     foto: string;
     acceso = 1;
     valPend = 0;
+    chatsPend = 0;
 
     getAcceso(): number {return this.acceso;}
     getTipoUsuario(): string {return 'Paciente'}
@@ -71,6 +74,7 @@ export interface Usuario {
     email: string;
     password: string;
     foto: string;
+    chatsPend = 0;
     acceso = 2;
     activo = 0;
     especialidad: string;
@@ -118,6 +122,7 @@ export interface Usuario {
     password: string;
     foto: string;
     acceso = 3;
+    chatsPend = 0;
 
     getAcceso(): number {return this.acceso;}
     getTipoUsuario(): string {return 'Gerente'}

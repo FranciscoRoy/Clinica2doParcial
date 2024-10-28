@@ -1,9 +1,21 @@
 <div class="tarjeta-usuario">
-    <div class="info-usuario">
-      <p class="nombre-usuario">{{nombreUsuario}}</p>
-      <button class="btn-mensajes">Mensajes</button>
-      <button class="btn-turnos">Turnos</button>
+
+  <div class="info-usuario">
+    <p class="nombre-usuario">{{nombreUsuario}}</p>
+    
+    <div>
+      <button class="btn-notificacion" [ngClass]="{'boton_iluminado': chatsPend > 0}">{{chatsPend}}</button>
+      <p style="font-size: 10px;margin-top: 0px;margin-bottom: 5px">mensajes nuevos</p>
     </div>
-    <img [src]="'data:image/png;base64,' + fotoUsuario" alt="Usuario" class="imagen_circular">
+
+    <div>
+      <button class="btn-notificacion" [ngClass]="{'boton_iluminado': valPend > 0}" (click)="irValorarServicios()">{{valPend}}</button>
+      <p style="font-size: 10px;margin-top: 0px">calificaciones pendientes</p>
+    </div>
+    
   </div>
+
+  <img [src]="'data:image/png;base64,' + fotoUsuario" alt="Usuario" class="imagen_circular">
+
+</div>
   

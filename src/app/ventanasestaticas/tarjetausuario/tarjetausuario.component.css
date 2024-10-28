@@ -3,9 +3,6 @@
     height: 120px;
     display: flex;
     align-items: center;
-    border: 1px solid #ccc;
-    padding: 10px;
-    box-sizing: border-box;
   }
   
   .info-usuario {
@@ -19,15 +16,14 @@
   .nombre-usuario {
     font-size: 1.2em;
     font-weight: bold;
+    font-style: italic; 
     margin: 0;
     margin-bottom: 5px;
   }
   
-  .btn-mensajes, .btn-turnos {
+  .btn-notificacion {
     width: 50px;
     height: 25px;
     margin: 2px 0;
-    padding: 5px;
     font-size: 0.9em;
   }
-  
