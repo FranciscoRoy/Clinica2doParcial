@@ -5,6 +5,7 @@ import { ApiService } from '../../servicios/api.service';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 import { VentanaActivaService } from '../../servicios/ventanaactiva.service';
+import logoClinicaData from '../../archivos/logo_clinica.json';
 
 @Component({
   selector: 'app-gestionusuarios',
@@ -16,7 +17,8 @@ import { VentanaActivaService } from '../../servicios/ventanaactiva.service';
 export class GestionusuariosComponent implements OnInit{
   usuariosActivos: Profesional[] = [];
   usuariosPendientes: Profesional[] = [];
-  
+  imagenData: string = '';
+
   constructor(
     private apiService: ApiService,
     private ventanaActivaService: VentanaActivaService,
@@ -25,6 +27,7 @@ export class GestionusuariosComponent implements OnInit{
   ngOnInit(): void {
     this.buscarProfesionalesActivos();
     this.buscarProfesionalesPendientes();
+    this.imagenData = logoClinicaData.toString();
   }
 
   buscarProfesionalesActivos(){
@@ -68,7 +71,8 @@ export class GestionusuariosComponent implements OnInit{
     const doc = new jsPDF();
   
     const img = new Image();
-    img.src = "https://i.imgur.com/jl2GOv8.png";
+    img.src = 'data:image/png;base64,' + this.imagenData;
+    //img.src = "https://i.imgur.com/jl2GOv8.png";
 
     img.onload = () => {
       doc.addImage(img, 'PNG', 15, 5, 40, 40);
@@ -80,18 +84,28 @@ export class GestionusuariosComponent implements OnInit{
     doc.setFontSize(16);
     doc.text('Nómina de Especialistas', 70, 30);
   
+    //POSICION TEXTO
     let y = 50;
-    this.usuariosActivos.forEach(especialista => {
+    const lineHeight = 10;
+    const pageHeight = doc.internal.pageSize.height;
+  
+    this.usuariosActivos.forEach((especialista, index) => {
+      //CONTROL DE PAGINAS
+      if (y + lineHeight > pageHeight - 10) { 
+        doc.addPage();
+        y = 20;
+      }
+  
       doc.setFontSize(10);
       doc.text(`${especialista.nombre + ' ' + especialista.apellido}`, 20, y);
       doc.text(`${especialista.dni}`, 60, y);
       doc.text(`${especialista.especialidad}`, 100, y);
       doc.text(`${especialista.email}`, 140, y);
-      y += 10;
+      y += lineHeight;
     });
   
     doc.save('nomina_especialistas.pdf');
   }
-  
+
 }
 

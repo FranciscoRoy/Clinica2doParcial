@@ -28,13 +28,17 @@ export class TarjetaUsuarioComponent implements OnInit {
   ngOnInit() {
     this.subscription = this.usuarioActivoService.usuarioActual$.subscribe(usuario => {
       if (usuario) {
-        const user = this.usuarioActivoService.getUsuarioActivo()
-        this.nombreUsuario = user.nombre + ' ' + user.apellido;
-        this.fotoUsuario = user.foto;
-        this.chatsPend = user.chatsPend;
-        if (user instanceof Paciente) {this.valPend = user.valPend;} else {this.valPend = 0};
+        this.actualizarTarjeta();
       }
     });
+  }
+
+  actualizarTarjeta(){
+    const user = this.usuarioActivoService.getUsuarioActivo()
+    this.nombreUsuario = user.nombre + ' ' + user.apellido;
+    this.fotoUsuario = user.foto;
+    this.chatsPend = user.chatsPend;
+    if (user instanceof Paciente) {this.valPend = user.valPend;} else {this.valPend = 0};
   }
 
   ngOnDestroy() {

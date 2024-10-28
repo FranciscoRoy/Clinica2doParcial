@@ -1,30 +1,53 @@
-<p>USUARIOS ACTIVOS</p>
+<div class="contenedor-lista">
 
-<div *ngFor="let usuarioP of usuariosActivos; let i = index" class="contenedor-lista">
 
-    <span><strong></strong> {{ i + 1 }}</span> |
-    <span><strong>Nombre:</strong> {{ usuarioP.nombre }}</span> |
-    <span><strong>Apellido:</strong> {{ usuarioP.apellido }}</span> |
-    <span><strong>DNI:</strong> {{ usuarioP.dni }}</span> |
-    <span><strong>Email:</strong> {{ usuarioP.email }}</span> |
-    <span><strong>Rol:</strong> {{ usuarioP.acceso }}</span> |
-    <button (click)="profesionalHabilitarDeshabilitar(usuarioP.email,-1)">Deshabilitar</button>
 
+<p>PROFESIONALES ACTIVOS</p>
+
+<div class="contenedor-lista">
+    <div class="lista-elemento">
+        <strong>Especialidad</strong>
+        <strong>Nombre</strong>
+        <strong>DNI</strong>
+        <strong>Email</strong>
+        <p></p>
+    </div>
+
+    <div *ngFor="let usuarioP of usuariosActivos; let i = index" class="lista-elemento">
+
+        <span class="turno_horario">{{ usuarioP.especialidad }}</span>
+        <span class="turno_horario">{{ usuarioP.nombre }} {{ usuarioP.apellido }}</span>
+        <span class="turno_horario">{{ usuarioP.dni }}</span>
+        <span class="turno_horario">{{ usuarioP.email }}</span>
+        <button style="font-size: 15px;" (click)="profesionalHabilitarDeshabilitar(usuarioP.email,-1)">Deshabilitar</button>
+
+    </div>
 </div>
+
 <button (click)="exportarPDF()">Exportar Nómina</button>
 
 
 <p>USUARIOS SIN ACTIVAR</p>
 
-<div *ngFor="let usuarioA of usuariosPendientes; let i = index" class="contenedor-lista">
+<div class="contenedor-lista">
+    <div class="lista-elemento listatipo2">
+        <strong>Especialidad</strong>
+        <strong>Nombre</strong>
+        <strong>DNI</strong>
+        <strong>Email</strong>
+        <p></p>
+        <p></p>
+    </div>
 
-    <span><strong></strong> {{ i + 1 }}</span> |
-    <span><strong>Nombre:</strong> {{ usuarioA.nombre }}</span> |
-    <span><strong>Apellido:</strong> {{ usuarioA.apellido }}</span> |
-    <span><strong>DNI:</strong> {{ usuarioA.dni }}</span> |
-    <span><strong>Email:</strong> {{ usuarioA.email }}</span> |
-    <span><strong>Rol:</strong> {{ usuarioA.acceso }}</span> |
-    <button (click)="profesionalHabilitarDeshabilitar(usuarioA.email,1)">Habilitar</button>
+    <div *ngFor="let usuarioA of usuariosPendientes; let i = index" class="lista-elemento listatipo2">
+        <span class="turno_horario">{{ usuarioA.especialidad }}</span>
+        <span class="turno_horario">{{ usuarioA.nombre }} {{ usuarioA.apellido }}</span>
+        <span class="turno_horario">{{ usuarioA.dni }}</span>
+        <span class="turno_horario">{{ usuarioA.email }}</span>
+        <button style="font-size: 15px;" (click)="profesionalHabilitarDeshabilitar(usuarioA.email,1)">Habilitar</button>
+        <button style="font-size: 15px;" (click)="profesionalHabilitarDeshabilitar(usuarioA.email,-1)">Eliminar</button>
+    </div>
 
 </div>
 
+</div>
