@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 })
 
 export class ApiService {
-  private apiUrl = 'https://roy_dm-apiclinica.mdbgo.io/';
+  private apiUrl = 'https://roy_dm-nueva_apiclinica.mdbgo.io/';
 
   constructor(private http: HttpClient) {}
 
