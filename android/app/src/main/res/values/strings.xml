@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">ioclinicamedica</string>
+    <string name="title_activity_main">ioclinicamedica</string>
+    <string name="package_name">com.ioclinicamedica.app</string>
+    <string name="custom_url_scheme">com.ioclinicamedica.app</string>
+</resources>
