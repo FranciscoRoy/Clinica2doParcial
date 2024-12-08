@@ -4,25 +4,26 @@
     <div *ngSwitchCase="1">
         <button (click)="misDatos()">Datos</button>
         <button (click)="misTurnos()">Turnos</button>
+        <button (click)="misChats()">Chats</button>
+        <button (click)="salir()">Salir</button>
     </div>
 
     <div *ngSwitchCase="2">
         <button (click)="misDatos()">Datos</button>
         <button (click)="gestionarTurnosP()">Turnos</button>
+        <button (click)="misChats()">Chats</button>
+        <button (click)="salir()">Salir</button>
     </div>
 
     <div *ngSwitchCase="3">
         <button (click)="misDatos()">Datos</button>
         <button (click)="gestionarTurnosG()">Turnos</button>
         <button (click)="gestionarUsuariosG()">Usuarios</button>
-    </div>
-
-    <button (click)="ayuda()">Ayuda</button>
-
-    <div *ngSwitchCase != "0">
+        <button (click)="misChats()">Chats</button>
         <button (click)="salir()">Salir</button>
     </div>
 
+    <button (click)="ayuda()">Ayuda</button>
     <button (click)="atras()">Anterior</button>
 
     <select [(ngModel)]="paletaDefault" (ngModelChange)="cambiarColores(paletaDefault)">

@@ -58,7 +58,10 @@ export class BarrademenuComponent implements OnInit {
 
   ayuda() {
     this.ventanaActivaService.cambiarVentana('ayuda');}
-    
+  
+  misChats() {
+    this.ventanaActivaService.cambiarVentana('chats');}
+  
   salir() {
     this.usuarioActivoService.cerrarSesion();
     this.ventanaActivaService.cambiarVentana('inicio');}
