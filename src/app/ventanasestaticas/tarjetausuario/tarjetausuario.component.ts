@@ -47,6 +47,10 @@ export class TarjetaUsuarioComponent implements OnInit {
     }
   }
 
+  irChats(){
+    this.ventanaActivaService.cambiarVentana('chats');
+  }
+
   irValorarServicios(){
     this.ventanaActivaService.cambiarVentana('valoraciones');
   }

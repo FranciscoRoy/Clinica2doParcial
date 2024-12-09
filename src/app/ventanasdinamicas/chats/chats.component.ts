@@ -60,6 +60,10 @@ export class ChatsComponent {
     );
   }
 
+  cerrarConversacion(){
+    this.conversacionActiva = null;
+  }
+
   sumarMensaje(destinatario: string): void {
     if (this.nuevoMensaje) {
       this.apiService.guardarMensajes(this.usuarioActual.email,destinatario,this.nuevoMensaje).subscribe();

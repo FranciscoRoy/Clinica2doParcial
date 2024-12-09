@@ -23,17 +23,16 @@
           <small>{{ mensaje.fecha }} {{ mensaje.hora }}</small>
         </span>
       </div>
+      <div class="enviar-mensaje">
+        <textarea [(ngModel)]="nuevoMensaje" name="mensaje" placeholder="Escribe tu mensaje" required></textarea>
+        <button (click)="sumarMensaje(emailActivo)" [disabled]="!nuevoMensaje">Enviar</button>
+      </div>
+      <button (click)="cerrarConversacion()">Cerrar</button>
     </div>
 
     <ng-template #noMensajes>
       <p>No hay mensajes para mostrar.</p>
     </ng-template>
-
-      <!-- Formulario para enviar nuevo mensaje en la conversación activa -->
-      <div class="enviar-mensaje">
-        <textarea [(ngModel)]="nuevoMensaje" name="mensaje" placeholder="Escribe tu mensaje" required></textarea>
-        <button (click)="sumarMensaje(emailActivo)" [disabled]="!nuevoMensaje">Enviar</button>
-      </div>
 
   </div>
 
