@@ -65,6 +65,7 @@ export class GestionturnosProfesionalComponent implements OnInit{
 
   turnoAceptar(paciente: string, especialidad: string,dia: string, horario: string){
     this.apiService.turnoAceptarCancelar(paciente,especialidad,dia,horario,this.profesional,1,'').subscribe();
+    this.apiService.guardarMensajes(this.usuarioActivoService.getUsuarioActivo().email,paciente,'Su turno con '+this.profesional+' ha sido aceptado.').subscribe();
     this.ventanaActivaService.navegar('gestionTurnosProfesional',3);
   }
 

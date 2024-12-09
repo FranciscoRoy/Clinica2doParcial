@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { UsuarioActivoService } from '../../servicios/usuario-activo.service';
 import { Usuario, UsuariosinIngresar } from '../../clases/usuario';
 import { FormsModule } from '@angular/forms';
 import { NgClass, NgFor, NgIf } from '@angular/common';
 import { ApiService } from '../../servicios/api.service';
 import { Conversacion } from '../../clases/conversacion';
+import { interval } from 'rxjs';
 
 @Component({
   selector: 'app-chats',
@@ -13,13 +14,14 @@ import { Conversacion } from '../../clases/conversacion';
   templateUrl: './chats.component.html',
   styleUrl: './chats.component.css'
 })
-export class ChatsComponent {
+export class ChatsComponent implements OnInit {
   usuarioActual: Usuario = new UsuariosinIngresar();
   listaContactos: string[] = [];
   emailActivo: string = '';
   conversacionActiva: Conversacion | null = null;
   nuevoEmail: string = '';
   nuevoMensaje: string = '';
+  private conversacionSubscription: any;
 
   constructor(
     private usuarioActivoService: UsuarioActivoService,
@@ -46,6 +48,30 @@ export class ChatsComponent {
 
   mostrarConversacion(email: string): void {
     this.emailActivo = email;
+  
+    if (this.conversacionSubscription) {
+      this.conversacionSubscription.unsubscribe();
+    }
+  
+    this.conversacionSubscription = interval(1000).subscribe(() => {
+      this.apiService.recuperarMensajes(this.usuarioActual.email, email).subscribe(
+        (mensajes) => {
+          this.conversacionActiva = new Conversacion(
+            this.usuarioActual.email,
+            email,
+            mensajes
+          );
+        },
+        (error) => {
+          console.error('Error al cargar mensajes:', error);
+        }
+      );
+    });
+  }
+
+  /*
+  mostrarConversacion(email: string): void {
+    this.emailActivo = email;
     this.apiService.recuperarMensajes(this.usuarioActual.email, email).subscribe(
       (mensajes) => {
         this.conversacionActiva = new Conversacion(
@@ -59,8 +85,12 @@ export class ChatsComponent {
       }
     );
   }
+  */
 
-  cerrarConversacion(){
+  cerrarConversacion() {
+    if (this.conversacionSubscription) {
+      this.conversacionSubscription.unsubscribe();
+    }
     this.conversacionActiva = null;
   }
 
