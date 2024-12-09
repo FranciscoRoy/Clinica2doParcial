@@ -14,10 +14,11 @@
 
   <div class="mensajes">
     <h2 *ngIf="emailActivo">Chat con {{ emailActivo }}</h2>
+    
     <div class="mensajes-lista" *ngIf="conversacionActiva; else noMensajes">
-      <div *ngFor="let mensaje of conversacionActiva.mensajes" class="mensaje">
+      <div *ngFor="let mensaje of conversacionActiva.mensajes.slice(-7)" class="mensaje">
         <span [ngClass]="{'mensaje-enviado': mensaje.emisor === usuarioActual.email, 
-                         'mensaje-recibido': mensaje.receptor === usuarioActual.email}">
+                          'mensaje-recibido': mensaje.receptor === usuarioActual.email}">
           <strong>{{ mensaje.emisor }}</strong>:
           {{ mensaje.mensaje }}
           <small>{{ mensaje.fecha }} {{ mensaje.hora }}</small>
