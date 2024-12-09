@@ -2,7 +2,7 @@
 <div class="chats-container">
 
   <div class="conversaciones">
-    <h2>Conversaciones activas</h2>
+    <p>Conversaciones activas<p>
     <ul>
       <li *ngFor="let email of listaContactos">
         <button (click)="mostrarConversacion(email)">
@@ -13,15 +13,15 @@
   </div>
 
   <div class="mensajes">
-    <h2 *ngIf="emailActivo">Chat con {{ emailActivo }}</h2>
+    <p *ngIf="emailActivo">Chat con {{ emailActivo }}</p>
     
     <div class="mensajes-lista" *ngIf="conversacionActiva; else noMensajes">
-      <div *ngFor="let mensaje of conversacionActiva.mensajes.slice(-7)" class="mensaje">
+      <div *ngFor="let mensaje of conversacionActiva.mensajes.slice(-5)" class="mensaje">
         <span [ngClass]="{'mensaje-enviado': mensaje.emisor === usuarioActual.email, 
                           'mensaje-recibido': mensaje.receptor === usuarioActual.email}">
-          <strong>{{ mensaje.emisor }}</strong>:
-          {{ mensaje.mensaje }}
-          <small>{{ mensaje.fecha }} {{ mensaje.hora }}</small>
+          <strong>'{{ mensaje.emisor }}'</strong>
+          <small>{{ mensaje.fecha }} {{ mensaje.hora }}</small>:
+          {{ ' '+mensaje.mensaje }}
         </span>
       </div>
       <div class="enviar-mensaje">
