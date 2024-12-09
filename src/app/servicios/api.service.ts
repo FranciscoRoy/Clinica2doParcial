@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 })
 
 export class ApiService {
-  private apiUrl = 'https://roy_dm-nueva_apiclinica.mdbgo.io/';
+  private apiUrl = 'https://demare-nueva_apiclinica.mdbgo.io/';
 
   constructor(private http: HttpClient) {}
 
@@ -91,5 +91,19 @@ calificarProfesional(turno: Turno, calificacion: number): Observable<any>{
   return this.http.post(this.apiUrl + 'calificarProfesional', {turno: turno, calificacion: calificacion});
 }
 
+guardarMensajes(emisor: string, receptor: string, mensaje: string): Observable<any>{
+  return this.http.post(this.apiUrl + 'guardarMensajes', {emisor: emisor, receptor: receptor, mensaje: mensaje});
 }
 
+recuperarContactos(emisor: string): Observable<any>{
+  var recuperarContactos = this.http.post<any>(this.apiUrl + 'recuperarContactos', {emisor: emisor});
+
+  return recuperarContactos;
+}
+
+recuperarMensajes(emisor: string, receptor: string): Observable<any>{
+  var recuperarMensajes = this.http.post<any>(this.apiUrl + 'recuperarMensajes', {emisor: emisor, receptor: receptor});
+  return recuperarMensajes;
+}
+
+}

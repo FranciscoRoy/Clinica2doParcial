@@ -1,0 +1,118 @@
+:root {
+  --fondo: #ADD8E6;
+  --boton: #F5F5DC;
+  --botonSeleccionado: #4682B4;
+  --borde: #87CEFA;
+  --fuente: #000000;
+}
+
+* {
+  font-family: Arial, sans-serif;
+  font-size: 18px;
+  text-align: center;
+  background-color: var(--fondo);
+}
+
+button {
+  background-color: var(--boton);
+  color: var(--fuente);
+  border: 2px solid var(--borde);
+}
+
+button:hover {
+  background-color: var(--botonSeleccionado);
+}
+
+.boton_iluminado {
+  background-color: white;
+  color: var(--fuente);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.submit-button {
+  align-self: center;
+  padding: 10px 20px;
+}
+
+label {
+  margin-bottom: 5px;
+}
+
+input {
+  padding: 8px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.menu {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin: 10px 0;
+}
+
+.menu_vertical {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
+  margin: 10px 0;
+}
+
+.formulario-datos {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 300px;
+  margin: 0 auto;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+.imagen_dinamica {
+  border: 2px solid var(--borde);
+  padding: 5px;
+  box-sizing: border-box;
+  border-radius: 10px;
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  margin-bottom: 20px;
+}
+
+.imagen_estatica {
+  object-fit: cover;
+  margin-bottom: 5px;
+}
+
+.imagen_circular {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.contenedor-lista {
+  max-height: 300px;
+  overflow-y: auto;
+  padding: 10px;
+}
+
+.lista-elemento {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 5px 0;
+}
+
+.texto-peque {
+  font-size: 10px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}

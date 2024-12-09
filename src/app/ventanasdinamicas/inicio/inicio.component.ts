@@ -9,7 +9,7 @@ import { Paciente } from '../../clases/usuario';
 @Component({
   selector: 'app-inicio',
   standalone: true,
-  imports: [NgSwitch, NgSwitchCase, NgSwitchDefault, FormsModule, NgIf],
+  imports: [FormsModule, NgIf],
   templateUrl: './inicio.component.html',
   styleUrl: './inicio.component.css'
 })

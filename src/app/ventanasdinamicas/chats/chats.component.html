@@ -1,1 +1,32 @@
-<p>chats works!</p>
+<div class="chats-container">
+  <!-- Lista de conversaciones activas -->
+  <div class="conversaciones">
+    <h2>Conversaciones activas</h2>
+    <ul>
+      <li *ngFor="let email of listaContactos">
+        <button (click)="mostrarConversacion(email)">
+          Continuar chat con {{ email }}
+        </button>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Recuadro para mostrar los mensajes -->
+  <div class="mensajes">
+    <h2 *ngIf="emailActivo">Chat con {{ emailActivo }}</h2>
+    <div class="mensajes-lista" *ngIf="conversacionActiva; else noMensajes">
+      <div *ngFor="let mensaje of conversacionActiva.mensajes" class="mensaje">
+        <span [ngClass]="{'mensaje-enviado': mensaje.emisor === usuarioActual.email, 
+                         'mensaje-recibido': mensaje.receptor === usuarioActual.email}">
+          <strong>{{ mensaje.emisor }}</strong>:
+          {{ mensaje.mensaje }}
+          <small>{{ mensaje.fecha }} {{ mensaje.hora }}</small>
+        </span>
+      </div>
+    </div>
+    <ng-template #noMensajes>
+      <p>No hay mensajes para mostrar.</p>
+    </ng-template>
+  </div>
+</div>
+

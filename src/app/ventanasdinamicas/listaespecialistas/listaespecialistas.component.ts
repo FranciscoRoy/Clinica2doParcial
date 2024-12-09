@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { ApiService } from '../../servicios/api.service';
 import { VentanaActivaService } from '../../servicios/ventanaactiva.service';
-import { Profesional } from '../../clases/usuario';
+import { Profesional, Usuario } from '../../clases/usuario';
 import { FormsModule } from '@angular/forms';
 import { NgFor, NgIf } from '@angular/common';
 import { ChartConfiguration, ChartOptions, ChartType } from 'chart.js'; 
