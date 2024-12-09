@@ -1,17 +1,17 @@
+
 <div class="chats-container">
-  <!-- Lista de conversaciones activas -->
+
   <div class="conversaciones">
     <h2>Conversaciones activas</h2>
     <ul>
       <li *ngFor="let email of listaContactos">
         <button (click)="mostrarConversacion(email)">
-          Continuar chat con {{ email }}
+          {{ email }}
         </button>
       </li>
     </ul>
   </div>
 
-  <!-- Recuadro para mostrar los mensajes -->
   <div class="mensajes">
     <h2 *ngIf="emailActivo">Chat con {{ emailActivo }}</h2>
     <div class="mensajes-lista" *ngIf="conversacionActiva; else noMensajes">
@@ -24,9 +24,31 @@
         </span>
       </div>
     </div>
+
     <ng-template #noMensajes>
       <p>No hay mensajes para mostrar.</p>
     </ng-template>
+
+      <!-- Formulario para enviar nuevo mensaje en la conversación activa -->
+      <div class="enviar-mensaje">
+        <textarea [(ngModel)]="nuevoMensaje" name="mensaje" placeholder="Escribe tu mensaje" required></textarea>
+        <button (click)="sumarMensaje(emailActivo)" [disabled]="!nuevoMensaje">Enviar</button>
+      </div>
+
   </div>
+
+    <div class="nueva-conversacion" *ngIf="!conversacionActiva">
+      <h2>Iniciar nueva conversación</h2>
+      <form (ngSubmit)="enviarMensaje()">
+        <label for="email">Email del destinatario:</label>
+        <input type="email" id="email" [(ngModel)]="nuevoEmail" name="email" required />
+  
+        <label for="mensaje">Mensaje:</label>
+        <textarea id="mensaje" [(ngModel)]="nuevoMensaje" name="mensaje" required></textarea>
+  
+        <button type="submit" [disabled]="!nuevoEmail || !nuevoMensaje">Enviar</button>
+      </form>
+    </div>
+  
 </div>
 
